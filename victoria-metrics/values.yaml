@@ -1,0 +1,56 @@
+vmselect:
+  enabled: true
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  service:
+    type: ClusterIP
+    port: 8481
+  persistentVolume:
+    enabled: false  # vmselect doesn't need durable storage
+
+vminsert:
+  enabled: true
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  service:
+    type: ClusterIP
+    port: 8480
+  persistentVolume:
+    enabled: false
+
+vmstorage:
+  enabled: true
+  replicaCount: 3
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  persistentVolume:
+    enabled: true
+    size: 10Gi
+    storageClass: local-path  # K3s default; adjust as needed
+  retentionPeriod: 30d
+  service:
+    type: ClusterIP
+    port: 8400
+
+# Disable serviceMonitor and ingress for now
+serviceMonitor:
+  enabled: false
+ingress:
+  enabled: false

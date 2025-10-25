@@ -1,0 +1,8 @@
+defaultNamespace: monitoring
+
+helm:
+  releaseName: victoria-metrics-cluster
+  chart: oci://ghcr.io/victoriametrics/helm-charts/victoria-metrics-cluster
+  version: latest
+  valuesFiles:
+    - values.yaml
