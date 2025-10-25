@@ -29,6 +29,28 @@ vminsert:
     port: 8480
   persistentVolume:
     enabled: false
+  args:
+    - "-httpAuthBearerToken=$(INSERT_AUTH_TOKEN)"
+  env:
+    - name: INSERT_AUTH_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: vm-insert-auth
+          key: token
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    hosts:
+      - host: vm-insert.example.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: vm-tls
+        hosts:
+          - vm-insert.rancher.katzencluster.atlantishq.de
 
 vmstorage:
   enabled: true
@@ -43,13 +65,12 @@ vmstorage:
   persistentVolume:
     enabled: true
     size: 10Gi
-    storageClass: local-path  # K3s default; adjust as needed
-  retentionPeriod: 30d
+    storageClass: longhorn
+  retentionPeriod: 365d
   service:
     type: ClusterIP
     port: 8400
 
-# Disable serviceMonitor and ingress for now
 serviceMonitor:
   enabled: false
 ingress:
