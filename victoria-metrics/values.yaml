@@ -13,6 +13,21 @@ vmselect:
     port: 8481
   persistentVolume:
     enabled: false  # vmselect doesn't need durable storage
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: vm-seclect.rancher.katzencluster.atlantishq.de
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: vm-select-tls
+        hosts:
+          - vm-select.rancher.katzencluster.atlantishq.de
 
 vminsert:
   enabled: true
