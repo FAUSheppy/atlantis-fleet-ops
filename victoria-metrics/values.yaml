@@ -20,10 +20,8 @@ vmselect:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
-      - host: vm-seclect.rancher.katzencluster.atlantishq.de
-        paths:
-          - path: /
-            pathType: Prefix
+      - name: vm-seclect.rancher.katzencluster.atlantishq.de
+        path: /
     tls:
       - secretName: vm-select-tls
         hosts:
