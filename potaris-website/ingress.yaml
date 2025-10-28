@@ -16,7 +16,7 @@ spec:
         - potaris.rancher.katzencluster.atlantishq.de
       secretName: potaris-tls
   rules:
-    - host: potaris.example.com
+    - host: potaris.rancher.katzencluster.atlantishq.de
       http:
         paths:
           - path: /
