@@ -19,4 +19,3 @@ spec:
           image: harbor-registry.atlantishq.de/atlantishq/potaris-next-gen-web
           ports:
             - containerPort: 5000
-          restartPolicy: Always
