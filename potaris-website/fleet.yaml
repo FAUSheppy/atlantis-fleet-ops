@@ -1,0 +1,4 @@
+defaultNamespace: potaris
+
+targets:
+  - name: production

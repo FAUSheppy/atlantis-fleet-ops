@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: potaris
+  labels:
+    app: potaris
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: potaris
+  template:
+    metadata:
+      labels:
+        app: potaris
+    spec:
+      containers:
+        - name: potaris
+          image: harbor-registry.atlantishq.de/atlantishq/potaris-next-gen-web
+          ports:
+            - containerPort: 5000
+          restartPolicy: Always
