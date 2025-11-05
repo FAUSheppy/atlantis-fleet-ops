@@ -4,31 +4,25 @@ persistence:
   enabled: false
 
 env:
-  - name: GF_DATABASE_TYPE
-    value: postgres
-  - name: GF_DATABASE_HOST
-    value: 157.180.21.33:5432
-  - name: GF_DATABASE_NAME
-    value: grafana
-  - name: GF_DATABASE_USER
-    value: grafana
-  - name: GF_DATABASE_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: grafana-k3s-db-secret
-        key: password
-  - name: GF_SECURITY_ADMIN_USER
-    value: admin
-  - name: GF_SECURITY_ADMIN_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: grafana-admin-secret
-        key: password
-  - name: GF_OIDC_SECRET
-    valueFrom:
-      secretKeyRef:
-        name: grafana-oidc-config
-        key: password
+  GF_DATABASE_TYPE: postgres
+  GF_DATABASE_HOST: 157.180.21.33:5432
+  GF_DATABASE_NAME: grafana
+  GF_DATABASE_USER: grafana
+  GF_SECURITY_ADMIN_USER: admin
+
+envValueFrom:
+  GF_DATABASE_PASSWORD:
+    secretKeyRef:
+      name: grafana-k3s-db-secret
+      key: password
+  GF_SECURITY_ADMIN_PASSWORD:
+    secretKeyRef:
+      name: grafana-admin-secret
+      key: password
+  GF_OIDC_SECRET:
+    secretKeyRef:
+      name: grafana-oidc-config
+      key: password
 
 grafana.ini:
   server:
