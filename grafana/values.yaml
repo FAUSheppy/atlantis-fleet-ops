@@ -55,7 +55,9 @@ service:
 
 ingress:
   enabled: true
-  ingressClassName: nginx
+  ingressClassName: traefik
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
     - grafana.rancher.katzencluster.atlantishq.de
   tls:
