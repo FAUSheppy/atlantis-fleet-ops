@@ -1,0 +1,5 @@
+services:
+  atlantis-hub:
+    port: 4181
+    secretName: atlantis-hub-oidc-secrets
+    master_address: https://keycloak.atlantishq.de

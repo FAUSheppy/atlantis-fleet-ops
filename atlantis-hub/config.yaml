@@ -1,0 +1,309 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: atlantis-hub-config
+data:
+  config.yaml: |
+    trackmania:
+        name: Trackmania Replay Server
+        href: https://trackmania.atlantishq.de
+        tags:
+            - gaming
+        groups:
+            - trackmania
+        auth-type: sso
+        icon: https://cdn2.steamgriddb.com/file/sgdb-cdn/grid/9b4c2fa8e4011958cf9525d89a2e8c9f.png
+    
+    images:
+        name: Image CMS
+        href: https://images.atlantishq.de
+        background: linear-gradient(90deg, rgb(255 38 78) 20%, rgb(203 125 125) 65%);
+        tags:
+            - server
+        groups:
+            - images
+        auth-type: sso
+    
+    sounds:
+        name: Sound Library
+        href: https://sounds.atlantishq.de
+        background: linear-gradient(90deg, rgb(63 203 87) 20%, rgb(31 110 92) 65%);
+        tags:
+            - tools-internal
+        groups:
+            - soundlib
+        auth-type: sso
+    
+    certificates:
+        name: Certificate Manager
+        href: https://vpn.atlantishq.de
+        background: linear-gradient(90deg, rgb(201 70 70) 20%, rgb(118 83 82) 65%);
+        tags:
+            - server
+        groups:
+            - pki
+        auth-type: sso
+    
+    opensearch:
+        name: Opensearch
+        background: linear-gradient(90deg, rgb(4, 52, 84) 20%, rgb(83, 134, 160) 65%)
+        href: https://opensearch.katzencluster.atlantishq.de/auth/openid/captureUrlFragment
+        tags:
+            - monitoring
+        groups:
+            - monitoring
+            - opensearch-admin
+            - univention
+            - rancher-users
+        auth-type: sso
+    
+    keycloak-profile:
+        name: User Profile
+        href: https://keycloak.atlantishq.de/realms/master/account/#/personal-info
+        tags:
+            - user
+        groups:
+            - monitoring
+            - icinga
+            - admin
+            - gaming
+            - tools
+            - ths
+            - nextcloud
+            - trackmania
+        auth-type: sso
+        background: linear-gradient(90deg, rgb(125 147 149) 20%, rgb(91 116 205) 65%);
+    
+    keycloak-admin:
+        name: Keycloak Admin Console
+        href: https://keycloak.atlantishq.de
+        tags:
+            - server
+        groups:
+            - admin
+        auth-type: sso
+        background: linear-gradient(90deg, rgb(125 147 149) 20%, rgb(91 116 205) 65%);
+    
+    async-icinga:
+        name: Async Icinga Manager
+        href: https://async-icinga.atlantishq.de
+        background: linear-gradient(90deg, rgb(165 84 165) 20%, rgb(151 15 105) 65%);
+        tags:
+            - monitoring
+        groups:
+            - monitoring
+            - icinga
+            - univention
+        auth-type: sso
+    
+    grafana:
+        name: Grafana
+        href: https://stats.atlantishq.de
+        tags:
+            - monitoring
+            - univention
+        groups:
+            - monitoring
+        auth-type: sso
+    
+    icinga:
+        name: Icinga
+        href: https://icinga.atlantishq.de
+        tags:
+            - monitoring
+        groups:
+            - monitoring
+            - icinga
+        auth-type: sso
+    
+    zabbix:
+        name: Zabbix Monitoring
+        href: https://zabbix.atlantishq.de
+        tags:
+            - monitoring
+        groups:
+            - monitoring
+        auth-type: ldap
+    
+    ths-nextcloud:
+        name: THS Nextcloud
+        href: https://ths.atlantishq.de
+        tags:
+            - thermoscan
+        groups:
+            - ths
+        auth-type: extern
+    
+    nextcloud:
+        name: Nextcloud
+        href: https://nextcloud.katzencluster.atlantishq.de
+        tags:
+            - server
+        groups:
+            - nextcloud
+        auth-type: sso
+    
+    github:
+        name: GitHub Sheppy
+        href: https://github.com/FAUSheppy
+        icon-alt-url: https://github.com
+        tags:
+            - web
+        groups:
+            - show-weblinks
+        auth-type: none
+    
+    medium:
+        name: Medium
+        href: https://erlangen-sheppy.medium.com
+        background: linear-gradient(90deg, rgb(42 167 173) 20%, rgb(79 137 151) 65%);
+        tags:
+            - web
+        groups:
+            - show-weblinks
+        auth-type: none
+    
+    #potaris:
+    #    name: Potaris
+    #    href: https://potaris.de
+    #    tags:
+    #        - web
+    #    groups:
+    #        - show-weblinks
+    #    auth-type: none
+    
+    insurgency:
+        name: Insurgency Leaderboard
+        href: https://insurgency.atlantishq.de
+        background: linear-gradient(90deg, rgba(255,165,0,255) 20%, rgb(193 89 16) 65%)
+        tags:
+            - gaming
+        groups:
+            - gaming
+        auth-type: none
+    
+    sector32-web:
+        name: Sector 32 Website
+        href: https://sector32.potaris.de
+        background: linear-gradient(90deg, rgb(21 22 18) 20%, rgb(55 57 86) 65%);
+        tags:
+            - web
+        groups:
+            - show-weblinks
+        auth-type: none
+    
+    #sector32-steam:
+    #    name: Sector 32 Steam
+    #    href: https://store.steampowered.com/app/1660110/Decent_Into_Sector_32/
+    #    tags:
+    #        - web
+    #    groups:
+    #        - show-weblinks
+    #    auth-type: none
+    
+    paperless:
+        name: Paperless
+        background: "linear-gradient(90deg, #1fc61a 20%, #00c471 65%);"
+        href: https://paperless.atlantishq.de/
+        tags:
+            - internal-tools
+        groups:
+            - paperless
+        auth-type: sso
+    
+    timetracking:
+        name: Timetracking
+        href: https://timetracking.atlantishq.de/
+        tags:
+            - internal-tools
+        groups:
+            - pki
+        auth-type: sso
+    
+    hedgedoc:
+        name: Hedgedoc
+        href: https://hedgedoc.atlantishq.de/auth/oauth2
+        tags:
+            - tools
+        groups:
+            - monitoring
+        auth-type: sso
+    
+    resume:
+        name: Resume Manager
+        href: https://cv.atlantishq.de/api/auth/openid
+        tags:
+            - tools
+        groups:
+            - tools
+        auth-type: sso
+    
+    harbor:
+        name: Harbor
+        href: https://harbor-registry.atlantishq.de/c/oidc/login?redirect_url=/harbor/projects
+        tags:
+            - server
+        groups:
+            - monitoring
+            - univention
+        auth-type: sso
+    
+    atlantis-verify:
+        name: Self-Service Verification
+        background: "linear-gradient(90deg, rgba(5,187,187,255) 20%, rgb(14 165 109) 65%);"
+        href: https://verify.atlantishq.de/
+        tags:
+            - user
+        groups:
+            - monitoring
+            - icinga
+            - trackmania
+            - univention
+            - admin
+            - gaming
+        auth-type: sso
+    
+    gitea:
+        name: Gitea
+        href: https://git.athq.de/user/oauth2/atlantis-accounts
+        tags:
+            - tools
+        groups:
+            - tools
+        auth-type: sso
+    
+    immich:
+        name: Immich Pictures
+        href: https://i.athq.de/
+        tags:
+            - tools
+        groups:
+            - tools
+        auth-type: sso
+    
+    rancher:
+        name: Rancher (Kubernetes)
+        background: linear-gradient(90deg, rgb(41, 84, 112) 30%, rgb(49, 112, 160) 65%)
+        href: https://rancher.falkenstein-2.potaris.de/
+        tags:
+            - server
+        groups:
+            - harbor-admins
+            - rancher-admins
+            - univention
+            - rancher-users
+        auth-type: sso
+    
+    argocd:
+        name: ArgoCD (Kubernetes)
+        #background: linear-gradient(90deg, rgb(41, 84, 112) 30%, rgb(49, 112, 160) 65%)
+        icon-alt-url: https://argocd.test.rancher.falkenstein-2.potaris.de/assets/images/logo.png
+        href: https://argocd.test.rancher.falkenstein-2.potaris.de/auth/login?return_url=https%3A%2F%2Fargocd.test.rancher.falkenstein-2.potaris.de%2Fapplications
+        tags:
+            - server
+        groups:
+            - harbor-admins
+            - rancher-admins
+            - univention
+            - rancher-users
+        auth-type: sso
