@@ -27,7 +27,7 @@ envValueFrom:
     secretKeyRef:
       name: grafana-admin-secret
       key: password
-  GF_OIDC_SECRET:
+  GF_OIDC_CLIENT_SECRET:
     secretKeyRef:
       name: grafana-oidc-config
       key: client-secret
@@ -50,11 +50,11 @@ grafana.ini:
     name: Atlantis Accounts
     allow_sign_up: false
     client_id: grafana
-    client_secret: $__env{GF_DATABASE_PASSWORD}
+    client_secret: $__env{GF_OIDC_CLIENT_SECRET}
     scopes: openid profile email groups
-    auth_url: https://keycloak.atlantishq.de/realms/atlantis/protocol/openid-connect/auth
-    token_url: https://keycloak.atlantishq.de/realms/atlantis/protocol/openid-connect/token
-    api_url: https://keycloak.atlantishq.de/realms/atlantis/protocol/openid-connect/userinfo
+    auth_url: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/auth
+    token_url: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token
+    api_url: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/userinfo
     role_attribute_path: contains(groups[*], 'atlantis-admins') && 'Admin' || 'Viewer'
 
 service:
