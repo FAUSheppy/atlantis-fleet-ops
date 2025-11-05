@@ -22,7 +22,7 @@ envValueFrom:
   GF_OIDC_SECRET:
     secretKeyRef:
       name: grafana-oidc-config
-      key: password
+      key: client-secret
 
 grafana.ini:
   server:
