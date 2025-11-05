@@ -1,0 +1,23 @@
+oauth2Proxy:
+  image: quay.io/oauth2-proxy/oauth2-proxy:latest
+  redis:
+    enabled: true
+  redisUrl: redis://redis
+  whitelistDomains: "keycloak.atlantishq.de sso.atlantishq.de sso.potaris.de"
+
+  defaults:
+    port: 4180
+    scope: "openid email profile"
+    provider: keycloak-oidc
+    providerDisplayName: "AtlantisHQ Accounts"
+    oidcEmailClaim: "sub"
+    reverseProxy: "true"
+    skipProviderButton: "true"
+
+keycloak:
+  issuerUrl: https://keycloak.atlantishq.de/realms/master
+  address: keycloak.atlantishq.de
+  realm: master
+
+# Override this section per bundle
+services: {}
