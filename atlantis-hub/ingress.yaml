@@ -30,3 +30,11 @@ spec:
                 name: atlantis-hub
                 port:
                   number: 80
+          - path: /oauth2/
+            pathType: Prefix
+            backend:
+              service:
+                name: oauth2-proxy-grafana
+                namespace: sso
+                port:
+                  number: 80
