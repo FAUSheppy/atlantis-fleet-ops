@@ -20,4 +20,13 @@ keycloak:
   realm: master
 
 # Override this section per bundle
-services: {}
+services:
+  grafana:
+    port: 80
+    skips:
+      - "/health"
+      - "/metrics"
+    client_id: grafana-client
+    client_secret: grafana-secret
+    party_secret: grafana-cookie-secret
+    master_address: https://sso.atlantishq.de
