@@ -8,7 +8,7 @@ metadata:
     app: oauth2-proxy-{{ $name }}
 spec:
   forwardAuth:
-    address: http://oauth2-proxy-{{ $name }}.sso.svc.cluster.local:{{ $svc.port }}/oauth2/auth
+    address: http://oauth2-proxy-{{ $name }}.sso.svc.cluster.local:{{ $svc.port }}/
     trustForwardHeader: true
     authResponseHeaders:
       - X-Auth-Request-User
