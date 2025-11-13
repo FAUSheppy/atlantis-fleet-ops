@@ -26,5 +26,4 @@ services:
     skips:
       - "/health"
       - "/metrics"
-    client_id: grafana-client
-    secret_name: grafana-secret
+    secret_name: grafana-oidc-config
