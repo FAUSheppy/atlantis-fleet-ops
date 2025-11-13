@@ -60,19 +60,19 @@ spec:
               value: {{ $.Values.oauth2Proxy.whitelistDomains }}
             - name: OAUTH2_PROXY_CLIENT_ID
               valueFrom: 
-                secretKeyRef: {{ $svc.secretName }}
+                secretKeyRef: {{ $svc.secret_name }}
                 key: client-id
             - name: OAUTH2_PROXY_CLIENT_SECRET
               valueFrom: 
-                secretKeyRef: {{ $svc.secretName }}
+                secretKeyRef: {{ $svc.secret_name }}
                 key: client-secret
             - name: OAUTH2_PROXY_REDIRECT_URL
               valueFrom: 
-                secretKeyRef: {{ $svc.secretName }}
+                secretKeyRef: {{ $svc.secret_name }}
                 key: redirect_uris
             - name: OAUTH2_PROXY_ALLOWED_GROUPS
               valueFrom: 
-                secretKeyRef: {{ $svc.secretName }}
+                secretKeyRef: {{ $svc.secret_name }}
                 key: groups
           ports:
             - containerPort: {{ $svc.port }}
