@@ -1,3 +1,4 @@
+{{- range $name, $svc := .Values.services }
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -12,7 +13,6 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
     traefik.ingress.kubernetes.io/redirect-entry-point: "https"
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
-    traefik.ingress.kubernetes.io/router.middlewares: "sso-oauth2-forward-auth-grafana@kubernetescrd"
 spec:
   ingressClassName: traefik
   tls:
@@ -23,10 +23,11 @@ spec:
     - host: hub.rancher.katzencluster.atlantishq.de
       http:
         paths:
-          - path: /
+          - path: /oauth2/
             pathType: Prefix
             backend:
               service:
-                name: atlantis-hub
+                name: oauth2-proxy-{{ $name }}
                 port:
-                  number: 80
+                  number: {{ $svc.port }}
+{{- end }}

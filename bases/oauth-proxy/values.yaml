@@ -21,9 +21,10 @@ keycloak:
 
 # Override this section per bundle
 services:
-  grafana:
+  atlantis-hub:
     port: 80
     skips:
       - "/health"
       - "/metrics"
     secret_name: grafana-oidc-config
+    address: https://hub.rancher.katzencluster.atlantishq.de/
