@@ -1,0 +1,33 @@
+{{- range $name, $svc := .Values.services }
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $svc.name }}-oauth-proxy-ingress
+  labels:
+    app: {{ $svc.name }}
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: "web,websecure"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/redirect-entry-point: "https"
+    traefik.ingress.kubernetes.io/redirect-permanent: "true"
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - {{ $svc.address }}
+      secretName: {{ $svc.name }}-tls
+  rules:
+    - host: {{ $svc.address }}
+      http:
+        paths:
+          - path: /oauth2/
+            pathType: Prefix
+            backend:
+              service:
+                name: oauth2-proxy-{{ $name }}
+                port:
+                  number: {{ $svc.port }}
+{{- end }}
