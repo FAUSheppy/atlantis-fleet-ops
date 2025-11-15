@@ -33,6 +33,6 @@ spec:
   headers:
     customRequestHeaders:
       # FIXME: if oauth proxy ever fixes the above bug, remove this
-      X-Forwarded-Preferred-Username: '{{ .Request.Header.Get "X-Auth-Request-Preferred-Username" }}'
-      X-Forwarded-Groups: '{{ .Request.Header.Get "X-Auth-Request-Groups" }}'
+      X-Forwarded-Preferred-Username: '{{ `{{ .Request.Header.Get "X-Auth-Request-Preferred-Username" }}` }}'
+      X-Forwarded-Groups: '{{ `{{ .Request.Header.Get "X-Auth-Request-Groups" }}` }}' 
 {{- end }}
