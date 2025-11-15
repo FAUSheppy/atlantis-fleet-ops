@@ -27,4 +27,4 @@ services:
       - "/health"
       - "/metrics"
     secret_name: grafana-oidc-config
-    address: https://hub.rancher.katzencluster.atlantishq.de/
+    address: hub.rancher.katzencluster.atlantishq.de
