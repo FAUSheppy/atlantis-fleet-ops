@@ -12,8 +12,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
     traefik.ingress.kubernetes.io/redirect-entry-point: "https"
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
-    traefik.ingress.kubernetes.io/router.middlewares: >
-      sso-oauth2-forward-auth-atlantis-hub@kubernetescrd,
+    traefik.ingress.kubernetes.io/router.middlewares: "sso-oauth2-forward-auth-atlantis-hub@kubernetescrd"
 spec:
   ingressClassName: traefik
   tls:
