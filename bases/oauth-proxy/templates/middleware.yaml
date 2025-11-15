@@ -15,9 +15,17 @@ spec:
       - X-Auth-Request-Email
       - X-Auth-Request-Groups
       - X-Auth-Request-Preferred-Username
+      # these are not currently required, becuase of a OAuthProxy bug not setting them
+      # however I keep them here in case oauth2proxy suddenly fixes the bug
       - X-Forwarded-User
       - X-Forwarded-Email
       - X-Forwarded-Preferred-Username
       - X-Forwarded-Groups
       - Authorization
+  forwarded-headers:
+    headers:
+      customRequestHeaders:
+        # FIXME: if oauth proxy ever fixes the above bug, remove this
+        X-Forwarded-Preferred-Username: "{req.headers.X-Auth-Request-Preferred-Username}"
+        X-Forwarded-Groups: "{req.headers.X-Auth-Request-Groups}"
 {{- end }}
