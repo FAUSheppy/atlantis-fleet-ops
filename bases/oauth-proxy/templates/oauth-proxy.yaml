@@ -26,6 +26,8 @@ spec:
             {{- end }}
             {{- end }}
             - "--upstream=static://202"
+            - --set-xforwarded-headers=true
+            - --pass-claims=preferred_username
           env:
             - name: OAUTH2_PROXY_SCOPE
               value: {{ $.Values.oauth2Proxy.defaults.scope }}
