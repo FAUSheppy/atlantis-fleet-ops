@@ -17,6 +17,7 @@ spec:
       containers:
         - name: atlantis-hub
           image: harbor-registry.atlantishq.de/atlantishq/atlantis-hub:latest
+          imagePullPolicy: always
           ports:
             - containerPort: 5000
           volumeMounts:
