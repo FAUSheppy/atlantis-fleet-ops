@@ -14,7 +14,6 @@ metadata:
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
     traefik.ingress.kubernetes.io/router.middlewares: >
       sso-oauth2-forward-auth-atlantis-hub@kubernetescrd,
-      sso-oauth2-forwarded-headers-atlantis-hub@kubernetescrd
 spec:
   ingressClassName: traefik
   tls:
