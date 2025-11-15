@@ -26,6 +26,8 @@ spec:
               subPath: config.yaml
             - name: cache
               mountPath: /app/static/cache
+            - name: instance
+              mountPath: /app/static/instance
           env:
             - name: TZ
               value: "UTC"
@@ -41,5 +43,7 @@ spec:
               - key: config.yaml
                 path: config.yaml
         - name: cache
+          emptyDir: {}
+        - name: instance
           emptyDir: {}
       restartPolicy: Always
