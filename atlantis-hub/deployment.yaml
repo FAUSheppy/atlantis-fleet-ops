@@ -31,6 +31,10 @@ spec:
           env:
             - name: TZ
               value: "UTC"
+            - name: AUTH_USER_HEADER
+              value: "X-Auth-Request-Preffererd-Username"
+            - name: AUTH_GROUP_HEADER
+              value: "X-Auth-Request-Groups"
       volumes:
         - name: config
           configMap:
