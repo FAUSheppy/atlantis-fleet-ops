@@ -33,5 +33,5 @@ services:
     skips:
       - "/health"
       - "/metrics"
-    secret_name: atlantis-actions-oidc-config
+    secret_name: atlantis-status-oidc-config
     address: atlantis-actions.rancher.katzencluster.atlantishq.de
