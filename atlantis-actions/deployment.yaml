@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atlantis-actions
+  labels:
+    app: atlantis-actions
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: atlantis-actions
+  template:
+    metadata:
+      labels:
+        app: atlantis-actions
+    spec:
+      containers:
+        - name: atlantis-actions
+          image: harbor-registry.atlantishq.de/atlantishq/atlantis-status
+          ports:
+            - containerPort: 5000
+          env:
+            - name: AUTH_USER_HEADER
+              value: "X-Auth-Request-Preffererd-Username"
+            - name: AUTH_GROUP_HEADER
+              value: "X-Auth-Request-Groups"
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/services/config.yaml
+              subPath: config
+      volumes:
+        - name: config
+          secret:
+            name: atlantis-actions-config-secret
+            items:
+                key: config
+                path: config

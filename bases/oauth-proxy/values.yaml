@@ -28,3 +28,10 @@ services:
       - "/metrics"
     secret_name: atlantis-hub-oidc-config
     address: hub.rancher.katzencluster.atlantishq.de
+  atlantis-actions:
+    port: 80
+    skips:
+      - "/health"
+      - "/metrics"
+    secret_name: atlantis-actions-oidc-config
+    address: atlantis-actions.rancher.katzencluster.atlantishq.de
