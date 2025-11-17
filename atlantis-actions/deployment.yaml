@@ -29,7 +29,7 @@ spec:
               mountPath: /app/services/config.yaml
               subPath: config
       volumes:
-        - name: config
+        - name: config-volume
           secret:
             name: atlantis-actions-config-secret
             items:
