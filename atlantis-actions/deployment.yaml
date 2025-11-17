@@ -33,5 +33,5 @@ spec:
           secret:
             name: atlantis-actions-config-secret
             items:
-                key: config
+              - key: config
                 path: config
