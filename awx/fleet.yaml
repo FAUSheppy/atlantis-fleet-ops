@@ -1,0 +1,10 @@
+defaultNamespace: awx
+
+helm:
+  chart: awx-operator
+  repo: https://ansible.github.io/awx-operator/
+  version: "2.16.1"     # Example, update if needed
+  valuesFiles:
+    - values.yaml
+
+dependsOn: []
