@@ -11,40 +11,42 @@ spec:
     cert-manager.io/cluster-issuer: letsencrypt
   ingress_hosts:
     - hostname: awx.rancher.katzencluster.atlantishq.de
-      tls_secret: awx-ingress-tls  # optional, see below
+      tls_secret: awx-ingress-tls
 
   postgres_storage_class: longhorn
   postgres_data_volume_init: true
 
   service_type: ClusterIP
+  tls_secret: awx-ingress-tls
 
-  auth_enabled: true
-  authentication_backend: oidc
+  extraEnv:
+    - name: SOCIAL_AUTH_OIDC_KEY
+      valueFrom:
+        secretKeyRef:
+          name: awx-oidc-config
+          key: client-id
 
-  oauth2_secret: awx-oidc-config
+    - name: SOCIAL_AUTH_OIDC_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: awx-oidc-config
+          key: client-secret
 
-  # Required AWX OIDC settings
+    - name: SOCIAL_AUTH_OIDC_OIDC_ENDPOINT
+      value: "https://keycloak.atlantishq.de/.well-known/openid-configuration"
+
+    - name: SOCIAL_AUTH_OIDC_REDIRECT_URI
+      valueFrom:
+        secretKeyRef:
+          name: awx-oidc-config
+          key: redirect_uris
+
+    - name: SOCIAL_AUTH_OIDC_GROUPS_CLAIM
+      valueFrom:
+        secretKeyRef:
+          name: awx-oidc-config
+          key: groups
+
   extra_settings:
     - setting: AUTHENTICATION_BACKENDS
-      value:
-        - social_core.backends.open_id_connect.OpenIdConnectAuth
-        - django.contrib.auth.backends.ModelBackend
-
-    - setting: SOCIAL_AUTH_OIDC_KEY
-      secret: awx-oidc-config
-      secretKey: client-id
-
-    - setting: SOCIAL_AUTH_OIDC_SECRET
-      secret: awx-oidc-config
-      secretKey: client-secret
-
-    - setting: SOCIAL_AUTH_OIDC_OIDC_ENDPOINT
-      value: "https://keycloak.atlantishq.de"
-
-    - setting: SOCIAL_AUTH_OIDC_REDIRECT_URI
-      secret: awx-oidc-config
-      secretKey: redirect_uris
-
-    - setting: SOCIAL_AUTH_OIDC_GROUPS_CLAIM
-      secret: awx-oidc-config
-      secretKey: groups
+    value: '["social_core.backends.open_id_connect.OpenIdConnectAuth","django.contrib.auth.backends.ModelBackend"]'
