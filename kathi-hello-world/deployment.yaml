@@ -9,20 +9,23 @@ spec:
   selector:
     matchLabels:
       app: potaris
-  spec:
-    containers:
-      - image: nginx:latest
-        imagePullPolicy: Always
-        name: nginx
-        ports:
-          - containerPort: 80
-            protocol: TCP
-        volumeMounts:
-          - mountPath: /usr/share/nginx/html
-            name: html
-    restartPolicy: Always
-    volumes:
-      - configMap:
-          defaultMode: 420
-          name: hello-world-html
-        name: html
+  template:
+    metadata:
+        labels: hello-world-kathi
+    spec:
+      containers:
+        - image: nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: html
+      restartPolicy: Always
+      volumes:
+        - configMap:
+            defaultMode: 420
+            name: hello-world-html
+          name: html
