@@ -1,0 +1,3 @@
+defaultNamespace: kathi
+targets:
+  - name: production

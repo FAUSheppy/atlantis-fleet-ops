@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  name: hello-world
+  namespace: kathi
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: kathi.rancher.falkenstein-2.potaris.de
+      http:
+        paths:
+          - backend:
+              service:
+                name: hello-world-kathi
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - kathi.rancher.falkenstein-2.potaris.de
+      secretName: hello-world-tls

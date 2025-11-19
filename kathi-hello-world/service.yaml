@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-kathi
+  namespace: kathi
+  labels:
+    app: hello-world-kathi
+spec:
+  selector:
+    app: hello-world-kathi
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  type: ClusterIP
