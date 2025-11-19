@@ -1,30 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: hello-world-kathi
   labels:
     app: hello-world-kathi
-  name: hello-world-kathi
-  namespace: kathi
 spec:
   replicas: 1
-  template:
-    metadata:
-      labels:
-        app: hello-world-kathi
-    spec:
-      containers:
-        - image: nginx:latest
-          imagePullPolicy: Always
-          name: nginx
-          ports:
-            - containerPort: 80
-              protocol: TCP
-          volumeMounts:
-            - mountPath: /usr/share/nginx/html
-              name: html
-      restartPolicy: Always
-      volumes:
-        - configMap:
-            defaultMode: 420
-            name: hello-world-html
-          name: html
+  selector:
+    matchLabels:
+      app: potaris
+  spec:
+    containers:
+      - image: nginx:latest
+        imagePullPolicy: Always
+        name: nginx
+        ports:
+          - containerPort: 80
+            protocol: TCP
+        volumeMounts:
+          - mountPath: /usr/share/nginx/html
+            name: html
+    restartPolicy: Always
+    volumes:
+      - configMap:
+          defaultMode: 420
+          name: hello-world-html
+        name: html
