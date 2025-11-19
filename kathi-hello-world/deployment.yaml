@@ -11,7 +11,8 @@ spec:
       app: potaris
   template:
     metadata:
-        labels: hello-world-kathi
+        labels:
+            app: hello-world-kathi
     spec:
       containers:
         - image: nginx:latest
