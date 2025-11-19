@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: kathi.rancher.falkenstein-2.potaris.de
+    - host: kathi.rancher.katzencluster.atlantishq.de
       http:
         paths:
           - backend:
@@ -20,5 +20,5 @@ spec:
             pathType: Prefix
   tls:
     - hosts:
-        - kathi.rancher.falkenstein-2.potaris.de
+        - kathi.rancher.katzencluster.atlantishq.de
       secretName: hello-world-tls
