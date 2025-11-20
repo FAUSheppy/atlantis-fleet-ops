@@ -5,21 +5,25 @@ metadata:
   namespace: awx
 spec:
   admin_user: admin
-
   ingress_type: ingress
-  ingress_annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
+  ingress_annotations: |
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  ingress_tls_secret: awx-ingress-tls
   ingress_hosts:
     - hostname: awx.rancher.katzencluster.atlantishq.de
       tls_secret: awx-ingress-tls
 
   postgres_storage_class: longhorn
   postgres_data_volume_init: true
-
+  postgres_init_container_commands: |
+     mkdir /var/lib/pgsql/data/userdata -p
+     chown 26:0 /var/lib/pgsql/data/
+     chown 26:0 /var/lib/pgsql/data/userdata/
+     chmod 700 /var/lib/pgsql/data
+     chmod 700 /var/lib/pgsql/data/userdata
   service_type: ClusterIP
-  tls_secret: awx-ingress-tls
 
-  extraEnv:
+  web_extra_env: |
     - name: SOCIAL_AUTH_OIDC_KEY
       valueFrom:
         secretKeyRef:
@@ -32,21 +36,60 @@ spec:
           name: awx-oidc-config
           key: client-secret
 
-    - name: SOCIAL_AUTH_OIDC_OIDC_ENDPOINT
-      value: "https://keycloak.atlantishq.de/.well-known/openid-configuration"
 
-    - name: SOCIAL_AUTH_OIDC_REDIRECT_URI
+  task_extra_env: |
+    - name: SOCIAL_AUTH_OIDC_KEY
       valueFrom:
         secretKeyRef:
           name: awx-oidc-config
-          key: redirect_uris
+          key: client-id
 
-    - name: SOCIAL_AUTH_OIDC_GROUPS_CLAIM
+    - name: SOCIAL_AUTH_OIDC_SECRET
       valueFrom:
         secretKeyRef:
           name: awx-oidc-config
-          key: groups
+          key: client-secret
 
+
+  # Issue about this workaround: https://github.com/ansible/awx-operator/issues/1224#issuecomment-1772270271
   extra_settings:
+    - setting: SOCIAL_AUTH_OIDC_KEY
+      value: 'os.getenv("SOCIAL_AUTH_OIDC_KEY")'
+
+    - setting: SOCIAL_AUTH_OIDC_SECRET
+      value: 'os.getenv("SOCIAL_AUTH_OIDC_SECRET")'
+
+    - setting: SOCIAL_AUTH_OIDC_OIDC_ENDPOINT
+      value: '"https://keycloak.atlantishq.de"'
+
+    - setting: SOCIAL_AUTH_OIDC_GROUPS_CLAIM
+      value: '"groups"'
+
+    - setting: SOCIAL_AUTH_OIDC_OIDC_ENDPOINT
+      value: '"https://keycloak.atlantishq.de/realms/master"'
+
     - setting: AUTHENTICATION_BACKENDS
-    value: '["social_core.backends.open_id_connect.OpenIdConnectAuth","django.contrib.auth.backends.ModelBackend"]'
+      value: '["social_core.backends.open_id_connect.OpenIdConnectAuth","django.contrib.auth.backends.ModelBackend"]'
+
+    - setting: SOCIAL_AUTH_OIDC_SCOPE
+      value: "[\"openid\", \"profile\", \"email\", \"groups\"]"
+
+    - setting: SOCIAL_AUTH_OIDC_TEAM_MAP
+      value: >
+        {
+          "Atlantis Admins": {
+            "users": ["atlantis-admins"],
+            "organization": "Default",
+            "roles": ["admin"],
+            "remove": false
+          }
+        }
+
+    - setting: SOCIAL_AUTH_OIDC_ORGANIZATION_MAP
+      value: >
+        {
+          "Default": {
+            "admins": ["atlantis-admins"],
+            "users": []
+          }
+        }
