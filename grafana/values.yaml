@@ -64,6 +64,8 @@ grafana.ini:
     token_url: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token
     api_url: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/userinfo
     role_attribute_path: contains(groups[*], 'atlantis-admins') && 'Admin' || 'Viewer'
+  log:
+    level: debug
 
 service:
   type: ClusterIP
