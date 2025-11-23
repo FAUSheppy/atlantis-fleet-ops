@@ -56,6 +56,9 @@ grafana.ini:
     client_id: $__env{GF_OIDC_CLIENT_ID}
     client_secret: $__env{GF_OIDC_CLIENT_SECRET}
     scopes: openid profile email
+    email_attribute_name: email
+    name_attribute_path: preferred_username
+    groups_attribute_path: groups
   users:
     auth_url: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/auth
     token_url: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token
