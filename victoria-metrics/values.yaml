@@ -2,7 +2,6 @@ vmselect:
   enabled: true
   replicaCount: 1
   extraArgs:
-    httpAuthBearerToken: "$(INSERT_AUTH_TOKEN)"
     httpAuth.username: "vm"
     httpAuth.password: "$(INSERT_AUTH_TOKEN)"
   env:
