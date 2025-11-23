@@ -69,7 +69,7 @@ vminsert:
 vmstorage:
   enabled: true
   replicaCount: 3
-  args:
+  extraArgs:
     - "-httpAuthBearerToken=$(INSERT_AUTH_TOKEN)"
     - "-httpAuth.username=vm"
     - "-httpAuth.password=$(INSERT_AUTH_TOKEN)"
