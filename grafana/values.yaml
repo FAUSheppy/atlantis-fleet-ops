@@ -59,7 +59,7 @@ grafana.ini:
     email_attribute_name: email
     name_attribute_path: preferred_username
     groups_attribute_path: groups
-  users:
+    name_attribute_path: full_name
     auth_url: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/auth
     token_url: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token
     api_url: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/userinfo
