@@ -51,10 +51,9 @@ vminsert:
     port: 8480
   persistentVolume:
     enabled: false
-  args:
-    - "-httpAuthBearerToken=$(INSERT_AUTH_TOKEN)"
-    - "-httpAuth.username=vm"
-    - "-httpAuth.password=$(INSERT_AUTH_TOKEN)"
+  extraArgs:
+    httpAuth.username: "vm"
+    httpAuth.password: "$(INSERT_AUTH_TOKEN)"
   env:
     - name: INSERT_AUTH_TOKEN
       valueFrom:
