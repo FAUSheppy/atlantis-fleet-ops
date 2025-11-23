@@ -1,6 +1,16 @@
 vmselect:
   enabled: true
   replicaCount: 1
+  extraArgs:
+    httpAuthBearerToken: "$(INSERT_AUTH_TOKEN)"
+    httpAuth.username: "vm"
+    httpAuth.password: "$(INSERT_AUTH_TOKEN)"
+  env:
+    - name: INSERT_AUTH_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: vm-insert-auth
+          key: token
   resources:
     requests:
       cpu: 100m
@@ -69,16 +79,6 @@ vminsert:
 vmstorage:
   enabled: true
   replicaCount: 3
-  extraArgs:
-    httpAuthBearerToken: "$(INSERT_AUTH_TOKEN)"
-    httpAuth.username: "vm"
-    httpAuth.password: "$(INSERT_AUTH_TOKEN)"
-  env:
-    - name: INSERT_AUTH_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: vm-insert-auth
-          key: token
   resources:
     requests:
       cpu: 200m
