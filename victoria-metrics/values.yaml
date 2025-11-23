@@ -70,9 +70,9 @@ vmstorage:
   enabled: true
   replicaCount: 3
   extraArgs:
-    - "-httpAuthBearerToken=$(INSERT_AUTH_TOKEN)"
-    - "-httpAuth.username=vm"
-    - "-httpAuth.password=$(INSERT_AUTH_TOKEN)"
+    httpAuthBearerToken: "$(INSERT_AUTH_TOKEN)"
+    httpAuth.username: "vm"
+    httpAuth.password: "$(INSERT_AUTH_TOKEN)"
   env:
     - name: INSERT_AUTH_TOKEN
       valueFrom:
