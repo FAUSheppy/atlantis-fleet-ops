@@ -83,7 +83,16 @@ vmstorage:
   retentionPeriod: 365d
   service:
     type: ClusterIP
-    port: 8400
+    ports:
+      - name: ingestion
+        port: 8400
+        targetPort: 8400
+      - name: internal
+        port: 8401
+        targetPort: 8401
+      - name: replication
+        port: 8402
+        targetPort: 8402
 
 serviceMonitor:
   enabled: false
