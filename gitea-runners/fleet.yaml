@@ -1,7 +1,7 @@
 defaultNamespace: gitea-runners
 
 helm:
-  chart: act-runner
+  chart: actions
   repo: https://dl.gitea.com/charts/
   valuesFiles:
     - values.yaml
