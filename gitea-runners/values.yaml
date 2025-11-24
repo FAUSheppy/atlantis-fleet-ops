@@ -6,3 +6,5 @@ init:
     repository: alpine
     tag: latest
 giteaRootURL: "https://git.athq.de"
+statefulset:
+  replicas: 3
