@@ -1,13 +1,5 @@
-defaultNamespace: gitea-runners
+defaultNamespace: gitea
 
-helm:
-  releaseName: gitea-runners
-  repositories:
-     - name: gitea
-       url: https://dl.gitea.com/charts/
-  releases:
-     - name: gitea-runner
-       namespace: gitea-runners
-       chart: gitea/act-runner
-       valuesFiles:
-         - values.yaml
+resources:
+  - helmchart.yaml
+  - values.yaml
