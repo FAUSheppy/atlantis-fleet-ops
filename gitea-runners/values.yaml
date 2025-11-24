@@ -1,13 +1,4 @@
-runnerToken:
-  valueFrom:
-    secretKeyRef:
-      name: gitea-runner-token
-      key: token
-
-serverURL: "https://git.athq.de"
-replicaCount: 3
-ephemeral: true
-
-config:
-  container:
-    runtime: kubernetes
+enabled: true
+existingSecret: gitea-runner-token
+existingSecretKey: token
+giteaRootURL: "https://git.athq.de"
