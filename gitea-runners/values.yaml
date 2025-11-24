@@ -1,4 +1,8 @@
 enabled: true
 existingSecret: gitea-runner-token
 existingSecretKey: token
+init:
+  image:
+    repository: alpine
+    tag: latest
 giteaRootURL: "https://git.athq.de"
