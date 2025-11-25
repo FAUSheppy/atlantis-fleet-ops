@@ -7,6 +7,8 @@ init:
     tag: latest
 giteaRootURL: "https://git.athq.de"
 actRunner:
+  container:
+    privileged: true
   config: |
     log:
       level: debug
@@ -17,4 +19,11 @@ actRunner:
         - /var/run/docker.sock
       options: -v /var/run/docker.sock:/var/run/docker.sock
 statefulset:
-  replicas: 3
+  replicas: 1
+
+config:
+  container:
+    runtime: docker
+
+securityContext:
+  privileged: true
