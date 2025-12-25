@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: faf-metrics
+  labels:
+    app: faf-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: faf-metrics
+  template:
+    metadata:
+      labels:
+        app: faf-metrics
+    spec:
+      containers:
+        - name: faf-metrics-speech
+          image: harbor-registry.atlantishq.de/atlantishq/faf-metrics-speech:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+        - name: faf-metrics-frontend
+          image: harbor-registry.atlantishq.de/atlantishq/faf-metrics-frontend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+        - name: faf-metrics-server
+          image: harbor-registry.atlantishq.de/atlantishq/faf-metrics-server:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: cache
+              mountPath: /app/static/cache
+          env:
+            - name: TZ
+              value: "UTC"
+      volumes:
+        - name: cache
+          emptyDir: {}
+      restartPolicy: Always

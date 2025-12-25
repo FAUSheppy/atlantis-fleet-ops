@@ -1,0 +1,12 @@
+namespace: faf-metrics
+bases:
+  - ../bases/oauth2-proxy
+services:
+  faf-metrics:
+    port: 80
+    skips:
+      - "/insert"
+    client_id: grafana-client
+    client_secret: grafana-secret
+    party_secret: grafana-cookie-secret
+    master_address: https://sso.atlantishq.de
