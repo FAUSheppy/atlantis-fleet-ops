@@ -38,8 +38,19 @@ spec:
             - name: cache
               mountPath: /app/static/cache
           env:
-            - name: TZ
-              value: "UTC"
+            - name: TOKEN
+              value: "secret"
+            - name: DB_STR
+              value: "postgresql://admin:adminpassword@postgres:5432/appdb"
+        - name: postgres
+          image: postgres:16
+          env:
+            - name: POSTGRES_USER
+              value: admin
+            - name: POSTGRES_PASSWORD
+              value: adminpassword
+            - name: POSTGRES_DB
+              value: appdb
       volumes:
         - name: cache
           emptyDir: {}
