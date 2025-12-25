@@ -23,7 +23,7 @@ spec:
           args:
             - server 
             - "-m" 
-            - en_US-amy-medium
+            - en_US-lessac-high
         - name: faf-metrics-frontend
           image: harbor-registry.atlantishq.de/atlantishq/faf-metrics-frontend:latest
           imagePullPolicy: Always
