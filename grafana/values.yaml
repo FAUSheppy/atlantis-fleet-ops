@@ -42,7 +42,7 @@ grafana.ini:
     domain: grafana.rancher.katzencluster.atlantishq.de
   database:
     type: postgres
-    host: 157.180.21.33:5432
+    #host: read from env vars
     name: grafana
     user: $__env{GF_DATABASE_USER}
     password: $__env{GF_DATABASE_PASSWORD}

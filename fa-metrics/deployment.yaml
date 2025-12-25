@@ -56,7 +56,7 @@ spec:
                   name: faf-metrics-k3s-db-secret
                   key: password
             - name: DB_HOST
-              value: "157.180.21.33"
+              value: "135.181.80.154"
             - name: DB_PORT
               value: "5432"
       volumes:
