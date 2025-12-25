@@ -20,6 +20,10 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
+          command: 
+            - server 
+            - "-m" 
+            - en_US-amy-medium
         - name: faf-metrics-frontend
           image: harbor-registry.atlantishq.de/atlantishq/faf-metrics-frontend:latest
           imagePullPolicy: Always
