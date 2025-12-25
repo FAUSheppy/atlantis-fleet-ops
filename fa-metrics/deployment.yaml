@@ -20,7 +20,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
-          command: 
+          args:
             - server 
             - "-m" 
             - en_US-amy-medium
