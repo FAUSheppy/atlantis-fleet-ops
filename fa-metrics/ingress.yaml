@@ -33,55 +33,7 @@ spec:
                 port:
                   number: 5000
 
-          - path: /games
-            pathType: Prefix
-            backend:
-              service:
-                name: faf-metrics-server
-                port:
-                  number: 8080
-
-          - path: /data
-            pathType: Prefix
-            backend:
-              service:
-                name: faf-metrics-server
-                port:
-                  number: 8080
-
-          - path: /alerts-all
-            pathType: Prefix
-            backend:
-              service:
-                name: faf-metrics-server
-                port:
-                  number: 8080
-
-          - path: /insert
-            pathType: Prefix
-            backend:
-              service:
-                name: faf-metrics-server
-                port:
-                  number: 8080
-
-          - path: /gameinfo
-            pathType: Prefix
-            backend:
-              service:
-                name: faf-metrics-server
-                port:
-                  number: 8080
-
-          - path: /alerts
-            pathType: Prefix
-            backend:
-              service:
-                name: faf-metrics-server
-                port:
-                  number: 8080
-
-          - path: /alerts-frontend
+          - path: /api
             pathType: Prefix
             backend:
               service:
