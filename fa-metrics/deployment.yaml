@@ -37,6 +37,9 @@ spec:
           volumeMounts:
             - name: cache
               mountPath: /app/static/cache
+            - name: user-mappings
+              mountPath: /app/user_mappings.yaml
+              subPath: user_mappings.yaml
           env:
             - name: TOKEN
               value: "secret"
@@ -62,4 +65,7 @@ spec:
       volumes:
         - name: cache
           emptyDir: {}
+        - name: user-mappings
+          configMap:
+            name: faf-metrics-config
       restartPolicy: Always
