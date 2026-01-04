@@ -7,4 +7,5 @@ data:
     // no data
   user_mappings.yaml: |
     sheppy: Sheppy
+    stryder: Stryder
     sheppy-unpriv: Sheppy
