@@ -41,4 +41,4 @@ services:
       - "/api/gameinfo"
       - "/api/insert"
     secret_name: fa-metrics-oidc-config
-    address: hub.rancher.katzencluster.atlantishq.de
+    address: fa-metrics.rancher.katzencluster.atlantishq.de
