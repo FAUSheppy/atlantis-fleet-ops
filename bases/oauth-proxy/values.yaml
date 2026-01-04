@@ -35,3 +35,10 @@ services:
       - "/metrics"
     secret_name: atlantis-status-oidc-config
     address: atlantis-actions.rancher.katzencluster.atlantishq.de
+  fa-metrics:
+    port: 80
+    skips:
+      - "/api/gameinfo"
+      - "/api/insert"
+    secret_name: fa-metrics-oidc-config
+    address: hub.rancher.katzencluster.atlantishq.de

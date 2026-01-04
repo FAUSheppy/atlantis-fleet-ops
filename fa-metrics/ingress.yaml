@@ -1,9 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: atlantis-hub
+  name: faf-metrics
   labels:
-    app: atlantis-hub
+    app: faf-metrics
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     kubernetes.io/ingress.class: "traefik"
@@ -12,7 +12,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
     traefik.ingress.kubernetes.io/redirect-entry-point: "https"
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
-    #traefik.ingress.kubernetes.io/router.middlewares: "sso-oauth2-forward-auth-atlantis-hub@kubernetescrd"
+    traefik.ingress.kubernetes.io/router.middlewares: "sso-oauth2-forward-auth-fa-metrics@kubernetescrd"
     traefik.ingress.kubernetes.io/router.middlewares: faf-metrics-speech-strip@kubernetescrd
 spec:
   ingressClassName: traefik
