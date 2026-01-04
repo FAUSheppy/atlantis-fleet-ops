@@ -23,7 +23,7 @@ spec:
     - host: {{ $svc.address }}
       http:
         paths:
-          - path: /oauth2/
+          - path: /oauth2
             pathType: Prefix
             backend:
               service:
