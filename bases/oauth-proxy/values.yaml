@@ -40,6 +40,5 @@ services:
     skips:
       - "/api/gameinfo"
       - "/api/insert"
-      - "/learning"
     secret_name: fa-metrics-oidc-config
     address: fa-metrics.rancher.katzencluster.atlantishq.de
