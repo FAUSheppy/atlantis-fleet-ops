@@ -32,7 +32,7 @@ spec:
             - name: TZ
               value: "UTC"
             - name: AUTH_USER_HEADER
-              value: "X-Auth-Request-Preffererd-Username"
+              value: "X-Auth-Request-Preferred-Username"
             - name: AUTH_GROUP_HEADER
               value: "X-Auth-Request-Groups"
       volumes:
