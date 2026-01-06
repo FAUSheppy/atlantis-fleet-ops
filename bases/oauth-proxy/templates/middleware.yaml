@@ -1,4 +1,5 @@
 {{- range $name, $svc := .Values.services }}
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
