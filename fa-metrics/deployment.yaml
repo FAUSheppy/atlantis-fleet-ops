@@ -16,6 +16,13 @@ spec:
       labels:
         app: faf-metrics
     spec:
+      replicas: 2
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxUnavailable: 0
+          maxSurge: 1
+          replicas: 2
       containers:
         - name: faf-metrics-speech
           image: harbor-registry.atlantishq.de/atlantishq/faf-metrics-speech:latest
@@ -31,11 +38,22 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
         - name: faf-metrics-server
           image: harbor-registry.atlantishq.de/atlantishq/faf-metrics-server:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
           volumeMounts:
             - name: cache
               mountPath: /app/static/cache
