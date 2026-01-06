@@ -51,10 +51,8 @@ data:
         tags:
             - monitoring
         groups:
-            - monitoring
             - opensearch-admin
-            - univention
-            - rancher-users
+            - opensearch
         auth-type: sso
     
     keycloak-profile:
@@ -93,7 +91,6 @@ data:
         groups:
             - monitoring
             - icinga
-            - univention
         auth-type: sso
     
     grafana:
@@ -101,7 +98,6 @@ data:
         href: https://stats.atlantishq.de
         tags:
             - monitoring
-            - univention
         groups:
             - monitoring
         auth-type: sso
@@ -219,7 +215,17 @@ data:
         groups:
             - pki
         auth-type: sso
-    
+
+    fametrics:
+        name: FA Metrics
+        href: https://metrics.rancher.katzencluster.atlantishq.de/
+        tags:
+            - gaming
+        groups:
+            - trackmania
+            - gaming
+        auth-type: sso
+
     hedgedoc:
         name: Hedgedoc
         href: https://hedgedoc.atlantishq.de/auth/oauth2
@@ -245,7 +251,6 @@ data:
             - server
         groups:
             - monitoring
-            - univention
         auth-type: sso
     
     atlantis-verify:
@@ -258,7 +263,6 @@ data:
             - monitoring
             - icinga
             - trackmania
-            - univention
             - admin
             - gaming
         auth-type: sso
@@ -290,7 +294,6 @@ data:
         groups:
             - harbor-admins
             - rancher-admins
-            - univention
             - rancher-users
         auth-type: sso
     
@@ -304,6 +307,5 @@ data:
         groups:
             - harbor-admins
             - rancher-admins
-            - univention
             - rancher-users
         auth-type: sso
