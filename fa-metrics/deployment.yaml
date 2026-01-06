@@ -11,6 +11,8 @@ spec:
       app: faf-metrics
   template:
     metadata:
+      annotations:
+        version/config: "v0001"
       labels:
         app: faf-metrics
     spec:
