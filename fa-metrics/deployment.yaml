@@ -18,7 +18,7 @@ spec:
     metadata:
       annotations:
         version/latest: "A"
-        version/config: "v0001"
+        version/config: "v0002"
       labels:
         app: faf-metrics
     spec:
