@@ -4,12 +4,12 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: oauth2-forward-auth-{{ $name }}
-  namespace: sso
+  namespace: {{ $svc.namespace }}
   labels:
     app: oauth2-proxy-{{ $name }}
 spec:
   forwardAuth:
-    address: http://oauth2-proxy-{{ $name }}.sso.svc.cluster.local:{{ $svc.port }}/
+    address: http://oauth2-proxy-{{ $name }}.{{ $namepsace }}.svc.cluster.local:{{ $svc.port }}/
     trustForwardHeader: true
     authResponseHeaders:
       - X-Auth-Request-User

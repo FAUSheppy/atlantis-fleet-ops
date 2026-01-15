@@ -3,6 +3,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: {{ $svc.namespace }}
   name: oauth2-proxy-{{ $name }}
   labels:
     app: oauth2-proxy-{{ $name }}

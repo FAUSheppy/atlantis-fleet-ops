@@ -28,6 +28,7 @@ services:
       - "/metrics"
     secret_name: atlantis-hub-oidc-config
     address: hub.rancher.katzencluster.atlantishq.de
+    namespace: sso
   atlantis-actions:
     port: 80
     skips:
@@ -35,6 +36,7 @@ services:
       - "/metrics"
     secret_name: atlantis-status-oidc-config
     address: atlantis-actions.rancher.katzencluster.atlantishq.de
+    namespace: sso
   fa-metrics:
     port: 80
     skips:
@@ -42,3 +44,4 @@ services:
       - "/api/insert"
     secret_name: fa-metrics-oidc-config
     address: fa-metrics.rancher.katzencluster.atlantishq.de
+    namespace: sso
