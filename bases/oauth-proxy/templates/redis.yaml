@@ -1,5 +1,6 @@
 {{- if .Values.oauth2Proxy.redis.enabled }}
 {{- range $name, $svc := .Values.services }}
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
