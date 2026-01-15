@@ -9,11 +9,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: redis
+      app: redis-{{ $name }}
   template:
     metadata:
       labels:
-        app: redis
+        app: redis-{{ $name }}
     spec:
       containers:
         - name: redis
@@ -34,6 +34,6 @@ spec:
   ports:
     - port: 6379
   selector:
-    app: redis
+    app: redis-{{ $name }}
 {{- end }}
 {{- end }}
