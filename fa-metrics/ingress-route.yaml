@@ -1,0 +1,43 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: faf-metrics-ingress-route
+  namespace: faf-metrics
+spec:
+  entryPoints:
+    - web
+    - websecure
+
+  tls:
+    certResolver: default
+
+  routes:
+    # /speech
+    - match: Host(`alt-ingress.fa-metrics.rancher.katzencluster.atlantishq.de`) && PathPrefix(`/speech`)
+      kind: Rule
+      middlewares:
+        - name: oauth2-forward-auth-fa-metrics
+        - name: speech-strip
+          namespace: faf-metrics
+      services:
+        - name: faf-metrics-speech
+          port: 5000
+
+    # /api
+    - match: Host(`alt-ingress.fa-metrics.rancher.katzencluster.atlantishq.de`) && PathPrefix(`/api`)
+      kind: Rule
+      middlewares:
+        - name: oauth2-forward-auth-fa-metrics
+      services:
+        - name: faf-metrics-server
+          port: 8080
+
+    # frontend catch-all
+    - match: Host(`alt-ingress.fa-metrics.rancher.katzencluster.atlantishq.de`)
+      kind: Rule
+      middlewares:
+        - name: oauth2-forward-auth-fa-metrics
+      services:
+        - name: faf-metrics-frontend
+          port: 80
+

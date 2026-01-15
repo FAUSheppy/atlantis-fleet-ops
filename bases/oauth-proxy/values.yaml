@@ -44,4 +44,4 @@ services:
       - "/api/insert"
     secret_name: fa-metrics-oidc-config
     address: fa-metrics.rancher.katzencluster.atlantishq.de
-    namespace: sso
+    namespace: fa-metrics

@@ -13,7 +13,7 @@ metadata:
     traefik.ingress.kubernetes.io/redirect-entry-point: "https"
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
     traefik.ingress.kubernetes.io/router.middlewares: >
-      sso-oauth2-forward-auth-fa-metrics@kubernetescrd,
+      oauth2-forward-auth-fa-metrics@kubernetescrd,
       faf-metrics-speech-strip@kubernetescrd
 spec:
   ingressClassName: traefik

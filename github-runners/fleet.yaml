@@ -1,0 +1,7 @@
+defaultNamespace: gitea-runners
+
+helm:
+  releaseName: github-runners
+  chart: oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
+  valuesFiles:
+    - values.yaml
