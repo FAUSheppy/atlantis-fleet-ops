@@ -48,7 +48,7 @@ spec:
             - name: OAUTH2_PROXY_SESSION_STORE_TYPE
               value: redis
             - name: OAUTH2_PROXY_REDIS_CONNECTION_URL
-              value: {{ $.Values.oauth2Proxy.redisUrl }}
+              value: {{ $.Values.oauth2Proxy.redisUrl }}-{{ $name }}
             - name: OAUTH2_PROXY_COOKIE_REFRESH
               value: 17m
             - name: OAUTH2_PROXY_COOKIE_NAME

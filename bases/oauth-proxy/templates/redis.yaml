@@ -1,9 +1,10 @@
+{{- range $name, $svc := .Values.services }}
 {{- if .Values.oauth2Proxy.redis.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: {{ $svc.namespace }}
-  name: redis
+  name: redis-{{ $name }}
 spec:
   selector:
     matchLabels:
@@ -26,10 +27,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis
+  name: redis-{{ $name }}
 spec:
   ports:
     - port: 6379
   selector:
     app: redis
+{{- end }}
 {{- end }}
