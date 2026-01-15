@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: faf-metrics
+  name: fa-metrics
   labels:
-    app: faf-metrics
+    app: fa-metrics
 spec:
   replicas: 2
   strategy:
@@ -13,18 +13,18 @@ spec:
       maxSurge: 1
   selector:
     matchLabels:
-      app: faf-metrics
+      app: fa-metrics
   template:
     metadata:
       annotations:
         version/latest: "A"
         version/config: "v0002"
       labels:
-        app: faf-metrics
+        app: fa-metrics
     spec:
       containers:
-        - name: faf-metrics-speech
-          image: harbor-registry.atlantishq.de/atlantishq/faf-metrics-speech:latest
+        - name: fa-metrics-speech
+          image: harbor-registry.atlantishq.de/atlantishq/fa-metrics-speech:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
@@ -32,8 +32,8 @@ spec:
             - server 
             - "-m" 
             - en_US-lessac-high
-        - name: faf-metrics-frontend
-          image: harbor-registry.atlantishq.de/atlantishq/faf-metrics-frontend:latest
+        - name: fa-metrics-frontend
+          image: harbor-registry.atlantishq.de/atlantishq/fa-metrics-frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -41,8 +41,8 @@ spec:
             httpGet:
               path: /
               port: 80
-        - name: faf-metrics-server
-          image: harbor-registry.atlantishq.de/atlantishq/faf-metrics-server:latest
+        - name: fa-metrics-server
+          image: harbor-registry.atlantishq.de/atlantishq/fa-metrics-server:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -65,17 +65,17 @@ spec:
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
-                  name: faf-metrics-k3s-db-secret
+                  name: fa-metrics-k3s-db-secret
                   key: db
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: faf-metrics-k3s-db-secret
+                  name: fa-metrics-k3s-db-secret
                   key: user
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: faf-metrics-k3s-db-secret
+                  name: fa-metrics-k3s-db-secret
                   key: password
             - name: DB_HOST
               value: "135.181.80.154"
@@ -86,5 +86,5 @@ spec:
           emptyDir: {}
         - name: user-mappings
           configMap:
-            name: faf-metrics-config
+            name: fa-metrics-config
       restartPolicy: Always

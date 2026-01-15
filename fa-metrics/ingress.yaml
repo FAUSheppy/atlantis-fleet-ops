@@ -1,9 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: faf-metrics
+  name: fa-metrics
   labels:
-    app: faf-metrics
+    app: fa-metrics
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     kubernetes.io/ingress.class: "traefik"
@@ -14,13 +14,13 @@ metadata:
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
     traefik.ingress.kubernetes.io/router.middlewares: >
       oauth2-forward-auth-fa-metrics@kubernetescrd,
-      faf-metrics-speech-strip@kubernetescrd
+      fa-metrics-speech-strip@kubernetescrd
 spec:
   ingressClassName: traefik
   tls:
     - hosts:
         - fa-metrics.rancher.katzencluster.atlantishq.de
-      secretName: faf-metrics-tls
+      secretName: fa-metrics-tls
   rules:
     - host: fa-metrics.rancher.katzencluster.atlantishq.de
       http:
@@ -30,7 +30,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: faf-metrics-speech
+                name: fa-metrics-speech
                 port:
                   number: 5000
 
@@ -38,7 +38,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: faf-metrics-server
+                name: fa-metrics-server
                 port:
                   number: 8080
 
@@ -47,7 +47,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: faf-metrics-frontend
+                name: fa-metrics-frontend
                 port:
                   number: 80
 

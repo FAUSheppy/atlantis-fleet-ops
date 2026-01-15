@@ -1,8 +1,8 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: faf-metrics-ingress-route
-  namespace: faf-metrics
+  name: fa-metrics-ingress-route
+  namespace: fa-metrics
 spec:
   entryPoints:
     - web
@@ -18,9 +18,9 @@ spec:
       middlewares:
         - name: oauth2-forward-auth-fa-metrics
         - name: speech-strip
-          namespace: faf-metrics
+          namespace: fa-metrics
       services:
-        - name: faf-metrics-speech
+        - name: fa-metrics-speech
           port: 5000
 
     # /api
@@ -29,7 +29,7 @@ spec:
       middlewares:
         - name: oauth2-forward-auth-fa-metrics
       services:
-        - name: faf-metrics-server
+        - name: fa-metrics-server
           port: 8080
 
     # frontend catch-all
@@ -38,6 +38,6 @@ spec:
       middlewares:
         - name: oauth2-forward-auth-fa-metrics
       services:
-        - name: faf-metrics-frontend
+        - name: fa-metrics-frontend
           port: 80
 

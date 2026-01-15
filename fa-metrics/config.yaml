@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: faf-metrics-config
+  name: fa-metrics-config
 data:
   env.js: |
     // no data
