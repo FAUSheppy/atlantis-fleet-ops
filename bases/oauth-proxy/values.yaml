@@ -44,6 +44,8 @@ services:
       - "/api/insert"
       - "/maps"
       - "/api/whoami"
+      - "/assets/"
+      - "/env.js"
     secret_name: fa-metrics-oidc-config
     address: fa-metrics.rancher.katzencluster.atlantishq.de
     namespace: fa-metrics
