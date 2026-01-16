@@ -43,7 +43,6 @@ services:
       - "/api/gameinfo"
       - "/api/insert"
       - "/maps"
-      - "/"
       - "/api/whoami"
       - "/assets/"
       - "/env.js"
