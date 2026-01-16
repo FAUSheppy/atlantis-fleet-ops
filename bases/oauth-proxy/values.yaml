@@ -42,8 +42,7 @@ services:
     skips:
       - "/api/gameinfo"
       - "/api/insert"
-      - "/maps"
-      - "/api/whoami"
+      - "/"
       - "/assets/"
       - "/env.js"
     secret_name: fa-metrics-oidc-config
