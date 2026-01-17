@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yamtrack
+  labels:
+    app: yamtrack
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: yamtrack
+  template:
+    metadata:
+      annotations:
+        version/latest: "A"
+      labels:
+        app: yamtrack
+    spec:
+      containers:
+        - name: redis
+          image: redis:8-alpine
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: redis-data
+              mountPath: /data
+        - name: yamtrack
+          image: ghcr.io/fuzzygrim/yamtrack
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+          env:
+            - name: TZ
+              value: Europe/Berlin
+            - name: URLS
+              value: yamtrack.rancher.katzencluster.atlantishq.de
+            - name: REGISTRATION
+              value: false
+            - name: REDIRECT_LOGIN_TO_SSO
+              value: true
+            - name: CLIENT_ID
+              valueFrom: 
+                secretKeyRef:
+                    name: yamtrack-oidc-config
+                    key: client-id
+            - name: CLIENT_SECRET
+              valueFrom: 
+                secretKeyRef:
+                    name: yamtrack-oidc-config
+                    key: client-secret
+            - name: SOCIAL_PROVIDERS
+              vlaue: allauth.socialaccount.providers.openid_connect
+            - name: SOCIALACCOUNT_PROVIDERS
+              value: {"openid_connect":{"OAUTH_PKCE_ENABLED":true,"APPS":[{"provider_id":"keycloak","name":"Atlantis Accounts","client_id":os.environ["CLIENT_ID"],"secret":os.environ["CLIENT_SECRET"],"settings":{"server_url":"https://keycloak.atlantishq.de/realms/master/.well-known/openid-configuration"}}]}}
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: yamtrack-secret
+                  key: secret
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: yamtrack-k3s-db-secret
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: yamtrack-k3s-db-secret
+                  key: password
+            - name: DB_HOST
+              value: "135.181.80.154"
+            - name: DB_PORT
+              value: "5432"
+      volumes:
+        - name: redis-data
+          emptyDir: {}
+      restartPolicy: Always
