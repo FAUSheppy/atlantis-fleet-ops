@@ -41,7 +41,7 @@ spec:
             - name: TZ
               value: Europe/Berlin
             - name: URLS
-              value: yamtrack.rancher.katzencluster.atlantishq.de
+              value: https://yamtrack.rancher.katzencluster.atlantishq.de
             - name: REGISTRATION
               value: "false"
             - name: REDIRECT_LOGIN_TO_SSO
