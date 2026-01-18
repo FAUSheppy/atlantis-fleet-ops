@@ -43,9 +43,9 @@ spec:
             - name: URLS
               value: yamtrack.rancher.katzencluster.atlantishq.de
             - name: REGISTRATION
-              value: false
+              value: "false"
             - name: REDIRECT_LOGIN_TO_SSO
-              value: true
+              value: "true"
             - name: CLIENT_ID
               valueFrom: 
                 secretKeyRef:
