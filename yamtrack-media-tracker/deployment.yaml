@@ -43,7 +43,9 @@ spec:
             - name: URLS
               value: https://yamtrack.rancher.katzencluster.atlantishq.de
             - name: REGISTRATION
-              value: "false"
+              value: "true"
+            - name: SOCIALACCOUNT_ONLY
+              value: "true"
             - name: REDIRECT_LOGIN_TO_SSO
               value: "true"
             - name: SOCIALACCOUNT_PROVIDERS
