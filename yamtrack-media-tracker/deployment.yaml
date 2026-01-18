@@ -52,7 +52,7 @@ spec:
                     name: yamtrack-oidc-config
                     key: django-config
             - name: SOCIAL_PROVIDERS
-              vlaue: allauth.socialaccount.providers.openid_connect
+              value: allauth.socialaccount.providers.openid_connect
             - name: SECRET
               valueFrom:
                 secretKeyRef:
