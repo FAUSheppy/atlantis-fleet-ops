@@ -69,7 +69,14 @@ spec:
                   name: yamtrack-k3s-db-secret
                   key: password
             - name: DB_NAME
-              value: "yamtrack"
+              valueFrom:
+                secretKeyRef:
+                  name: yamtrack-k3s-db-secret
+                  key: db
+            - name: DB_SSL_MODE
+              value: require
+            - name: DB_SSL_CERT_MODE
+              value: disable
             - name: DB_HOST
               value: "135.181.80.154"
             - name: DB_PORT
