@@ -16,10 +16,10 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - yamtrack.rancher.katzencluster.atlantishq.de
+        - paula.atlantishq.de
       secretName: yamtrack-tls
   rules:
-    - host: yamtrack.rancher.katzencluster.atlantishq.de
+    - host: paula.atlantishq.de
       http:
         paths:
 
