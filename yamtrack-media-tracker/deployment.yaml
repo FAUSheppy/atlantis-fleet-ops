@@ -59,7 +59,7 @@ spec:
             - name: SOCIAL_PROVIDERS
               vlaue: allauth.socialaccount.providers.openid_connect
             - name: SOCIALACCOUNT_PROVIDERS
-              value: {"openid_connect":{"OAUTH_PKCE_ENABLED":true,"APPS":[{"provider_id":"keycloak","name":"Atlantis Accounts","client_id":os.environ["CLIENT_ID"],"secret":os.environ["CLIENT_SECRET"],"settings":{"server_url":"https://keycloak.atlantishq.de/realms/master/.well-known/openid-configuration"}}]}}
+              value: '{"openid_connect":{"OAUTH_PKCE_ENABLED":true,"APPS":[{"provider_id":"keycloak","name":"Atlantis Accounts","client_id":os.environ["CLIENT_ID"],"secret":os.environ["CLIENT_SECRET"],"settings":{"server_url":"https://keycloak.atlantishq.de/realms/master/.well-known/openid-configuration"}}]}}'
             - name: SECRET
               valueFrom:
                 secretKeyRef:
