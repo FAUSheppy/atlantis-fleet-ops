@@ -75,6 +75,8 @@ spec:
                 secretKeyRef:
                   name: yamtrack-k3s-db-secret
                   key: password
+            - name: DB_NAME
+              value: "yamtrack"
             - name: DB_HOST
               value: "135.181.80.154"
             - name: DB_PORT
