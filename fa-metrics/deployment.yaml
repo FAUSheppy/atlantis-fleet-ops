@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        version/latest: "A"
+        version/latest: "C"
         version/config: "v0002"
       labels:
         app: fa-metrics
