@@ -1,3 +1,4 @@
+namespace: fa-metrics
 helm:
   releaseName: atlantis-web
   chart: .
