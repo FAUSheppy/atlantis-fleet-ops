@@ -1,0 +1,5 @@
+apiVersion: v2
+name: atlantis-web
+version: 0.1.0
+description: Atlantis Website Fleet Bundle
+type: application

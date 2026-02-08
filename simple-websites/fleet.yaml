@@ -1,0 +1,5 @@
+helm:
+  releaseName: atlantis-web
+  chart: .
+  valuesFiles:
+    - values.yaml
