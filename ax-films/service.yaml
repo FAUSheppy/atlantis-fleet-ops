@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: potaris
+  name: ax-films
   labels:
-    app: potaris
+    app: ax-films
 spec:
   selector:
-    app: potaris
+    app: ax-films
   ports:
     - name: http
       port: 80
