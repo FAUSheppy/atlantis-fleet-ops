@@ -3,9 +3,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ name }}
+  name: {{ $name }}
   labels:
-    app: {{ name }}
+    app: {{ $name }}
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     kubernetes.io/ingress.class: "traefik"
@@ -17,17 +17,17 @@ metadata:
 spec:
   tls:
     - hosts:
-        - {{ svc.hostname }}
-      secretName: {{ name }}-tls
+        - {{ $svc.hostname }}
+      secretName: {{ $name }}-tls
   rules:
-    - host: {{ svc.hostname }}
+    - host: {{ $svc.hostname }}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: {{ name }}
+                name: {{ $name }}
                 port:
                   number: 80
 {{ end }}
