@@ -1,8 +1,7 @@
 services:
   potaris:
     targetPort: 80
-    addresses:
-        - potaris.rancher.katzencluster.atlantishq.de
+    hostname: potaris.rancher.katzencluster.atlantishq.de
     image: harbor-registry.atlantishq.de/atlantishq/potaris-next-gen-web
   ax-filmes:
     targetPort: 80
