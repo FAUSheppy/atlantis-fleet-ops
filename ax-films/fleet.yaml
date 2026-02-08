@@ -1,0 +1,4 @@
+defaultNamespace: atlantis-web
+
+targets:
+  - name: production

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ax-films
+  labels:
+    app: ax-films
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ax-films
+  template:
+    metadata:
+      labels:
+        app: ax-films
+    spec:
+      containers:
+        - name: ax-films
+          imagePullPolicy: Always
+          image: harbor-registry.atlantishq.de/atlantishq/ax-films
+          ports:
+            - containerPort: 80
