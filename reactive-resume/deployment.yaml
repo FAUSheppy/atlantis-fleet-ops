@@ -85,7 +85,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: reactive-resume
-                  key: CHROME_HEADLESS_TOKEN
+                  key: CHROME_HEADLESS_URL
 
             # Database
             - name: DATABASE_URL
