@@ -63,7 +63,9 @@ spec:
 
             # OIDC
             - name: FLAG_DISABLE_SIGNUPS
-              value: "false"
+              value: "true"
+            - name: FLAG_DISABLE_EMAIL_AUTH
+              value: "true"
             - name: OAUTH_PROVIDER_NAME
               value: "AtlantisHQ Accounts"
             - name: OAUTH_DISCOVERY_URL
