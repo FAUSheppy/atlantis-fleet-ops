@@ -63,7 +63,7 @@ spec:
 
             # OIDC
             - name: FLAG_DISABLE_SIGNUPS
-              value: "true"
+              value: "false" # needed for OAUTH/OIDC sign ups/links
             - name: FLAG_DISABLE_EMAIL_AUTH
               value: "true"
             - name: OAUTH_PROVIDER_NAME
