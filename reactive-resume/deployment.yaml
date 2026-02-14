@@ -62,6 +62,8 @@ spec:
               value: production
 
             # OIDC
+            - name: FLAG_DISABLE_SIGNUPS
+              value: "false"
             - name: OAUTH_PROVIDER_NAME
               value: "AtlantisHQ Accounts"
             - name: OAUTH_DISCOVERY_URL
