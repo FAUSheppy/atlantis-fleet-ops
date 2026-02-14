@@ -33,13 +33,13 @@ spec:
             - containerPort: 4000
           env:
             - name: QUEUED
-              value: 10
+              value: "10"
             - name: HEALTH
               value: true
             - name: PORT
-              value: 4000 # 3000 is taken by resume-app
+              value: "4000" # 3000 is taken by resume-app
             - name: CONCURRENT
-              value: 5
+              value: "5"
             - name: TOKEN
               valueFrom:
                 secretKeyRef:
