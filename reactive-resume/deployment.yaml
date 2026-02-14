@@ -66,17 +66,17 @@ spec:
               value: "AtlantisHQ Accounts"
             - name: OAUTH_DISCOVERY_URL
               value: https://keycloak.atlantishq.de/realms/master/.well-known/openid-configuration
-            - name: OPENID_CLIENT_ID
+            - name: OAUTH_CLIENT_ID
               valueFrom:
                 secretKeyRef:
                   name: reactive-resume-oidc-config
                   key: client-id
-            - name: OPENID_CLIENT_SECRET
+            - name: OAUTH_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: reactive-resume-oidc-config
                   key: client-secret
-            - name: OPENID_SCOPE
+            - name: OAUTH_SCOPES
               value: "openid profile email"
 
             - name: APP_URL
