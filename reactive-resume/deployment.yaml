@@ -81,7 +81,7 @@ spec:
 
             - name: APP_URL
               value: "https://cv.rancher.katzencluster.atlantishq.de"
-            - name: PRINTER_APP_URL
+            - name: PRINTER_ENDPOINT
               valueFrom:
                 secretKeyRef:
                   name: reactive-resume
