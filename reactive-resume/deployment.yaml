@@ -1,0 +1,134 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reactive-resume
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reactive-resume
+  template:
+    metadata:
+      labels:
+        app: reactive-resume
+    spec:
+      containers:
+        # -------------------------
+        # Redis
+        # -------------------------
+        - name: redis
+          image: redis:latest
+          env:
+            - name: TZ
+              value: Europe/Berlin
+          ports:
+            - containerPort: 6379
+
+        # -------------------------
+        # Chrome (browserless)
+        # -------------------------
+        - name: chrome
+          image: ghcr.io/browserless/chrome:latest
+          ports:
+            - containerPort: 4000
+          env:
+            - name: QUEUED
+              value: 10
+            - name: HEALTH
+              value: true
+            - name: PORT
+              value: 4000 # 3000 is taken by resume-app
+            - name: CONCURRENT
+              value: 5
+            - name: TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: reactive-resume
+                  key: CHROME_HEADLESS_TOKEN
+
+        # -------------------------
+        # Reactive Resume App
+        # -------------------------
+        - name: app
+          image: amruthpillai/reactive-resume:v4.5.5
+          ports:
+            - containerPort: 3000
+          env:
+
+            # Core
+            - name: PORT
+              value: "3000"
+            - name: NODE_ENV
+              value: production
+
+            # OIDC
+            - name: OAUTH_PROVIDER_NAME
+              value: "AtlantisHQ Accounts"
+            - name: OAUTH_DISCOVERY_URL
+              value: https://keycloak.atlantishq.de/realms/master/.well-known/openid-configuration
+            - name: OPENID_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: reactive-resume-oidc-config
+                  key: client-id
+            - name: OPENID_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: reactive-resume-oidc-config
+                  key: client-secret
+            - name: OPENID_SCOPE
+              value: "openid profile email"
+
+            - name: APP_URL
+              value: "https://cv.rancher.katzencluster.atlantishq.de"
+            - name: PRINTER_APP_URL
+              valueFrom:
+                secretKeyRef:
+                  name: reactive-resume
+                  key: CHROME_HEADLESS_TOKEN
+
+            # Database
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: reative-resume
+                  key: DATABASE_URL
+
+            # Auth
+            - name: AUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: reactive-resume
+                  key: AUTH_SECRET
+
+            # Mail
+            - name: MAIL_FROM
+              value: "noreply@atlantishq.de"
+            - name: SMTP_URL
+              valueFrom:
+                secretKeyRef:
+                  name: reactive-resume
+                  key: SMTP_URL
+
+            # Storage (MinIO external service)
+            - name: STORAGE_ENDPOINT
+              value: "fsn1.your-objectstorage.com"
+            - name: STORAGE_PORT
+              value: "443"
+            - name: STORAGE_BUCKET
+              value: "reactive-resume"
+            - name: STORAGE_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: reactive-resume
+                  key: STORAGE_ACCESS_KEY
+            - name: STORAGE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: reactive-resume
+                  key: STORAGE_SECRET_KEY
+
+            # Redis (same pod -> localhost)
+            - name: REDIS_URL
+              value: "redis://localhost:6379"
+
