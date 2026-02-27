@@ -270,6 +270,7 @@ data:
     gitea:
         name: Gitea
         href: https://git.athq.de/user/oauth2/atlantis-accounts
+        icon-alt-url: https://git.athq.de/assets/img/avatar_default.png
         tags:
             - tools
         groups:
