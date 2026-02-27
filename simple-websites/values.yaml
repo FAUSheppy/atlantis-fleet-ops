@@ -10,4 +10,4 @@ services:
   bento-pdf:
     targetPort: 8080
     hostname: pdf.rancher.katzencluster.atlantishq.de
-    image: ghcr.io/alam00000/bentopdf:latest
+    image: ghcr.io/alam00000/bentopdf-simple:latest
