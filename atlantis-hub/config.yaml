@@ -13,7 +13,18 @@ data:
             - trackmania
         auth-type: sso
         icon: https://cdn2.steamgriddb.com/file/sgdb-cdn/grid/9b4c2fa8e4011958cf9525d89a2e8c9f.png
-    
+
+    hedgedoc:
+        name: Hedgedoc
+        href: https://hedgedoc.atlantishq.de/auth/oauth2
+        icon-alt-url: https://hedgedoc.atlantishq.de/banner/banner_vertical_color.svg
+        tags:
+            - tools
+        groups:
+            - monitoring
+        auth-type: sso
+
+
     images:
         name: Image CMS
         href: https://images.atlantishq.de
@@ -23,17 +34,17 @@ data:
         groups:
             - images
         auth-type: sso
-    
+
     sounds:
         name: Sound Library
         href: https://sounds.atlantishq.de
         background: linear-gradient(90deg, rgb(63 203 87) 20%, rgb(31 110 92) 65%);
         tags:
-            - tools-internal
+            - internal-tools
         groups:
             - soundlib
         auth-type: sso
-    
+
     certificates:
         name: Certificate Manager
         href: https://vpn.atlantishq.de
@@ -43,7 +54,7 @@ data:
         groups:
             - pki
         auth-type: sso
-    
+
     opensearch:
         name: Opensearch
         background: linear-gradient(90deg, rgb(4, 52, 84) 20%, rgb(83, 134, 160) 65%)
@@ -54,7 +65,7 @@ data:
             - opensearch-admin
             - opensearch
         auth-type: sso
-    
+
     keycloak-profile:
         name: User Profile
         href: https://keycloak.atlantishq.de/realms/master/account/#/personal-info
@@ -71,7 +82,7 @@ data:
             - trackmania
         auth-type: sso
         background: linear-gradient(90deg, rgb(125 147 149) 20%, rgb(91 116 205) 65%);
-    
+
     keycloak-admin:
         name: Keycloak Admin Console
         href: https://keycloak.atlantishq.de
@@ -81,7 +92,7 @@ data:
             - admin
         auth-type: sso
         background: linear-gradient(90deg, rgb(125 147 149) 20%, rgb(91 116 205) 65%);
-    
+
     async-icinga:
         name: Async Icinga Manager
         href: https://async-icinga.atlantishq.de
@@ -92,16 +103,25 @@ data:
             - monitoring
             - icinga
         auth-type: sso
-    
+
+    pdftools:
+        name: PDF Tools
+        href: https://pdf.rancher.katzencluster.atlantishq.de/
+        tags:
+            - internal-tools
+        groups:
+            - tools
+        auth-type: ""
+
     grafana:
         name: Grafana
-        href: https://stats.atlantishq.de
+        href: https://grafana.rancher.katzencluster.atlantishq.de/
         tags:
             - monitoring
         groups:
             - monitoring
         auth-type: sso
-    
+
     icinga:
         name: Icinga
         href: https://icinga.atlantishq.de
@@ -111,7 +131,7 @@ data:
             - monitoring
             - icinga
         auth-type: sso
-    
+
     zabbix:
         name: Zabbix Monitoring
         href: https://zabbix.atlantishq.de
@@ -120,7 +140,7 @@ data:
         groups:
             - monitoring
         auth-type: ldap
-    
+
     ths-nextcloud:
         name: THS Nextcloud
         href: https://ths.atlantishq.de
@@ -129,7 +149,7 @@ data:
         groups:
             - ths
         auth-type: extern
-    
+
     nextcloud:
         name: Nextcloud
         href: https://nextcloud.katzencluster.atlantishq.de
@@ -138,7 +158,7 @@ data:
         groups:
             - nextcloud
         auth-type: sso
-    
+
     github:
         name: GitHub Sheppy
         href: https://github.com/FAUSheppy
@@ -148,7 +168,7 @@ data:
         groups:
             - show-weblinks
         auth-type: none
-    
+
     medium:
         name: Medium
         href: https://erlangen-sheppy.medium.com
@@ -158,16 +178,16 @@ data:
         groups:
             - show-weblinks
         auth-type: none
-    
-    #potaris:
-    #    name: Potaris
-    #    href: https://potaris.de
-    #    tags:
-    #        - web
-    #    groups:
-    #        - show-weblinks
-    #    auth-type: none
-    
+
+    potaris:
+        name: Potaris
+        href: https://potaris.de
+        tags:
+            - web
+        groups:
+            - show-weblinks
+        auth-type: none
+
     insurgency:
         name: Insurgency Leaderboard
         href: https://insurgency.atlantishq.de
@@ -177,7 +197,7 @@ data:
         groups:
             - gaming
         auth-type: none
-    
+
     sector32-web:
         name: Sector 32 Website
         href: https://sector32.potaris.de
@@ -187,7 +207,7 @@ data:
         groups:
             - show-weblinks
         auth-type: none
-    
+
     #sector32-steam:
     #    name: Sector 32 Steam
     #    href: https://store.steampowered.com/app/1660110/Decent_Into_Sector_32/
@@ -196,7 +216,7 @@ data:
     #    groups:
     #        - show-weblinks
     #    auth-type: none
-    
+
     paperless:
         name: Paperless
         background: "linear-gradient(90deg, #1fc61a 20%, #00c471 65%);"
@@ -206,7 +226,7 @@ data:
         groups:
             - paperless
         auth-type: sso
-    
+
     timetracking:
         name: Timetracking
         href: https://timetracking.atlantishq.de/
@@ -218,7 +238,7 @@ data:
 
     fametrics:
         name: FA Metrics
-        href: https://metrics.rancher.katzencluster.atlantishq.de/
+        href: https://fa-metrics.rancher.katzencluster.atlantishq.de/
         tags:
             - gaming
         groups:
@@ -226,16 +246,6 @@ data:
             - gaming
         auth-type: sso
 
-    hedgedoc:
-        name: Hedgedoc
-        href: https://hedgedoc.atlantishq.de/auth/oauth2
-        icon-alt-url: https://hedgedoc.atlantishq.de/banner/banner_vertical_color.svg
-        tags:
-            - tools
-        groups:
-            - monitoring
-        auth-type: sso
-    
     resume:
         name: Resume Manager
         href: https://cv.atlantishq.de/api/auth/openid
@@ -244,7 +254,7 @@ data:
         groups:
             - tools
         auth-type: sso
-    
+
     harbor:
         name: Harbor
         href: https://harbor-registry.atlantishq.de/c/oidc/login?redirect_url=/harbor/projects
@@ -253,9 +263,9 @@ data:
         groups:
             - monitoring
         auth-type: sso
-    
-    atlantis-verify:
-        name: Self-Service Verification
+
+    atlantis-notify:
+        name: Notification Management
         background: "linear-gradient(90deg, rgba(5,187,187,255) 20%, rgb(14 165 109) 65%);"
         href: https://verify.atlantishq.de/
         tags:
@@ -267,7 +277,7 @@ data:
             - admin
             - gaming
         auth-type: sso
-    
+
     gitea:
         name: Gitea
         href: https://git.athq.de/user/oauth2/atlantis-accounts
@@ -277,7 +287,7 @@ data:
         groups:
             - tools
         auth-type: sso
-    
+
     immich:
         name: Immich Pictures
         href: https://i.athq.de/
@@ -287,7 +297,7 @@ data:
         groups:
             - tools
         auth-type: sso
-    
+
     rancher:
         name: Rancher (Kubernetes)
         background: linear-gradient(90deg, rgb(41, 84, 112) 30%, rgb(49, 112, 160) 65%)
