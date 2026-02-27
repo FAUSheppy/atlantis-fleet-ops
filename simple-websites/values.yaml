@@ -7,3 +7,7 @@ services:
     targetPort: 80
     hostname: ax-films.rancher.katzencluster.atlantishq.de
     image: harbor-registry.atlantishq.de/atlantishq/ax-films
+  bento-pdf:
+    targetPort: 8080
+    hostname: pdf.rancher.katzencluster.atlantishq.de
+    image: ghcr.io/alam00000/bentopdf:latest
