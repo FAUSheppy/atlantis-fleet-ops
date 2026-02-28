@@ -11,3 +11,7 @@ services:
     targetPort: 8080
     hostname: pdf.rancher.katzencluster.atlantishq.de
     image: ghcr.io/alam00000/bentopdf-simple:latest
+  webhook-tester:
+    targetPort: 8080
+    hostname: webhook-tester.rancher.katzencluster.atlantishq.de
+    image: ghcr.io/tarampampam/webhook-tester:2
