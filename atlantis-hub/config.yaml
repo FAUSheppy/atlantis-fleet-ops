@@ -326,3 +326,14 @@ data:
             - rancher-admins
             - rancher-users
         auth-type: sso
+
+    webhook-tester:
+        name: Webhook Debugger
+        description: Debug Webhooks with Web-ui
+        href: https://webhook-tester.rancher.katzencluster.atlantishq.de/
+        icon-alt-url: https://webhook-tester.rancher.katzencluster.atlantishq.de/apple-touch-icon.png
+        tags:
+            - tools
+        groups:
+            - tools
+        auth-type: none
