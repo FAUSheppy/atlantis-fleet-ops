@@ -11,6 +11,7 @@ data:
             - gaming
         groups:
             - trackmania
+            - gaming
         auth-type: sso
         icon-alt-url: https://cdn2.steamgriddb.com/file/sgdb-cdn/grid/9b4c2fa8e4011958cf9525d89a2e8c9f.png
 
@@ -21,7 +22,7 @@ data:
         tags:
             - tools
         groups:
-            - monitoring
+            - tools
         auth-type: sso
 
 
@@ -163,6 +164,7 @@ data:
             - server
         groups:
             - nextcloud
+            - tools
         auth-type: sso
 
     github:
@@ -243,7 +245,7 @@ data:
         tags:
             - internal-tools
         groups:
-            - pki
+            - internal-users
         auth-type: sso
 
     fametrics:
@@ -309,7 +311,7 @@ data:
         tags:
             - internal-tools
         groups:
-            - tools
+            - internal-users
         auth-type: sso
 
     rancher:
