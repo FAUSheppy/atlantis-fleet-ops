@@ -121,6 +121,7 @@ data:
         name: Grafana
         href: https://grafana.rancher.katzencluster.atlantishq.de/login/generic_oauth
         background: linear-gradient(90deg, rgb(255, 240, 160) 20%, rgb(244, 151, 44) 65%)
+        icon-alt-url: https://grafana.rancher.katzencluster.atlantishq.de/public/img/grafana_icon.svg
         description: Cluster Metric Monitoring
         tags:
             - monitoring
@@ -337,3 +338,14 @@ data:
         groups:
             - tools
         auth-type: none
+
+    actions:
+        name: Atlantis Actions
+        description: Activate Atlantis Array etc.
+        href: https://actions.atlantishq.de/
+        icon-alt-url: https://jellyfin.org/images/logo.svg
+        tags:
+            - internal-tools
+        groups:
+            - internal-users
+        auth-type: sso
