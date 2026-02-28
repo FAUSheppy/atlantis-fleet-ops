@@ -120,6 +120,7 @@ data:
         name: Grafana
         href: https://grafana.rancher.katzencluster.atlantishq.de/
         background: linear-gradient(90deg, rgb(255, 240, 160) 20%, rgb(244, 151, 44) 65%)
+        description: Cluster Metric Monitoring
         tags:
             - monitoring
         groups:
@@ -226,6 +227,7 @@ data:
 
     paperless:
         name: Paperless
+        description: Document archiving system
         background: "linear-gradient(90deg, #1fc61a 20%, #00c471 65%);"
         href: https://paperless.atlantishq.de/
         icon-alt-url: https://paperless.atlantishq.de/favicon.ico
