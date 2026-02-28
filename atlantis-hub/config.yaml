@@ -119,6 +119,7 @@ data:
     grafana:
         name: Grafana
         href: https://grafana.rancher.katzencluster.atlantishq.de/
+        background: linear-gradient(90deg, rgb(255, 240, 160) 20%, rgb(244, 151, 44) 65%)
         tags:
             - monitoring
         groups:
@@ -166,6 +167,7 @@ data:
         name: GitHub Sheppy
         href: https://github.com/FAUSheppy
         icon-alt-url: https://github.githubassets.com/favicons/favicon.svg
+        background: linear-gradient(90deg, rgb(51, 150, 150) 20%, rgb(25, 189, 189) 65%)
         tags:
             - web
         groups:
@@ -185,6 +187,7 @@ data:
     potaris:
         name: Potaris
         href: https://potaris.de
+        background: linear-gradient(90deg, rgb(255, 255, 255) 20%, rgb(255, 87, 87) 65%)
         tags:
             - web
         groups:
@@ -255,6 +258,7 @@ data:
         name: Resume Manager
         href: https://cv.atlantishq.de/api/auth/openid
         icon-alt-url: https://cv.atlantishq.de/icon/dark.svg
+        background: linear-gradient(90deg, rgb(255, 255, 255) 20%, rgb(255, 216, 216) 65%)
         tags:
             - tools
         groups:
@@ -264,6 +268,7 @@ data:
     harbor:
         name: Harbor
         href: https://harbor-registry.atlantishq.de/c/oidc/login?redirect_url=/harbor/projects
+        icon-alt-url: https://harbor-registry.atlantishq.de/images/harbor-logo.svg
         tags:
             - server
         groups:
@@ -309,6 +314,7 @@ data:
         name: Rancher (Kubernetes)
         background: linear-gradient(90deg, rgb(41, 84, 112) 30%, rgb(49, 112, 160) 65%)
         href: https://rancher.falkenstein-2.potaris.de/
+        icon-alt-url: https://rancher.falkenstein-2.potaris.de/dashboard/img/rancher-logo.3680d0eb.svg
         tags:
             - server
         groups:
