@@ -343,9 +343,19 @@ data:
         name: Atlantis Actions
         description: Activate Atlantis Array etc.
         href: https://actions.atlantishq.de/
-        icon-alt-url: https://jellyfin.org/images/logo.svg
         tags:
             - internal-tools
         groups:
             - internal-users
         auth-type: sso
+
+    jellyfin:
+        name: Jellyfin
+        description: Remember to enable Atlantis-Array before using!
+        href: https://vpn-gate.atlantishq.de:10443/
+        icon-alt-url: https://jellyfin.org/images/logo.svg
+        tags:
+            - internal-tools
+        groups:
+            - internal-users
+        auth-type: ldap
