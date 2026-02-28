@@ -6,6 +6,7 @@ data:
   config.yaml: |
     trackmania:
         name: Trackmania Replay Server
+        description: Trackmania Replay Highscore Server
         href: https://trackmania.atlantishq.de
         tags:
             - gaming
@@ -17,6 +18,7 @@ data:
 
     hedgedoc:
         name: Hedgedoc
+        description: Notes Manager
         href: https://hedgedoc.atlantishq.de/auth/oauth2
         icon-alt-url: https://hedgedoc.atlantishq.de/banner/banner_vertical_color.svg
         tags:
@@ -58,6 +60,7 @@ data:
 
     opensearch:
         name: Opensearch
+        description: Atlantis Log Monitoring
         background: linear-gradient(90deg, rgb(4, 52, 84) 20%, rgb(83, 134, 160) 65%)
         href: https://opensearch.katzencluster.atlantishq.de/auth/openid/captureUrlFragment
         icon-alt-url: https://opensearch.katzencluster.atlantishq.de/ui/favicons/apple-touch-icon.png
@@ -70,6 +73,7 @@ data:
 
     keycloak-profile:
         name: User Profile
+        description: Manage your SSO User Profile
         href: https://keycloak.atlantishq.de/realms/master/account/#/personal-info
         icon-alt-url: https://keycloak.atlantishq.de/resources/yy2lu/account/keycloak.v3/favicon.svg
         tags:
@@ -98,6 +102,7 @@ data:
 
     async-icinga:
         name: Async Icinga Manager
+        description: Manage Passive Reporting Services
         href: https://async-icinga.atlantishq.de
         background: linear-gradient(90deg, rgb(165 84 165) 20%, rgb(151 15 105) 65%);
         tags:
@@ -132,6 +137,7 @@ data:
     icinga:
         name: Icinga
         href: https://icinga.atlantishq.de
+        description: View your Monitoring Services
         icon-alt-url: https://cdn.startbase.com/images/52bfe2c344e71ec1d1d67e56db0092a0/26e418af82ab60e/?webp=1&w=400
         tags:
             - monitoring
@@ -142,6 +148,7 @@ data:
 
     zabbix:
         name: Zabbix Monitoring
+        description: Legacy Monitoring Server
         href: https://zabbix.atlantishq.de
         tags:
             - monitoring
@@ -160,6 +167,7 @@ data:
 
     nextcloud:
         name: Nextcloud
+        description: Filesharing and Calendar
         href: https://nextcloud.katzencluster.atlantishq.de
         tags:
             - tools
@@ -251,6 +259,7 @@ data:
 
     fametrics:
         name: FA Metrics
+        description: Supreme Commander Live Monitoring
         href: https://fa-metrics.rancher.katzencluster.atlantishq.de/
         icon-alt-url: https://raw.githubusercontent.com/FAUSheppy/fa-live-metrics-lua/refs/heads/master/mod_icon.png
         tags:
@@ -262,6 +271,7 @@ data:
 
     resume:
         name: Resume Manager
+        description: Create and Manage your Resumes
         href: https://cv.atlantishq.de/api/auth/openid
         icon-alt-url: https://cv.atlantishq.de/icon/dark.svg
         background: linear-gradient(90deg, rgb(255, 255, 255) 20%, rgb(255, 216, 216) 65%)
@@ -273,6 +283,7 @@ data:
 
     harbor:
         name: Harbor
+        description: Container Registry
         href: https://harbor-registry.atlantishq.de/c/oidc/login?redirect_url=/harbor/projects
         icon-alt-url: https://harbor-registry.atlantishq.de/images/harbor-logo.svg
         tags:
@@ -283,6 +294,7 @@ data:
 
     atlantis-notify:
         name: Notification Management
+        description: Manage your Notifications & Webhooks
         background: "linear-gradient(90deg, rgba(5,187,187,255) 20%, rgb(14 165 109) 65%);"
         href: https://verify.atlantishq.de/
         tags:
@@ -297,6 +309,7 @@ data:
 
     gitea:
         name: Gitea
+        description: Atlantis Git Server
         href: https://git.athq.de/user/oauth2/atlantis-accounts
         icon-alt-url: https://git.athq.de/assets/img/avatar_default.png
         tags:
@@ -307,6 +320,7 @@ data:
 
     immich:
         name: Immich Pictures
+        description: Personal Photo Management
         href: https://i.athq.de/
         icon-alt-url: https://i.athq.de/favicon.png
         tags:
@@ -316,7 +330,8 @@ data:
         auth-type: sso
 
     rancher:
-        name: Rancher (Kubernetes)
+        name: Rancher
+        description: Kubernetes Management UI
         background: linear-gradient(90deg, rgb(41, 84, 112) 30%, rgb(49, 112, 160) 65%)
         href: https://rancher.falkenstein-2.potaris.de/
         icon-alt-url: https://rancher.falkenstein-2.potaris.de/dashboard/img/rancher-logo.3680d0eb.svg
