@@ -111,7 +111,7 @@ data:
         href: https://pdf.rancher.katzencluster.atlantishq.de/
         icon-alt-url: https://pdf.rancher.katzencluster.atlantishq.de/images/favicon-no-bg.svg
         tags:
-            - internal-tools
+            - tools
         groups:
             - tools
         auth-type: ""
@@ -130,7 +130,7 @@ data:
     icinga:
         name: Icinga
         href: https://icinga.atlantishq.de
-        icon-alt-url: https://icinga.atlantishq.de/icingaweb2/img/favicon.png
+        icon-alt-url: https://cdn.startbase.com/images/52bfe2c344e71ec1d1d67e56db0092a0/26e418af82ab60e/?webp=1&w=400
         tags:
             - monitoring
         groups:
@@ -230,7 +230,7 @@ data:
         description: Document archiving system
         background: "linear-gradient(90deg, #1fc61a 20%, #00c471 65%);"
         href: https://paperless.atlantishq.de/
-        icon-alt-url: https://paperless.atlantishq.de/favicon.ico
+        icon-alt-url: https://docs.paperless-ngx.com/assets/logo.svg
         tags:
             - internal-tools
         groups:
@@ -307,7 +307,7 @@ data:
         href: https://i.athq.de/
         icon-alt-url: https://i.athq.de/favicon.png
         tags:
-            - tools
+            - internal-tools
         groups:
             - tools
         auth-type: sso
