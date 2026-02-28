@@ -20,6 +20,20 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+              scheme: HTTP
+              httpHeaders:
+                - name: X-Auth-Request-Preferred-Username
+                  value: probe-user
+                - name: X-Auth-Request-Groups
+                  value: atlantis-admins,gaming,trackmania,tools,opensearch-admins,show-weblinks
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 3
           volumeMounts:
             - name: config
               mountPath: /app/config.yaml
