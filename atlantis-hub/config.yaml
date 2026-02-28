@@ -129,6 +129,7 @@ data:
     icinga:
         name: Icinga
         href: https://icinga.atlantishq.de
+        icon-alt-url: https://icinga.atlantishq.de/icingaweb2/img/favicon.png
         tags:
             - monitoring
         groups:
@@ -279,7 +280,6 @@ data:
         name: Notification Management
         background: "linear-gradient(90deg, rgba(5,187,187,255) 20%, rgb(14 165 109) 65%);"
         href: https://verify.atlantishq.de/
-        icon-alt-url: https://icinga.atlantishq.de/icingaweb2/img/favicon.png
         tags:
             - user
         groups:
