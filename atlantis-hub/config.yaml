@@ -12,7 +12,7 @@ data:
         groups:
             - trackmania
         auth-type: sso
-        icon: https://cdn2.steamgriddb.com/file/sgdb-cdn/grid/9b4c2fa8e4011958cf9525d89a2e8c9f.png
+        icon-alt-url: https://cdn2.steamgriddb.com/file/sgdb-cdn/grid/9b4c2fa8e4011958cf9525d89a2e8c9f.png
 
     hedgedoc:
         name: Hedgedoc
@@ -59,6 +59,7 @@ data:
         name: Opensearch
         background: linear-gradient(90deg, rgb(4, 52, 84) 20%, rgb(83, 134, 160) 65%)
         href: https://opensearch.katzencluster.atlantishq.de/auth/openid/captureUrlFragment
+        icon-alt-url: https://opensearch.katzencluster.atlantishq.de/ui/favicons/apple-touch-icon.png
         tags:
             - monitoring
         groups:
@@ -69,6 +70,7 @@ data:
     keycloak-profile:
         name: User Profile
         href: https://keycloak.atlantishq.de/realms/master/account/#/personal-info
+        icon-alt-url: https://keycloak.atlantishq.de/resources/yy2lu/account/keycloak.v3/favicon.svg
         tags:
             - user
         groups:
@@ -107,6 +109,7 @@ data:
     pdftools:
         name: PDF Tools
         href: https://pdf.rancher.katzencluster.atlantishq.de/
+        icon-alt-url: https://pdf.rancher.katzencluster.atlantishq.de/images/favicon-no-bg.svg
         tags:
             - internal-tools
         groups:
@@ -162,7 +165,7 @@ data:
     github:
         name: GitHub Sheppy
         href: https://github.com/FAUSheppy
-        icon-alt-url: https://github.com
+        icon-alt-url: https://github.githubassets.com/favicons/favicon.svg
         tags:
             - web
         groups:
@@ -221,6 +224,7 @@ data:
         name: Paperless
         background: "linear-gradient(90deg, #1fc61a 20%, #00c471 65%);"
         href: https://paperless.atlantishq.de/
+        icon-alt-url: https://paperless.atlantishq.de/favicon.ico
         tags:
             - internal-tools
         groups:
@@ -239,6 +243,7 @@ data:
     fametrics:
         name: FA Metrics
         href: https://fa-metrics.rancher.katzencluster.atlantishq.de/
+        icon-alt-url: https://raw.githubusercontent.com/FAUSheppy/fa-live-metrics-lua/refs/heads/master/mod_icon.png
         tags:
             - gaming
         groups:
@@ -249,6 +254,7 @@ data:
     resume:
         name: Resume Manager
         href: https://cv.atlantishq.de/api/auth/openid
+        icon-alt-url: https://cv.atlantishq.de/icon/dark.svg
         tags:
             - tools
         groups:
@@ -268,6 +274,7 @@ data:
         name: Notification Management
         background: "linear-gradient(90deg, rgba(5,187,187,255) 20%, rgb(14 165 109) 65%);"
         href: https://verify.atlantishq.de/
+        icon-alt-url: https://icinga.atlantishq.de/icingaweb2/img/favicon.png
         tags:
             - user
         groups:
