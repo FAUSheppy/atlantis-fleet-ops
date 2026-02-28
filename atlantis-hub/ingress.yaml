@@ -20,7 +20,17 @@ spec:
         - hub.rancher.katzencluster.atlantishq.de
       secretName: atlantis-hub-tls
   rules:
-    - host: hub.rancher.katzencluster.atlantishq.de
+    - host: portal.services.atlantishq.de
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: atlantis-hub
+                port:
+                  number: 80
+    - host: portal.atlantishq.de
       http:
         paths:
           - path: /
