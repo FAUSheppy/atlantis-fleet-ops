@@ -162,7 +162,7 @@ data:
         name: Nextcloud
         href: https://nextcloud.katzencluster.atlantishq.de
         tags:
-            - server
+            - tools
         groups:
             - nextcloud
             - tools
