@@ -17,7 +17,8 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - hub.rancher.katzencluster.atlantishq.de
+        - portal.services.atlantishq.de
+        - portal.atlantishq.de
       secretName: atlantis-hub-tls
   rules:
     - host: portal.services.atlantishq.de
