@@ -15,3 +15,7 @@ services:
     targetPort: 8080
     hostname: webhook-tester.rancher.katzencluster.atlantishq.de
     image: ghcr.io/tarampampam/webhook-tester:2
+  sector:
+    targetPort: 5000
+    hostname: sector32.rancher.katzencluster.atlantishq.de
+    image: harbor-registry.atlantishq.de/atlantishq/sector32
