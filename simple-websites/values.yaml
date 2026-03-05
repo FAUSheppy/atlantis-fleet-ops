@@ -19,3 +19,7 @@ services:
     targetPort: 5000
     hostname: sector32.rancher.katzencluster.atlantishq.de
     image: harbor-registry.atlantishq.de/atlantishq/sector32
+  serienampel:
+    targetPort: 5000
+    hostname: serienampel.rancher.katzencluster.atlantishq.de
+    image: harbor-registry.atlantishq.de/atlantishq/serienampel:latest
