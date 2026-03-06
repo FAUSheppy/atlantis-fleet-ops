@@ -18,3 +18,5 @@ data:
     default_pool_size = 20
 
     server_tls_sslmode = require
+  userlist.txt: |
+    "hedgedoc" ""

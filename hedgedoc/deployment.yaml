@@ -27,6 +27,9 @@ spec:
             - name: pgbouncer-config
               mountPath: /etc/pgbouncer/pgbouncer.ini
               subPath: pgbouncer.ini
+            - name: pgbouncer-config
+              mountPath: /etc/pgbouncer/userlist.txt
+              subPath: userlist.txt
         - name: hedgedoc
           image: quay.io/hedgedoc/hedgedoc:latest
           ports:
