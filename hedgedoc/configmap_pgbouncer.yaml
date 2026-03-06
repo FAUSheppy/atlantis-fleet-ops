@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hedgedoc-pgbouncer-config
+data:
+  pgbouncer.ini: |
+    [databases]
+    hedgedoc = host=135.181.80.154 port=5432 dbname=hedgedoc sslmode=require
+
+    [pgbouncer]
+    listen_addr = 0.0.0.0
+    listen_port = 6432
+
+    auth_type = trust
+
+    pool_mode = session
+    max_client_conn = 100
+    default_pool_size = 20
+
+    server_tls_sslmode = require

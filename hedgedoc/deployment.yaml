@@ -15,13 +15,24 @@ spec:
         app: hedgedoc
     spec:
       containers:
+        - name: pgbouncer
+          image: edoburu/pgbouncer:latest
+          ports:
+            - containerPort: 6432
+          volumeMounts:
+            - name: pgbouncer-config
+              mountPath: /etc/pgbouncer
         - name: hedgedoc
           image: quay.io/hedgedoc/hedgedoc:latest
           ports:
             - containerPort: 3000
           env:
+            #- name: CMD_DB_HOST
+            #  value: 135.181.80.154
             - name: CMD_DB_HOST
-              value: 135.181.80.154
+              value: 127.0.0.1
+            - name: CMD_DB_PORT
+              value: 6432
             - name: CMD_DB_DIALECT
               value: postgres
             - name: CMD_DB_DATABASE
