@@ -14,6 +14,10 @@ spec:
       labels:
         app: hedgedoc
     spec:
+      volumes:
+        - name: pgbouncer-config
+          configMap:
+            name: hedgedoc-pgbouncer-config
       containers:
         - name: pgbouncer
           image: edoburu/pgbouncer:latest
