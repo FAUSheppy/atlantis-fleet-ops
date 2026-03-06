@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: soundlib
+  labels:
+    app: soundlib
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: "web,websecure"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/redirect-entry-point: "https"
+    traefik.ingress.kubernetes.io/redirect-permanent: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: "sso-oauth2-forward-auth-soundlib@kubernetescrd"
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - soundlib.rancher.katzencluster.atlantishq.de
+      secretName: soundlib-tls
+  rules:
+    - host: soundlib.rancher.katzencluster.atlantishq.de
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: soundlib
+                port:
+                  number: 80

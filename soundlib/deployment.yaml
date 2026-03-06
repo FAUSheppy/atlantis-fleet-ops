@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soundlib
+  labels:
+    app: soundlib
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: soundlib
+  template:
+    metadata:
+      labels:
+        app: soundlib
+    spec:
+      containers:
+        - name: soundlib
+          image: harbor-registry.atlantishq.de/atlantishq/atlantis-soundlib:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+              name: http
+          env:
+            - name: DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: soundlib-db-secret
+                  key: database-url
+
+            - name: S3_BUCKET
+              valueFrom:
+                secretKeyRef:
+                  name: soundlib
+                  key: S3_BUCKET
+
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: soundlib
+                  key: S3_ACCESS_KEY
+
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: soundlib-secrets
+                  key: S3_SECRET_KEY
+
+            - name: S3_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: soundlib-secrets
+                  key: S3_ENDPOINT
