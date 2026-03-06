@@ -48,3 +48,11 @@ services:
     secret_name: fa-metrics-oidc-config
     address: fa-metrics.rancher.katzencluster.atlantishq.de
     namespace: fa-metrics
+  soundlib:
+    port: 80
+    skips:
+      - "/health"
+      - "/metrics"
+    secret_name: soundlib-interface-oidc-config
+    address: soundlib.rancher.katzencluster.atlantishq.de
+    namespace: sso
