@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hedgedoc
+  labels:
+    app: hedgedoc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hedgedoc
+  template:
+    metadata:
+      labels:
+        app: hedgedoc
+    spec:
+      containers:
+        - name: hedgedoc
+          image: quay.io/hedgedoc/hedgedoc:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: CMD_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: hedgedoc-db-secret
+                  key: db-url
+
+            - name: CMD_DOMAIN
+              value: hedgedoc.atlantishq.de
+            - name: CMD_PROTOCOL_USESSL
+              value: "true"
+            - name: CMD_ALLOW_ORIGIN
+              value: "['hedgedoc.atlantishq.de']"
+
+            - name: CMD_EMAIL
+              value: "false"
+            - name: CMD_ALLOW_EMAIL_REGISTER
+              value: "false"
+
+            # OAuth2
+            - name: CMD_OAUTH2_USER_PROFILE_URL
+              value: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/userinfo
+            - name: CMD_OAUTH2_TOKEN_URL
+              value: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token
+            - name: CMD_OAUTH2_AUTHORIZATION_URL
+              value: https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/auth
+            - name: CMD_OAUTH2_CLIENT_ID
+              value: z_hedgedoc
+            - name: CMD_OAUTH2_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: hedgedoc-oidc-config
+                  key: client-secret
+            - name: CMD_OAUTH2_SCOPE
+              value: openid email profile
+            - name: CMD_OAUTH2_ROLES_CLAIM
+              value: roles
+            - name: CMD_OAUTH2_PROVIDERNAME
+              value: AtlantisHQ Auth
+            - name: CMD_OAUTH2_USER_PROFILE_USERNAME_ATTR
+              value: preferred_username
+            - name: CMD_OAUTH2_USER_PROFILE_DISPLAY_NAME_ATTR
+              value: name
+            - name: CMD_OAUTH2_USER_PROFILE_EMAIL_ATTR
+              value: email
+
+            # S3 Upload Backend
+            - name: CMD_IMAGE_UPLOAD_TYPE
+              value: s3
+            - name: CMD_S3_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  name: hedgedoc
+                  key: S3_ENDPOINT
+            - name: CMD_S3_BUCKET
+              value: hedgedoc
+            - name: CMD_S3_REGION
+              value: ""
+            - name: CMD_S3_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: hedgedoc
+                  key: S3_ACCESS_KEY
+            - name: CMD_S3_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: hedgedoc
+                  key: S3_SECRET_KEY
+            - name: CMD_S3_FORCE_PATH_STYLE
+              value: "true"
