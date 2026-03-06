@@ -29,4 +29,4 @@ spec:
               service:
                 name: soundlib
                 port:
-                  number: 80
+                  number: 5000
