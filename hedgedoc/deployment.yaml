@@ -25,7 +25,8 @@ spec:
             - containerPort: 6432
           volumeMounts:
             - name: pgbouncer-config
-              mountPath: /etc/pgbouncer
+              mountPath: /etc/pgbouncer/pgbouncer.ini
+              subPath: pgbouncer.ini
         - name: hedgedoc
           image: quay.io/hedgedoc/hedgedoc:latest
           ports:
