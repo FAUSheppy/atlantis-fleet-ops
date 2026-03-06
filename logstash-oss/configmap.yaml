@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logstash-config
+data:
+  logstash.yml: |
+    http.host: "0.0.0.0"
+  pipelines.yml: |
+    - pipeline.id: main
+      path.config: "/usr/share/logstash/pipeline/logstash.conf"
+  logstash.conf: |
+    input {
+      beats {
+        port => 5044
+      }
+    }
+    
+    output {
+      if [fields][container_logs] {
+        opensearch {
+          hosts => ["https://opensearch.katzencluster.atlantishq.de:9200"]
+          index => "filebeat-containers-dev-%{+YYYY.MM.dd}"
+          user => "logstash"
+          password => "${OPENSEARCH_PASSWORD}"
+        }
+      }else if [fields][syslog] {
+        opensearch {
+          hosts => ["https://opensearch.katzencluster.atlantishq.de:9200"]
+          index => "filebeat-syslog-dev-%{+YYYY.MM.dd}"
+          user => "logstash"
+          password => "${OPENSEARCH_PASSWORD}"
+        }
+      }else{
+        opensearch {
+          hosts => ["https://opensearch.katzencluster.atlantishq.de:9200"]
+          index => "filebeat-dev-%{+YYYY.MM.dd}"
+          ssl_certificate_verification => false
+          user => "logstash"
+          password => "${OPENSEARCH_PASSWORD}"
+        }
+      }
+    }
