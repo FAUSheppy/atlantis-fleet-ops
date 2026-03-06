@@ -43,11 +43,11 @@ spec:
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: soundlib-secrets
+                  name: soundlib
                   key: S3_SECRET_KEY
 
             - name: S3_ENDPOINT
               valueFrom:
                 secretKeyRef:
-                  name: soundlib-secrets
+                  name: soundlib
                   key: S3_ENDPOINT
