@@ -25,7 +25,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: logstash
-                  key: opensearch-password
+                  key: OPENSEARCH_PASSWORD
           volumeMounts:
             - name: config
               mountPath: /usr/share/logstash/config/logstash.yml
