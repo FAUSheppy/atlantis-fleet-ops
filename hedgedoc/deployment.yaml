@@ -24,7 +24,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: hedgedoc-db-secret
-                  key: db-url
+                  key: database-url
 
             - name: CMD_DOMAIN
               value: hedgedoc.atlantishq.de
