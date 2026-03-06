@@ -5,7 +5,7 @@ metadata:
 data:
   pgbouncer.ini: |
     [databases]
-    hedgedoc = host=135.181.80.154 port=5432 dbname=hedgedoc sslmode=require
+    hedgedoc = host=135.181.80.154 port=5432 dbname=hedgedoc
 
     [pgbouncer]
     listen_addr = 0.0.0.0
