@@ -20,12 +20,25 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: CMD_DB_URL
+            - name: CMD_DB_HOST
+              value: 135.181.80.154
+            - name: CMD_DB_DIALECT
+              value: postgres
+            - name: CMD_DB_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: hedgedoc-db-secret
-                  key: database-url
-
+                  key: db
+            - name: CMD_DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: hedgedoc-db-secret
+                  key: user
+            - name: CMD_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hedgedoc-db-secret
+                  key: password
             - name: CMD_DOMAIN
               value: hedgedoc.atlantishq.de
             - name: CMD_PROTOCOL_USESSL
