@@ -17,7 +17,7 @@ spec:
           image: harbor-registry.atlantishq.de/atlantishq/ntfy-api:latest
           ports:
             - containerPort: 5000
-          envFrom:
+          env:
             - name: DATABASE_URL                                                                    
               valueFrom:
                 secretKeyRef:
