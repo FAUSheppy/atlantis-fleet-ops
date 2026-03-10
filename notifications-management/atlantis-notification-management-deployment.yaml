@@ -61,29 +61,29 @@ spec:
             - name: LDAP_BIND_PW
               valueFrom:
                 secretKeyRef:
-                  name: atlantis-verify-secrets
+                  name: notification-secrets
                   key: ldap-bind-pw
 
             - name: DISPATCH_SETTINGS_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: atlantis-verify-secrets
+                  name: notification-secrets
                   key: dispatch-settings-token
 
             - name: DISPATCH_ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: atlantis-verify-secrets
+                  name: notification-secrets
                   key: dispatch-access-token
 
             - name: KEYCLOAK_ADMIN_PASS
               valueFrom:
                 secretKeyRef:
-                  name: atlantis-verify-secrets
+                  name: notification-secrets
                   key: keycloak-admin-pass
 
             - name: NTFY_ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: atlantis-verify-secrets
+                  name: notification-secrets
                   key: ntfy-access-token

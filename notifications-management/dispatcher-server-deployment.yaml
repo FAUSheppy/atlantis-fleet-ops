@@ -40,19 +40,19 @@ spec:
             - name: LDAP_BIND_PW
               valueFrom:
                 secretKeyRef:
-                  name: event-dispatcher-secrets
+                  name: notification-secrets
                   key: ldap-bind-pw
 
             - name: DISPATCH_ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: event-dispatcher-secrets
+                  name: notification-secrets
                   key: dispatch-access-token
 
             - name: SETTINGS_ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: event-dispatcher-secrets
+                  name: notification-secrets
                   key: settings-access-token
 
           volumeMounts:
