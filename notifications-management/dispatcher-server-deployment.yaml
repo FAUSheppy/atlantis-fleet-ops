@@ -53,7 +53,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: notification-secrets
-                  key: settings-access-token
+                  key: dispatcher-settings-token
 
           volumeMounts:
             - name: substitutions
