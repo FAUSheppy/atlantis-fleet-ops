@@ -30,7 +30,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: nofication-management-db-secret
-                  key: db-url
+                  key: database-url-hedgedoc-style
           volumeMounts:
             - name: cache
               mountPath: /var/cache/ntfy
