@@ -74,7 +74,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: notification-secrets
-                  key: dispatch-access-token
+                  key: dispatcher-access-token
 
             - name: KEYCLOAK_ADMIN_PASS
               valueFrom:

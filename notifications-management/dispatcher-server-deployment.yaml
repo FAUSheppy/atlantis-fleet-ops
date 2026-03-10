@@ -47,7 +47,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: notification-secrets
-                  key: dispatch-access-token
+                  key: dispatcher-access-token
 
             - name: SETTINGS_ACCESS_TOKEN
               valueFrom:
