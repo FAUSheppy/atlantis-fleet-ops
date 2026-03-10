@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-dispatcher
+  labels:
+    app: event-dispatcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-dispatcher
+  template:
+    metadata:
+      labels:
+        app: event-dispatcher
+    spec:
+      containers:
+        - name: event-dispatcher
+          image: harbor-registry.atlantishq.de/atlantishq/event-dispatcher
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+            - name: LDAP_SERVER
+              value: "ldap://192.168.122.112"
+            - name: LDAP_BIND_DN
+              value: "cn=Manager,dc=atlantishq,dc=de"
+            - name: LDAP_BASE_DN
+              value: "ou=People,dc=atlantishq,dc=de"
+
+            - name: DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nofication-management-db-secret
+                  value: db-url
+
+            - name: SUBSTITUTION_MAP
+              value: "/app/substitutions/substitutions.yaml"
+
+            - name: LDAP_BIND_PW
+              valueFrom:
+                secretKeyRef:
+                  name: event-dispatcher-secrets
+                  key: ldap-bind-pw
+
+            - name: DISPATCH_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: event-dispatcher-secrets
+                  key: dispatch-access-token
+
+            - name: SETTINGS_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: event-dispatcher-secrets
+                  key: settings-access-token
+
+          volumeMounts:
+            - name: substitutions
+              mountPath: /app/substitutions
+              readOnly: true
+
+      volumes:
+        - name: substitutions
+          configMap:
+            name: event-dispatcher-config

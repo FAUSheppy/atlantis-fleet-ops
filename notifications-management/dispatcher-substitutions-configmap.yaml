@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: event-dispatcher-config
+data:
+  substitutions.yaml: |
+    # your substitutions here

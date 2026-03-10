@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-dispatcher
+spec:
+  selector:
+    app: event-dispatcher
+  ports:
+    - port: 80
+      targetPort: 5000
+  type: ClusterIP

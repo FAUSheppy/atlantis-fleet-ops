@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-dispatcher-worker
+  labels:
+    app: event-dispatcher-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-dispatcher-worker
+  template:
+    metadata:
+      labels:
+        app: event-dispatcher-worker
+    spec:
+      containers:
+        - name: event-dispatcher-worker
+          image: harbor-registry.atlantishq.de/atlantishq/event-dispatcher-worker
+          imagePullPolicy: Always
+          env:
+            - name: DISPATCH_SERVER
+              value: "https://dispatcher.atlantishq.de"
+
+            - name: NTFY_PUSH_TARGET
+              value: "https://push.atlantishq.de"
+            - name: NTFY_USER
+              value: "admin"
+            - name: NTFY_API_SERVER
+              value: "https://p.athq.de"
+
+            - name: LDAP_SERVER
+              value: "ldap://192.168.122.112"
+            - name: LDAP_BIND_DN
+              value: "cn=Manager,dc=atlantishq,dc=de"
+            - name: LDAP_BASE_DN
+              value: "ou=People,dc=atlantishq,dc=de"
+
+            - name: SMTP_TARGET
+              value: "mail.atlantishq.de"
+            - name: SMTP_PORT
+              value: "8025"
+            - name: SMTP_USER
+              value: "noreply@atlantishq.de"
+
+            - name: DISPATCH_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: event-dispatcher-secrets
+                  key: dispatch-access-token
+
+            - name: NTFY_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: event-dispatcher-secrets
+                  key: ntfy-pass
+
+            - name: NTFY_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: event-dispatcher-secrets
+                  key: ntfy-api-token
+
+            - name: LDAP_BIND_PW
+              valueFrom:
+                secretKeyRef:
+                  name: event-dispatcher-secrets
+                  key: ldap-bind-pw
+
+            - name: SMTP_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: event-dispatcher-secrets
+                  key: smtp-pass

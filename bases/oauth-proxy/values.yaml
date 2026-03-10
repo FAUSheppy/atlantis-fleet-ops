@@ -56,3 +56,11 @@ services:
     secret_name: soundlib-interface-oidc-config
     address: soundlib.rancher.katzencluster.atlantishq.de
     namespace: sso
+  atlantis-verify:
+    port: 80
+    skips:
+      - "/health"
+      - "/metrics"
+    secret_name: atlantis-verify-oidc-config
+    address: verify.rancher.katzencluster.atlantishq.de
+    namespace: sso

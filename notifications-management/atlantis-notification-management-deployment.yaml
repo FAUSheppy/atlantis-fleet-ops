@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: notifications
+  name: atlantis-verify
+  labels:
+    app: atlantis-verify
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: atlantis-verify
+  template:
+    metadata:
+      labels:
+        app: atlantis-verify
+    spec:
+      containers:
+        - name: atlantis-verify
+          image: harbor-registry.atlantishq.de/atlantishq/atlantis-verify:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+            - name: LDAP_SERVER
+              value: "ldap://192.168.122.112"
+            - name: LDAP_BIND_DN
+              value: "cn=Manager,dc=atlantishq,dc=de"
+            - name: LDAP_BASE_DN
+              value: "ou=People,dc=atlantishq,dc=de"
+
+            - name: DISPATCH_SERVER
+              value: "https://dispatcher.atlantishq.de"
+
+            - name: KEYCLOAK_URL
+              value: "https://keycloak.atlantishq.de"
+            - name: KEYCLOAK_REALM
+              value: "master"
+            - name: KEYCLOAK_ADMIN_USER
+              value: "admin"
+
+            - name: MAIN_HOME
+              value: "https://hub.atlantishq.de"
+
+            - name: NTFY_API_TARGET
+              value: "https://p.athq.de"
+            - name: NTFY_PUSH_TARGET
+              value: "https://push.atlantishq.de"
+
+            - name: OIDC_ADMIN_USER
+              value: "sheppy"
+
+            # External database (stub, replace later)
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nofication-management-db-secret
+                  key: database-url
+
+            # Secrets
+            - name: LDAP_BIND_PW
+              valueFrom:
+                secretKeyRef:
+                  name: atlantis-verify-secrets
+                  key: ldap-bind-pw
+
+            - name: DISPATCH_SETTINGS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: atlantis-verify-secrets
+                  key: dispatch-settings-token
+
+            - name: DISPATCH_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: atlantis-verify-secrets
+                  key: dispatch-access-token
+
+            - name: KEYCLOAK_ADMIN_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: atlantis-verify-secrets
+                  key: keycloak-admin-pass
+
+            - name: NTFY_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: atlantis-verify-secrets
+                  key: ntfy-access-token

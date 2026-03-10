@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ntfy-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ntfy-api
+  template:
+    metadata:
+      labels:
+        app: ntfy-api
+    spec:
+      containers:
+        - name: ntfy-api
+          image: harbor-registry.atlantishq.de/atlantishq/ntfy-api:latest
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - name: DATABASE_URL                                                                    
+              valueFrom:
+                secretKeyRef:
+                  name: nofication-management-db-secret
+                  key: db-url
+            - name: API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: nofication-secrets
+                  key: ntfy-access-token
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ntfy-api
+spec:
+  selector:
+    app: ntfy-api
+  ports:
+    - port: 5000
+      targetPort: 5000
+  type: ClusterIP
