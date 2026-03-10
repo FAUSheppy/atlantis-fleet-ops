@@ -23,6 +23,11 @@ spec:
                 secretKeyRef:
                   name: nofication-management-db-secret
                   key: db-url
+            - name: NTFY_AUTH_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nofication-management-db-secret
+                  key: db-url
             - name: ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
