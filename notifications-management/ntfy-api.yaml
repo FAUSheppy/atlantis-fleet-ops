@@ -22,7 +22,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: nofication-management-db-secret
-                  key: db-url
+                  key: database-url-hedgedoc-style
             - name: NTFY_AUTH_DB_URL
               valueFrom:
                 secretKeyRef:
