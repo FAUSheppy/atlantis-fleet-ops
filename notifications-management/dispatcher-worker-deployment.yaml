@@ -49,11 +49,12 @@ spec:
                   name: notification-secrets
                   key: dispatcher-access-token
 
+            # TODO: fix this double reference
             - name: NTFY_PASS
               valueFrom:
                 secretKeyRef:
                   name: notification-secrets
-                  key: ntfy-pass
+                  key: ntfy-api-token
 
             - name: NTFY_API_TOKEN
               valueFrom:
