@@ -32,7 +32,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: nofication-management-db-secret
-                  value: db-url
+                  key: db-url
 
             - name: SUBSTITUTION_MAP
               value: "/app/substitutions/substitutions.yaml"
