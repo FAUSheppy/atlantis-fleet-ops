@@ -23,7 +23,7 @@ spec:
                 secretKeyRef:
                   name: nofication-management-db-secret
                   key: db-url
-            - name: API_TOKEN
+            - name: ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: notification-secrets
