@@ -54,13 +54,13 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: notification-secrets
-                  key: ntfy-api-token
+                  key: ntfy-access-token
 
             - name: NTFY_API_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: notification-secrets
-                  key: ntfy-api-token
+                  key: ntfy-access-token
 
             - name: LDAP_BIND_PW
               valueFrom:
