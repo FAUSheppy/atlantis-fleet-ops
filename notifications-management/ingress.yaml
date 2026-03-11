@@ -21,7 +21,7 @@ spec:
               service:
                 name: ntfy-api
                 port:
-                  number: 50000
+                  number: 5000
 
 ---
 apiVersion: networking.k8s.io/v1
