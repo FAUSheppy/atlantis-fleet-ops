@@ -11,6 +11,10 @@ metadata:
     traefik.ingress.kubernetes.io/redirect-entry-point: "https"
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
 spec:
+  tls:
+    - hosts:
+        - ntfy-api.rancher.katzencluster.atlantishq.de
+      secretName: ntfy-api-ingress-tls
   rules:
     - host: ntfy-api.rancher.katzencluster.atlantishq.de
       http:
