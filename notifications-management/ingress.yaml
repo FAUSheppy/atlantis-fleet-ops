@@ -74,6 +74,7 @@ spec:
     - hosts:
         - push.rancher.katzencluster.atlantishq.de
         - push.atlantishq.de
+        - push.services.atlantishq.de
         - p.athq.de
       secretName: ntfy-ingress-tls
   rules:
@@ -87,7 +88,7 @@ spec:
                 name: ntfy
                 port:
                   number: 80
-    - host: push.rancher.katzencluster.atlantishq.de
+    - host: push.services.atlantishq.de
       http:
         paths:
           - path: /
