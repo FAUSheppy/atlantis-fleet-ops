@@ -43,6 +43,9 @@ spec:
             - name: SMTP_USER
               value: "noreply@atlantishq.de"
 
+            - name: POLLING_INTERVAL_SECONDS
+              value: "1"
+
             - name: DISPATCH_ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
