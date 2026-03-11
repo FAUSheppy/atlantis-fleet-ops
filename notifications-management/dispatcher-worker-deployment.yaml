@@ -27,7 +27,7 @@ spec:
             - name: NTFY_USER
               value: "admin"
             - name: NTFY_API_SERVER
-              value: "https://ntfy-api.rancher.katzencluster.athq.de"
+              value: "https://ntfy-api.rancher.katzencluster.atlantishq.de"
 
             - name: LDAP_SERVER
               value: "ldap://ldap.atlantishq.de:636"
