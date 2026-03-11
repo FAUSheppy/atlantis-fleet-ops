@@ -21,7 +21,7 @@ spec:
             - containerPort: 80
           env:
             - name: NTFY_BASE_URL
-              value: "https://push.atlantishq.de"
+              value: "https://push.rancher.katzencluster.atlantishq.de"
             - name: NTFY_BEHIND_PROXY
               value: "true"
             - name: NTFY_AUTH_DEFAULT_ACCESS

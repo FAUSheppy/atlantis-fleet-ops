@@ -20,14 +20,14 @@ spec:
           imagePullPolicy: Always
           env:
             - name: DISPATCH_SERVER
-              value: "https://dispatcher.atlantishq.de"
+              value: "https://dispatcher.rancher.katzencluster.atlantishq.de"
 
             - name: NTFY_PUSH_TARGET
-              value: "https://push.atlantishq.de"
+              value: "https://push.rancher.katzencluster.atlantishq.de"
             - name: NTFY_USER
               value: "admin"
             - name: NTFY_API_SERVER
-              value: "https://p.athq.de"
+              value: "https://ntfy-api.rancher.katzencluster.athq.de"
 
             - name: LDAP_SERVER
               value: "ldap://ldap.atlantishq.de:636"

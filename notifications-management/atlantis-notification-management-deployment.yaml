@@ -32,7 +32,7 @@ spec:
               value: "ou=People,dc=atlantishq,dc=de"
 
             - name: DISPATCH_SERVER
-              value: "https://dispatcher.atlantishq.de"
+              value: "https://dispatcher.rancher.katzencluster.atlantishq.de"
 
             - name: KEYCLOAK_URL
               value: "https://keycloak.atlantishq.de"
@@ -42,12 +42,12 @@ spec:
               value: "admin"
 
             - name: MAIN_HOME
-              value: "https://hub.atlantishq.de"
+              value: "https://portal.atlantishq.de"
 
             - name: NTFY_API_TARGET
-              value: "https://p.athq.de"
+              value: "https://ntfy-api.rancher.katzencluster.atlantishq.de"
             - name: NTFY_PUSH_TARGET
-              value: "https://push.atlantishq.de"
+              value: "https://push.rancher.katzencluster.atlantishq.de"
 
             - name: OIDC_ADMIN_USER
               value: "sheppy"
