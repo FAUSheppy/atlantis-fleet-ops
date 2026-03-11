@@ -72,6 +72,10 @@ spec:
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
     traefik.ingress.kubernetes.io/router.middlewares: "sso-oauth2-forward-auth-atlantis-verify@kubernetescrd"
   rules:
+    tls:
+      - hosts:
+          - verify.rancher.katzencluster.atlantishq.de
+        secretName: atlanits-verify-tls
     - host: verify.rancher.katzencluster.atlantishq.de
       http:
         paths:
