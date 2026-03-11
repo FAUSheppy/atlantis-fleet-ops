@@ -22,7 +22,7 @@ spec:
             - containerPort: 5000
           env:
             - name: LDAP_SERVER
-              value: "ldap://192.168.122.112"
+              value: "ldap://ldap.atlantishq.de:636"
             - name: LDAP_BIND_DN
               value: "cn=Manager,dc=atlantishq,dc=de"
             - name: LDAP_BASE_DN
