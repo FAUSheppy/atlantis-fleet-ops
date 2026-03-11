@@ -61,7 +61,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: atlantis-verify-ingress-sso
-spec:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     kubernetes.io/ingress.class: "traefik"
@@ -71,11 +70,12 @@ spec:
     traefik.ingress.kubernetes.io/redirect-entry-point: "https"
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
     traefik.ingress.kubernetes.io/router.middlewares: "sso-oauth2-forward-auth-atlantis-verify@kubernetescrd"
+spec:
+  tls:
+    - hosts:
+        - verify.rancher.katzencluster.atlantishq.de
+      secretName: atlanits-verify-tls
   rules:
-    tls:
-      - hosts:
-          - verify.rancher.katzencluster.atlantishq.de
-        secretName: atlanits-verify-tls
     - host: verify.rancher.katzencluster.atlantishq.de
       http:
         paths:
