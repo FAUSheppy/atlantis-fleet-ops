@@ -67,7 +67,7 @@ services:
   async-icinga:
     port: 80
     skips:
-      - "/health"
+      - "/report"
     secret_name: async-icinga-oidc-config
     namespace: sso
     address: async-icinga.atlantishq.de
