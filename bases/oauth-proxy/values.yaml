@@ -32,8 +32,8 @@ services:
   atlantis-actions:
     port: 80
     skips:
-      - "/health"
-      - "/metrics"
+      - "/endpoints"
+      - "/hook-passive"
     secret_name: atlantis-status-oidc-config
     address: actions.atlantishq.de
     namespace: sso
