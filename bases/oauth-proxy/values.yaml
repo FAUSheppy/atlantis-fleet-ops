@@ -35,7 +35,7 @@ services:
       - "/health"
       - "/metrics"
     secret_name: atlantis-status-oidc-config
-    address: atlantis.atlantishq.de
+    address: actions.atlantishq.de
     namespace: sso
   fa-metrics:
     port: 80
