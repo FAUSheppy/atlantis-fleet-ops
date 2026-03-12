@@ -32,7 +32,7 @@ spec:
                 secretKeyRef:
                   name: trackmania
                   key: DISPATCH_TOKEN
-            - name: S3_URL
+            - name: S3_ENDPOINT
               valueFrom:
                 secretKeyRef:
                   name: trackmania
