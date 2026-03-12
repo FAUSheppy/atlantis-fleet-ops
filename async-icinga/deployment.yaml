@@ -43,3 +43,5 @@ spec:
               value: ASYNC_ICINGA
             - name: ENFORCE_LOAD_FROM_ENV
               value: "true"
+            - name: AUTH_USER_HEADER
+              value: "X-Auth-Request-Preferred-Username"
