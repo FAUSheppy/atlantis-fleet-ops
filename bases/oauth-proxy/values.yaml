@@ -75,6 +75,6 @@ services:
     port: 80
     skips:
       - "/open-info"
-    secret_name: trackmania-oidc-config
+    secret_name: tmnf-replay-server-oidc-config
     namespace: sso
     address: trackmania.atlantishq.de
