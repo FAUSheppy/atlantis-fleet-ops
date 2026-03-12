@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trackmania
+  labels:
+    app: trackmania
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trackmania
+  template:
+    metadata:
+      labels:
+        app: trackmania
+    spec:
+      containers:
+        - name: trackmania
+          image: harbor-registry.atlantishq.de/atlantishq/tmnf-replay-server
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: trackmania-db-secret
+                  key: database-url
+            - name: DISPATCH_SERVER
+              value: https://dispatcher.atlantishq.de
+            - name: DISPATCH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: trackmania-secret
+                  key: DISPATCH_TOKEN
+            - name: S3_URL
+              valueFrom:
+                secretKeyRef:
+                  name: trackmania-secret
+                  key: S3_ENDPOINT
+            - name: S3_BUCKET
+              value: trackmania
+            - name: AWS_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: trackmania-secret
+                  key: S3_ACCESS_KEY
+            - name: AWS_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: trackmania-secret
+                  key: S3_SECRET_KEY
+            - name: AUTH_HEADER
+              value: X-Auth-Request-Preferred-Username
