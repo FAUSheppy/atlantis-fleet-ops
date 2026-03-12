@@ -35,7 +35,7 @@ services:
       - "/health"
       - "/metrics"
     secret_name: atlantis-status-oidc-config
-    address: atlantis-actions.rancher.katzencluster.atlantishq.de
+    address: atlantis.atlantishq.de
     namespace: sso
   fa-metrics:
     port: 80
@@ -65,13 +65,6 @@ services:
     address: verify.rancher.katzencluster.atlantishq.de
     namespace: sso
   async-icinga:
-    port: 80
-    skips:
-      - "/health"
-    secret_name: async-icinga-oidc-config
-    namespace: sso
-    address: async-icinga.services.atlantishq.de
-  async-icinga-2:
     port: 80
     skips:
       - "/health"

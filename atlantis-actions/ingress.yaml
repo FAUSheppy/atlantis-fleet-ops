@@ -16,10 +16,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - atlantis-actions.rancher.katzencluster.atlantishq.de
+        - actions.atlantishq.de
       secretName: atlantis-actions-tls
   rules:
-    - host: atlantis-actions.rancher.katzencluster.atlantishq.de
+    - host: actions.atlantishq.de
       http:
         paths:
           - path: /
