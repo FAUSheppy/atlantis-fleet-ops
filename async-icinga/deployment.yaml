@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: async-icinga
+  labels:
+    app: async-icinga
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: async-icinga
+  template:
+    metadata:
+      labels:
+        app: async-icinga
+    spec:
+      containers: async-icinga
+      image: harbor-registry.atlantishq.de/atlantishq/async-icinga
+      ports:
+        - containerPort: 5000
+      env:
+        - name: SQLALCHEMY_DATABASE_URI
+          valueFrom:
+            secretKeyRef:
+              name: async-icinga-db-secret
+              key: database-url
+        - name: ICINGA_API_USER
+          valueFrom:
+            secretKeyRef:
+              name: async-icinga-secrets
+              value: ICINGA_API_USER
+        - name: ICINGA_API_PASS
+          valueFrom:
+            secretKeyRef:
+              name: async-icinga-secrets
+              value: ICINGA_API_PASS
+        - name: ICINGA_API_URL
+          value: https://influx.atlantishq.de
+        - name: ICINGA_WEB_URL
+          value: https://icinga.atlantishq.de
+        - name: ASYNC_ICINGA_DUMMY_HOST
+          value: ASYNC_ICINGA
+        - name: ENFORCE_LOAD_FROM_ENV
+          value: "true"
