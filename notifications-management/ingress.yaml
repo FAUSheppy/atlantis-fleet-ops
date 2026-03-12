@@ -44,9 +44,20 @@ spec:
   tls:
     - hosts:
         - dispatcher.rancher.katzencluster.atlantishq.de
+        - dispatcher.atlantishq.de
       secretName: dispatcher-ingress-tls
   rules:
     - host: dispatcher.rancher.katzencluster.atlantishq.de
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: event-dispatcher
+                port:
+                  number: 80
+    - host: dispatcher.atlantishq.de
       http:
         paths:
           - path: /
