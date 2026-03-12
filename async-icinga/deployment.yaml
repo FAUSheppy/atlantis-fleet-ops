@@ -28,12 +28,12 @@ spec:
             - name: ICINGA_API_USER
               valueFrom:
                 secretKeyRef:
-                  name: async-icinga-secrets
+                  name: async-icinga
                   key: ICINGA_API_USER
             - name: ICINGA_API_PASS
               valueFrom:
                 secretKeyRef:
-                  name: async-icinga-secrets
+                  name: async-icinga
                   key: ICINGA_API_PASS
             - name: ICINGA_API_URL
               value: https://influx.atlantishq.de
