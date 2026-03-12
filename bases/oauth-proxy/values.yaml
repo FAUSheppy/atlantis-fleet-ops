@@ -64,7 +64,7 @@ services:
     secret_name: atlantis-verify-oidc-config
     address: verify.rancher.katzencluster.atlantishq.de
     namespace: sso
-  async-incinga:
+  async-icinga:
     port: 80
     skips:
       - "/health"
