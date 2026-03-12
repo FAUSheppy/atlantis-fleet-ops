@@ -1,9 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: async-icinga
+  name: trackmania
   labels:
-    app: async-icinga
+    app: trackmania
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     kubernetes.io/ingress.class: "traefik"
@@ -27,6 +27,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: async-icinga
+                name: trackmania
                 port:
                   number: 80
