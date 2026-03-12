@@ -75,6 +75,6 @@ services:
     port: 80
     skips:
       - "/open-info"
-    secret_name: async-icinga-oidc-config
+    secret_name: trackmania-oidc-config
     namespace: sso
-    address: async-icinga.atlantishq.de
+    address: trackmania.atlantishq.de
