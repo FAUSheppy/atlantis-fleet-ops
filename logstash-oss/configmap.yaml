@@ -21,6 +21,7 @@ data:
           hosts => ["https://opensearch.katzencluster.atlantishq.de:9200"]
           index => "filebeat-containers-dev-%{+YYYY.MM.dd}"
           user => "logstash"
+          ssl_certificate_verification => false
           password => "${OPENSEARCH_PASSWORD}"
         }
       }else if [fields][syslog] {
@@ -28,6 +29,7 @@ data:
           hosts => ["https://opensearch.katzencluster.atlantishq.de:9200"]
           index => "filebeat-syslog-dev-%{+YYYY.MM.dd}"
           user => "logstash"
+          ssl_certificate_verification => false
           password => "${OPENSEARCH_PASSWORD}"
         }
       }else{
