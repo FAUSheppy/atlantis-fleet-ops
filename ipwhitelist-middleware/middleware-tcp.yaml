@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: MiddlewareTCP
+metadata:
+  name: whitelist
+  namespace: default
+spec:
+  ipWhiteList:
+    sourceRange:
+      - "127.0.0.1/32"
+      - "159.69.136.222/32"
+      - "95.217.57.49/32"
+      - "142.132.212.54/32"
+      - "10.0.0.0/8"
+      - "192.168.122.0/24"
+      - "192.168.123.0/24"
+      - "192.168.124.0/24"
+      - "192.168.125.0/24"

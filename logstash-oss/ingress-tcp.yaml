@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: logstash-beats
+  namespace: logstash
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: HostSNI(`logstash.services.atlantishq.de`)
+      services:
+        - name: logstash
+          port: 5044
+      middlewares:
+        - name: whitelist
+          namespace: default
+  tls:
+    passthrough: true
