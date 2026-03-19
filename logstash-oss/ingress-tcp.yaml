@@ -5,7 +5,7 @@ metadata:
   namespace: logstash
 spec:
   entryPoints:
-    - websecure
+    - beats
   routes:
     - match: HostSNI(`logstash.services.atlantishq.de`)
       services:
