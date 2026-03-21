@@ -12,6 +12,9 @@ data:
     input {
       beats {
         port => 5044
+        ssl => true
+        ssl_certificate => "/usr/share/logstash/certs/server.crt"
+        ssl_key => "/usr/share/logstash/certs/server.key"
       }
     }
     
