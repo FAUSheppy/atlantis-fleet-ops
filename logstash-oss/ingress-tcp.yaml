@@ -7,12 +7,9 @@ spec:
   entryPoints:
     - beats
   routes:
-    - match: HostSNI(`logstash.services.atlantishq.de`)
+    - match: HostSNI(`logstash.internal.services.atlantishq.de`)
       services:
         - name: logstash
           port: 5044
-      middlewares:
-        - name: whitelist
-          namespace: default
   tls:
     passthrough: true
