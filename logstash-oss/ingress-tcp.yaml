@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - beats
   routes:
-    - match: HostSNI(`logstash.internal.services.atlantishq.de`)
+    - match: HostSNI(`beats.atlantishq.de`)
       services:
         - name: logstash
           port: 5044
