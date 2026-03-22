@@ -33,5 +33,4 @@ spec:
               memory: "1Gi"
       volumes:
         - name: model-cache
-          persistentVolumeClaim:
-            claimName: immich-ml-cache
+          emptyDir: {}
