@@ -4,7 +4,7 @@ metadata:
   name: immich-ml
   namespace: immich
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: immich-ml
@@ -26,7 +26,7 @@ spec:
               mountPath: /cache
           resources:
             limits:
-              cpu: "2"
+              cpu: "4"
               memory: "4Gi"
             requests:
               cpu: "500m"
