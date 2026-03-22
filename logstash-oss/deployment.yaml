@@ -39,6 +39,13 @@ spec:
             - name: logstash-certs
               mountPath: /usr/share/logstash/certs
               readOnly: true
+                    resources:
+          limits:
+            cpu: "2"
+            memory: "4Gi"
+          requests:
+            cpu: "200m"
+            memory: "2Gi"
       volumes:
         - name: config
           configMap:
