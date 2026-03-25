@@ -37,6 +37,8 @@ spec:
                   key: ICINGA_API_PASS
             - name: ICINGA_API_URL
               value: https://influx.atlantishq.de
+            - name: TIME_ZONE
+              value: Europe/Berlin
             - name: ICINGA_WEB_URL
               value: https://icinga.atlantishq.de
             - name: ASYNC_ICINGA_DUMMY_HOST
