@@ -1,0 +1,160 @@
+# =========================
+# Global
+# =========================
+externalURL: https://registry.services.atlantishq.de
+
+harborAdminPassword: ""  # use existingSecret instead
+
+existingSecretAdminPassword: harbor-secrets
+
+# =========================
+# Expose / Ingress
+# =========================
+expose:
+  type: ingress
+
+  tls:
+    enabled: true
+    certSource: secret
+    secret:
+      secretName: harbor-tls
+
+  ingress:
+    className: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+
+    hosts:
+      core: registry.services.atlantishq.de
+
+# =========================
+# External Database
+# =========================
+database:
+  type: external
+
+  internal:
+    enabled: false
+
+  external:
+    host: pgmaster.atlantishq.de
+    port: 5432
+
+    # pulled from secret
+    existingSecret: harbor-db-secret
+    existingSecretKey: DB_PASSWORD
+
+    username: harbor
+
+    coreDatabase: harbor_core
+    notaryServerDatabase: harbor_notary_server
+    notarySignerDatabase: harbor_notary_signer
+
+    sslmode: enabled
+
+# =========================
+# Redis (internal)
+# =========================
+redis:
+  type: internal
+
+# =========================
+# Storage (S3)
+# =========================
+persistence:
+  enabled: true
+
+  persistentVolumeClaim:
+    registry:
+      enabled: false
+    jobservice:
+      enabled: false
+    database:
+      enabled: false
+    redis:
+      enabled: false
+    trivy:
+      enabled: false
+
+  imageChartStorage:
+    type: s3
+
+    s3:
+      region: eu-central-1
+      bucket: atlantis-harbor
+
+      # endpoint (AWS or S3-compatible)
+      regionendpoint: 0KLvWte9lBwcZh1YtOY7
+
+      secure: true
+      v4auth: true
+
+      # credentials from secret
+      existingSecret: harbor-secrets
+      existingSecretKey: S3_ACCESS_KEY
+      existingSecretKeySecret: S3_SECRET_KEY
+
+# =========================
+# Core Components
+# =========================
+core:
+  replicas: 2
+  logLevel: info
+
+jobservice:
+  replicas: 2
+
+registry:
+  replicas: 2
+
+portal:
+  replicas: 2
+
+trivy:
+  enabled: true
+
+# =========================
+# Notary (optional, often disabled)
+# =========================
+notary:
+  enabled: false
+
+# =========================
+# Metrics (optional)
+# =========================
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: false
+
+# =========================
+# Logging
+# =========================
+logLevel: info
+
+# =========================
+# Proxy (optional)
+# =========================
+proxy:
+  httpProxy:
+  httpsProxy:
+  noProxy: 127.0.0.1,localhost,.local,.internal
+
+# =========================
+# Internal TLS (optional)
+# =========================
+internalTLS:
+  enabled: false
+
+# =========================
+# Network policy (optional)
+# =========================
+networkPolicy:
+  enabled: false
+
+# =========================
+# Cache (optional)
+# =========================
+cache:
+  enabled: false
