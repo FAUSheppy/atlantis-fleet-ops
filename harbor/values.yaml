@@ -103,6 +103,7 @@ core:
   logLevel: info
 
 jobservice:
+  jobLogger: database
   replicas: 2
 
 registry:
