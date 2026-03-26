@@ -47,7 +47,7 @@ database:
 
     username: harbor
 
-    coreDatabase: harbor_core
+    coreDatabase: harbor
     notaryServerDatabase: harbor_notary_server
     notarySignerDatabase: harbor_notary_signer
 
