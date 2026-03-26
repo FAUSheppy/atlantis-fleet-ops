@@ -160,3 +160,26 @@ networkPolicy:
 # =========================
 cache:
   enabled: false
+
+authMode: oidc_auth
+oidc:
+  name: keycloak
+  endpoint: https://keycloak.atlantishq.com/realms/master
+  clientId: harbor
+  clientSecret: ""  # must be empty when using existingSecret
+
+  existingSecret: async-icinga-oidc-config
+  existingSecretKey: client-secret
+
+  scope: openid,profile,email
+  verifyCert: true
+
+  autoOnboard: true
+  userClaim: preferred_username
+
+  groupsClaim: groups
+  groupFilter: ""
+
+  adminGroup: harbor-admins
+
+  redirectURL: https://registry.services.atlantishq.de/c/oidc/callback
