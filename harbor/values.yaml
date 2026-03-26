@@ -15,15 +15,15 @@ expose:
 
   tls:
     enabled: true
-    certSource: secret
-    secret:
-      secretName: harbor-tls
+    certSource: auto
 
   ingress:
     className: traefik
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.tls: "true"
+      kubernetes.io/ingress.class: "traefik"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
 
     hosts:
       core: registry.services.atlantishq.de
