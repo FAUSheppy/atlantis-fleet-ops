@@ -51,7 +51,7 @@ database:
     notaryServerDatabase: harbor_notary_server
     notarySignerDatabase: harbor_notary_signer
 
-    sslmode: enabled
+    sslmode: require
 
 # =========================
 # Redis (internal)
