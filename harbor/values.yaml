@@ -86,18 +86,13 @@ persistence:
       bucket: atlantis-harbor
 
       # endpoint (AWS or S3-compatible)
-      regionendpoint: https://fsn1.your-objectstorage.com
+      regionendpoint: fsn1.your-objectstorage.com
 
       secure: true
       v4auth: true
 
-      accesskey: ""
-      secretkey: ""
-
       # credentials from secret
       existingSecret: harbor-secrets
-      existingSecretKey: S3_ACCESS_KEY
-      existingSecretKeySecret: S3_SECRET_KEY
 
 # =========================
 # Core Components
