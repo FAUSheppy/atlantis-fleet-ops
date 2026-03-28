@@ -82,11 +82,11 @@ persistence:
     type: s3
 
     s3:
-      region: eu-central-1
+      region: eu-central
       bucket: atlantis-harbor
 
       # endpoint (AWS or S3-compatible)
-      regionendpoint: fsn1.your-objectstorage.com
+      regionendpoint: hel1.your-objectstorage.com
 
       secure: true
       v4auth: true
