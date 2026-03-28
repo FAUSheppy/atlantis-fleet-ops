@@ -86,7 +86,7 @@ persistence:
       bucket: atlantis-harbor
 
       # endpoint (AWS or S3-compatible)
-      regionendpoint: 0KLvWte9lBwcZh1YtOY7
+      regionendpoint: fsn1.your-objectstorage.com
 
       secure: true
       v4auth: true
