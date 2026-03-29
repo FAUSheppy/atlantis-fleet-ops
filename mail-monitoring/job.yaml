@@ -1,0 +1,59 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: smtp-imap-monitoring
+  namespace: moinitoring
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: smtp-imap-monitor
+              image: registry.service.atlantishq.de/atlantishq/smtp_imap_monitoring
+
+              volumeMounts:
+                - name: config-volume
+                  mountPath: /app/config.yaml
+                  subPath: config.yaml
+
+              env:
+                - name: smtp_sender_pass
+                  valueFrom:
+                    secretKeyRef:
+                      name: mail-monitoring-secret
+                      key: smtp_sender_pass
+
+                - name: smtp_sender_server
+                  valueFrom:
+                    secretKeyRef:
+                      name: mail-monitoring-secret
+                      key: smtp_sender_server
+
+                - name: smtp_sender_server_port
+                  valueFrom:
+                    secretKeyRef:
+                      name: mail-monitoring-secret
+                      key: smtp_sender_server_port
+
+                - name: smtp_sender_email
+                  valueFrom:
+                    secretKeyRef:
+                      name: mail-monitoring-secret
+                      key: smtp_sender_email
+
+                - name: monitoring_server
+                  valueFrom:
+                    secretKeyRef:
+                      name: mail-monitoring-secret
+                      key: monitoring_server
+
+          volumes:
+            - name: config-volume
+              secret:
+                secretName: mail-monitoring-secret
+                items:
+                  - key: config.yaml
+                    path: config.yaml
