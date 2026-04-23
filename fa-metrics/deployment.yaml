@@ -22,6 +22,8 @@ spec:
       labels:
         app: fa-metrics
     spec:
+      nodeSelector:
+        location: helsinki
       containers:
         - name: fa-metrics-speech
           image: harbor-registry.atlantishq.de/atlantishq/fa-metrics-speech:latest
