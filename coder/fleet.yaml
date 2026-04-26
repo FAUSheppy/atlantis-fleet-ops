@@ -1,5 +1,4 @@
 defaultNamespace: coder
-
 helm:
   repo: https://helm.coder.com
   chart: coder

@@ -55,7 +55,6 @@ templates:
           command:
             - /bin/sh
             - -c
-
           args:
             - |
               apt-get update && \
@@ -64,7 +63,6 @@ templates:
                 --bind-addr 0.0.0.0:8080 \
                 --auth none \
                 --enable-proposed-api=genuitecllc.codetogether
-
           ports:
             - containerPort: 8080
 
