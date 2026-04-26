@@ -19,7 +19,6 @@ keycloak:
   address: keycloak.atlantishq.de
   realm: master
 
-# Override this section per bundle
 services:
   atlantis-hub:
     port: 80
