@@ -11,23 +11,23 @@ coder:
     CODER_OIDC_USERNAME_FIELD: "preferred_username"
     CODER_OIDC_EMAIL_FIELD: "email"
 
-    extraEnv:
-        - name: CODER_OIDC_CLIENT_ID:
-          valueFrom:
-            secretKeyRef:
-              name: coder-oidc-config
-              key: client-id
-        - name: CODER_OIDC_CLIENT_SECRET:
-          valueFrom:
-            secretKeyRef:
-              name: coder-oidc-config
-              key: client-secret
-        - name: CODER_PG_CONNECTION_URL
-          valueFrom:
-            secretKeyRef:
-              # postgres://coder:password@postgres:5432/coder?sslmode=disable
-              name: coder-db-secret
-              key: database-url-alt
+  extraEnv:
+      - name: CODER_OIDC_CLIENT_ID:
+        valueFrom:
+          secretKeyRef:
+            name: coder-oidc-config
+            key: client-id
+      - name: CODER_OIDC_CLIENT_SECRET:
+        valueFrom:
+          secretKeyRef:
+            name: coder-oidc-config
+            key: client-secret
+      - name: CODER_PG_CONNECTION_URL
+        valueFrom:
+          secretKeyRef:
+            # postgres://coder:password@postgres:5432/coder?sslmode=disable
+            name: coder-db-secret
+            key: database-url-alt
 
   service:
     type: ClusterIP
