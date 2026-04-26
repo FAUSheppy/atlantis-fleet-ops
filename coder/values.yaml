@@ -21,21 +21,24 @@ coder:
         secretKeyRef:
           name: coder-oidc-config
           key: client-secret
+    - name: CODER_PG_CONNECTION_URL
+      valueFrom:
+        secretKeyRef:
+          # postgres://coder:password@postgres:5432/coder?sslmode=disable
+          name: coder-db-secret
+          key: database-url-alt
 
   service:
     type: ClusterIP
 
 ingress:
-  enabled: true
-  ingressClassName: traefik
-
+  enable: true
+  className: traefik
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-
   hosts: coder.services.atlantishq.de
-
   tls:
-    enabled: true
+    enable: true
     hostSecretName: coder-tls
 
 templates:
