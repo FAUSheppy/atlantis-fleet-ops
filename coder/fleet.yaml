@@ -1,0 +1,8 @@
+defaultNamespace: coder
+
+helm:
+  repo: https://helm.coder.com
+  chart: coder
+  releaseName: coder
+  valuesFiles:
+    - values.yaml

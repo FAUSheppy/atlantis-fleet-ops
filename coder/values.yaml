@@ -1,0 +1,90 @@
+coder:
+  env:
+    CODER_ACCESS_URL: "https://coder.services.atlantishq.de"
+
+    # OIDC
+    CODER_OIDC_ISSUER_URL: "https://keycloak.atlantishq.de/realms/master"
+    CODER_OIDC_CLIENT_ID: "coder"
+    CODER_OIDC_CLIENT_SECRET: ""
+
+    CODER_OIDC_SCOPES: "openid profile email"
+    CODER_OIDC_USERNAME_FIELD: "preferred_username"
+    CODER_OIDC_EMAIL_FIELD: "email"
+
+    CODER_OIDC_CLIENT_ID:
+      valueFrom:
+        secretKeyRef:
+          name: coder-oidc-config
+          key: client-id
+    CODER_OIDC_CLIENT_SECRET:
+      valueFrom:
+        secretKeyRef:
+          name: coder-oidc-config
+          key: client-secret
+
+  service:
+    type: ClusterIP
+
+ingress:
+  enabled: true
+  ingressClassName: traefik
+
+  hosts:
+    - host: coder.services.atlantishq.de
+      paths:
+        - path: /
+          pathType: Prefix
+
+  tls:
+    - hosts:
+        - coder.services.atlantishq.de
+      secretName: coder-tls
+
+templates:
+  default:
+    spec:
+      containers:
+        - name: coder
+          image: codercom/code-server:latest
+          imagePullPolicy: IfNotPresent
+
+          command:
+            - /bin/sh
+            - -c
+
+          args:
+            - |
+              apt-get update && \
+              apt-get install -y openjdk-17-jdk git && \
+              code-server \
+                --bind-addr 0.0.0.0:8080 \
+                --auth none \
+                --enable-proposed-api=genuitecllc.codetogether
+
+          ports:
+            - containerPort: 8080
+
+          volumeMounts:
+            - name: data
+              mountPath: /home/coder
+
+      # Init container for extensions
+      initContainers:
+        - name: code-server-extensions
+          image: codercom/code-server:latest
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - |
+              code-server --install-extension redhat.java && \
+              code-server --install-extension vscjava.vscode-java-pack && \
+              code-server --install-extension eamodio.gitlens && \
+              code-server --install-extension genuitecllc.codetogether
+          volumeMounts:
+            - name: data
+              mountPath: /home/coder
+
+      volumes:
+        - name: data
+          emptyDir: {}
