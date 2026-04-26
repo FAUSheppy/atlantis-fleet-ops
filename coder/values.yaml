@@ -44,48 +44,48 @@ coder:
       secretName: coder-tls-secret
   
   templates:
-  default:
-    spec:
-      containers:
-        - name: coder
-          image: codercom/code-server:latest
-          imagePullPolicy: IfNotPresent
+    default:
+      spec:
+        containers:
+          - name: coder
+            image: codercom/code-server:latest
+            imagePullPolicy: IfNotPresent
 
-          command:
-            - /bin/sh
-            - -c
-          args:
-            - |
-              apt-get update && \
-              apt-get install -y openjdk-17-jdk git && \
-              code-server \
-                --bind-addr 0.0.0.0:8080 \
-                --auth none \
-                --enable-proposed-api=genuitecllc.codetogether
-          ports:
-            - containerPort: 8080
+            command:
+              - /bin/sh
+              - -c
+            args:
+              - |
+                apt-get update && \
+                apt-get install -y openjdk-17-jdk git && \
+                code-server \
+                  --bind-addr 0.0.0.0:8080 \
+                  --auth none \
+                  --enable-proposed-api=genuitecllc.codetogether
+            ports:
+              - containerPort: 8080
 
-          volumeMounts:
-            - name: data
-              mountPath: /home/coder
+            volumeMounts:
+              - name: data
+                mountPath: /home/coder
 
-      # Init container for extensions
-      initContainers:
-        - name: code-server-extensions
-          image: codercom/code-server:latest
-          command:
-            - /bin/sh
-            - -c
-          args:
-            - |
-              code-server --install-extension redhat.java && \
-              code-server --install-extension vscjava.vscode-java-pack && \
-              code-server --install-extension eamodio.gitlens && \
-              code-server --install-extension genuitecllc.codetogether
-          volumeMounts:
-            - name: data
-              mountPath: /home/coder
+        # Init container for extensions
+        initContainers:
+          - name: code-server-extensions
+            image: codercom/code-server:latest
+            command:
+              - /bin/sh
+              - -c
+            args:
+              - |
+                code-server --install-extension redhat.java && \
+                code-server --install-extension vscjava.vscode-java-pack && \
+                code-server --install-extension eamodio.gitlens && \
+                code-server --install-extension genuitecllc.codetogether
+            volumeMounts:
+              - name: data
+                mountPath: /home/coder
 
-      volumes:
-        - name: data
-          emptyDir: {}
+        volumes:
+          - name: data
+            emptyDir: {}
