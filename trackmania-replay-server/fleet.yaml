@@ -1,3 +1,1 @@
 namespace: trackmania
-bases:
-  - ../bases/oauth2-proxy

@@ -1,3 +1,1 @@
 namespace: yamtrack
-bases:
-  - ../bases/oauth2-proxy

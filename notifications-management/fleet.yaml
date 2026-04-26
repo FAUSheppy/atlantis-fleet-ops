@@ -1,3 +1,1 @@
 namespace: notifications
-bases:
-  - ../bases/oauth2-proxy

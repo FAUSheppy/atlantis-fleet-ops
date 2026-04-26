@@ -1,3 +1,1 @@
 namespace: async-icinga
-bases:
-  - ../bases/oauth2-proxy
