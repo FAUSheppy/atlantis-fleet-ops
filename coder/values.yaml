@@ -29,16 +29,14 @@ ingress:
   enabled: true
   ingressClassName: traefik
 
-  hosts:
-    - host: coder.services.atlantishq.de
-      paths:
-        - path: /
-          pathType: Prefix
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+
+  hosts: coder.services.atlantishq.de
 
   tls:
-    - hosts:
-        - coder.services.atlantishq.de
-      secretName: coder-tls
+    enabled: true
+    hostSecretName: coder-tls
 
 templates:
   default:
