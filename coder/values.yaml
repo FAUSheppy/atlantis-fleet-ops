@@ -32,16 +32,17 @@ coder:
   service:
     type: ClusterIP
 
-ingress:
-  enable: true
-  className: traefik
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-  hosts: coder.services.atlantishq.de
-  tls:
+  ingress:
     enable: true
-
-templates:
+    className: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    hosts: coder.services.atlantishq.de
+    tls:
+      enable: true
+    secretName: coder-tls-secret
+  
+  templates:
   default:
     spec:
       containers:
