@@ -15,7 +15,6 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
     traefik.ingress.kubernetes.io/redirect-entry-point: "https"
     traefik.ingress.kubernetes.io/redirect-permanent: "true"
-    random/test: true
 spec:
   ingressClassName: traefik
   tls:
