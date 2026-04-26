@@ -32,10 +32,6 @@ coder:
   service:
     type: ClusterIP
 
-coderd:
-  tls:
-    hostSecretName: coder-tls
-
 ingress:
   enable: true
   className: traefik
