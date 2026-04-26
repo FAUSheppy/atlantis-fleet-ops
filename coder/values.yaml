@@ -31,6 +31,10 @@ coder:
   service:
     type: ClusterIP
 
+coderd:
+  tls:
+    hostSecretName: coder-tls
+
 ingress:
   enable: true
   className: traefik
@@ -39,7 +43,6 @@ ingress:
   hosts: coder.services.atlantishq.de
   tls:
     enable: true
-    hostSecretName: coder-tls
 
 templates:
   default:
