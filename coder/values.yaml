@@ -37,10 +37,11 @@ coder:
     className: traefik
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    hosts: coder.services.atlantishq.de
+    hosts:
+        - coder.services.atlantishq.de
     tls:
       enable: true
-    secretName: coder-tls-secret
+      secretName: coder-tls-secret
   
   templates:
   default:
