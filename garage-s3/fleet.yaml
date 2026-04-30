@@ -1,9 +1,9 @@
 defaultNamespace: garage-s3
 
 helm:
-  repo: https://garagehq.github.io/garage-helm-charts/
+  repo: https://git.deuxfleurs.fr/Deuxfleurs/garage
   chart: garage
-  version: 0.3.0
+  version: 0.7.1
   releaseName: garage
 
   valuesFiles:
