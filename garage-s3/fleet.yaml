@@ -1,8 +1,7 @@
 defaultNamespace: garage-s3
 
 helm:
-  chart: garage/scripts/helm
-  repo: https://git.deuxfleurs.fr/Deuxfleurs/garage
+  chart: https://git.deuxfleurs.fr/Deuxfleurs/garage//scripts/helm/garage
   releaseName: garage
   valuesFiles:
     - values.yaml
