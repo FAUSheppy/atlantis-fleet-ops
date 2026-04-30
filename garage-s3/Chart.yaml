@@ -1,0 +1,9 @@
+repositories:
+  - name: garage
+    url: https://git.deuxfleurs.fr/Deuxfleurs/garage.git
+
+releases:
+  - name: garage
+    chart: ./scripts/helm/garage
+    values:
+      - values.yaml
