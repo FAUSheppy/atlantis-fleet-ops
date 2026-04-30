@@ -1,0 +1,10 @@
+defaultNamespace: garage-s3
+
+helm:
+  repo: https://garagehq.github.io/garage-helm-charts/
+  chart: garage
+  version: 0.3.0
+  releaseName: garage
+
+  valuesFiles:
+    - values.yaml

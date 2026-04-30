@@ -1,0 +1,46 @@
+replicaCount: 1
+
+garage:
+  rpcSecret: ""
+  adminToken: ""
+
+extraEnv:
+  - name: GARAGE_RPC_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: garage-secrets
+        key: GARAGE_RPC_SECRET
+
+  - name: GARAGE_ADMIN_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: garage-secrets
+        key: GARAGE_ADMIN_TOKEN
+
+persistence:
+  meta:
+    size: 20Gi
+    storageClass: longhorn
+  data:
+    size: 100Mi
+    storageClass: longhorn
+
+ingress:
+  s3:
+    api:
+        enabled: true
+        className: traefik
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          cert-manager.io/cluster-issuer: letsencrypt-prod
+          traefik.ingress.kubernetes.io/router.tls: "true"
+    hosts:
+      - host: s3.services.atlantishq.de
+        paths:
+          - path: /
+            pathType: Prefix
+
+    tls:
+      - secretName: garage-tls
+        hosts:
+          - s3.services.atlantishq.de
