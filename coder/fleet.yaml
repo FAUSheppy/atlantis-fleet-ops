@@ -1,9 +1,0 @@
-defaultNamespace: coder
-helm:
-  name: coder
-  repo: https://helm.coder.com/v2
-  chart: coder
-  version: 2.29.5
-  releaseName: coder
-  valuesFiles:
-    - values.yaml
