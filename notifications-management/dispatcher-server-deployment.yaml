@@ -60,6 +60,15 @@ spec:
               mountPath: /app/substitutions
               readOnly: true
 
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 60
+            timeoutSeconds: 5
+            failureThreshold: 3
+
       volumes:
         - name: substitutions
           configMap:
