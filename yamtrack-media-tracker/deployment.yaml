@@ -80,7 +80,10 @@ spec:
             - name: DB_SSL_CERT_MODE
               value: disable
             - name: DB_HOST
-              value: "135.181.80.154"
+              valueFrom:
+                secretKeyRef:
+                  name: yamtrack-k3s-db-secret
+                  key: db-host
             - name: DB_PORT
               value: "5432"
       volumes:

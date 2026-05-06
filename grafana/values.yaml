@@ -5,12 +5,15 @@ persistence:
 
 env:
   GF_DATABASE_TYPE: postgres
-  GF_DATABASE_HOST: 135.181.80.154:5432
   GF_SECURITY_ADMIN_USER: admin
   GF_DATABASE_SSL_MODE: require
   GF_DATABASE_SKIP_ADVISORY_LOCKS: true
 
 envValueFrom:
+  GF_DATABASE_HOST:
+    secretKeyRef:
+      name: grafana-k3s-db-secret
+      key: db-host
   GF_DATABASE_NAME:
     secretKeyRef:
       name: grafana-k3s-db-secret
