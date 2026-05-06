@@ -39,7 +39,7 @@ database:
     enabled: false
 
   external:
-    host: pgmaster.atlantishq.de
+    host: postgres.atlantishq.de
     port: 5432
 
     # pulled from secret
