@@ -5,7 +5,7 @@ metadata:
   namespace: docspell
 spec:
   selector:
-    app: docspell-restserver
+    app: docspell
   ports:
     - port: 80
       targetPort: 7880
