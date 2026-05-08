@@ -16,6 +16,8 @@ spec:
 
         - name: restserver
           image: ghcr.io/docspell/restserver:latest
+          args:
+            - /opt/docspell.conf
           ports:
             - containerPort: 7880
           env:
