@@ -46,8 +46,10 @@ data:
             authorize-url = "https://keycloak.atlantishq.de/auth/realms/master/protocol/openid-connect/auth",
             token-url = "https://keycloak.atlantishq.de/auth/realms/master/protocol/openid-connect/token",
             user-url = "https://keycloak.atlantishq.de/auth/realms/master/protocol/openid-connect/userinfo",
+            sign-key = ""
+            sig-algo = ""
          }
-         collective-key = "groups",
+         collective-key = "lookup:groups",
          user-key = "preferred_username"
 
         }
