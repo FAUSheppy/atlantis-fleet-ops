@@ -46,9 +46,9 @@ data:
             token-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token"
             user-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/userinfo"
             sign-key = """"
-    -----BEGIN PUBLIC KEY-----
-    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQE...
-    -----END PUBLIC KEY-----
+    -----BEGIN CERTIFICATE-----                                                   
+    MIICmzCCAYMCBgGNXNpYjzANBgkqhkiG9w0BAQsFADARMQ8wDQYDVQQDDAZtYXN0ZXIwHhcNMjQwMTMxMDAwODQ5WhcNMzQwMTMxMDAxMDI5WjARMQ8wDQYDVQQDDAZtYXN0ZXIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCToKsmMLkwmq/9Tvvhn8xIrDAHrARYT7v/iv9pjFUrcSUshaAIquej5n74/7wAYFnoRN1/5SEslPpuLCyUiTPRWPnHk6pzmYOM4ry1wGMEuGEdRNSYUfQmmo/NmLH1zKcJ+WU8A0c7oSHQjnNSOurT+xtsqVKfQam4ZCev4cnAri+MfBXCaayi6TckcjAsWrJbZsNvkelv1WjFNLggTiNL4EMmXjgjEMcH0Drx7e79D2ocwT4wSwC+dnY3ELu9/5cNGK00ieYabOJ/flDHiqDLNraO0D1BSaCV/zncw3cHDA60Nl3XnJ6UuqKRQLhJZKNn6Z3q2WZEKTCCT+/145idAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAGZZJe6kxcMNJFacgz4uKG9WAL+1IjDt/Ptsv8OXvB1+u0CS6JlqQDsTBU+Wpt6RXMG72nepkkpdwgXwSGVOJFrQh0Da5BJUEwYv7gZZXP5MeQVzUqjUPu7M8ZVyUba9ezDruBDmNk+tkSEFX6g1SXXuh3pusBk09jAoFrxyNk/M+9MU6PA3tOhYQxyNjnAnLTMehKVkgDLvUvuH2cxOun0q4C6F73a0DSlcI7fEytftojG8FKFxHXmPVxcGx6m2KzzlqcSS68h7o36ozZDhbFTxEsyjcldW85ea01JWDF7uKMMGq+XTtubPLY9BrT2Dv252npvIaX3HRaYAcABHKuQ=
+    -----END CERTIFICATE-----
     """"
             sig-algo = "RS256"
           }
