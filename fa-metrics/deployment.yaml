@@ -23,7 +23,7 @@ spec:
         app: fa-metrics
     spec:
       nodeSelector:
-        location: helsinki
+        location: ngb
       containers:
         - name: fa-metrics-speech
           image: harbor-registry.atlantishq.de/atlantishq/fa-metrics-speech:latest
