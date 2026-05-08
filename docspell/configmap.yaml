@@ -48,7 +48,7 @@ data:
             sign-key = ""
             sig-algo = "RS256"
           }
-          collective-key = "lookup:groups"
+          collective-key = "lookup:preferred_username"
           user-key = "preferred_username"
         }
       ]
