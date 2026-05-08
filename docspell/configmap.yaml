@@ -41,7 +41,7 @@ data:
             provider-id = "keycloak"
             client-id = "$OIDC_CLIENT_ID"
             client-secret = "$OIDC_CLIENT_SECRET"
-            scope = "openid profile email"
+            scope = "openid profile email groups"
             authorize-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/auth"
             token-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token"
             user-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/userinfo"
