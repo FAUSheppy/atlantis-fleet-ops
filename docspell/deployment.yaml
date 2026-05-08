@@ -19,6 +19,8 @@ spec:
           ports:
             - containerPort: 7880
           env:
+            - name: DOCSPELL_SERVER_BIND_ADDRESS
+              value: "0.0.0.0"
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
