@@ -12,14 +12,15 @@ spec:
       labels:
         app: docspell
     spec:
-      containers:
-
-        - name: restserver
-          image: ghcr.io/docspell/restserver:latest
-          args:
-            - /opt/docspell.conf
-          ports:
-            - containerPort: 7880
+      initContainers:
+        - name: render-config
+          image: alpine:3.19
+          command:
+            - /bin/sh
+            - -c
+            - |
+              apk add --no-cache gettext
+              envsubst < /config/application.conf.tpl > /work/application.conf
           env:
             - name: DB_USER
               valueFrom:
@@ -66,19 +67,32 @@ spec:
                   name: docspell-secrets
                   key: S3_ACCESS_KEY
           volumeMounts:
-            - name: config
+            - name: config-template
+              mountPath: /config
+            - name: rendered-config
+              mountPath: /work
+      containers:
+
+        - name: restserver
+          image: ghcr.io/docspell/restserver:latest
+          args:
+            - /opt/docspell.conf
+          ports:
+            - containerPort: 7880
+          volumeMounts:
+            - name: rendered-config
               mountPath: /opt/docspell.conf
               subPath: application.conf
-
         - name: joex
           image: ghcr.io/docspell/joex:latest
           envFrom:
             - secretRef:
                 name: docspell-secrets
           volumeMounts:
-            - name: config
-              mountPath: /opt/docspell/conf/application.conf
+            - name: rendered-config
+              mountPath: /opt/docspell.conf
               subPath: application.conf
+
 
         #- name: consumedir
         #  image: ghcr.io/docspell/consumedir:latest
@@ -94,3 +108,5 @@ spec:
         - name: config
           configMap:
             name: docspell-config
+        - name: rendered-config
+          emptyDir: {}
