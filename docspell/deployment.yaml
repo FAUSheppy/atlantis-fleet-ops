@@ -4,7 +4,6 @@ metadata:
   name: docspell
   namespace: docspell
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: docspell
@@ -79,15 +78,15 @@ spec:
               mountPath: /opt/docspell/conf/application.conf
               subPath: application.conf
 
-        - name: consumedir
-          image: ghcr.io/docspell/consumedir:latest
-          envFrom:
-            - secretRef:
-                name: docspell-secrets
-          volumeMounts:
-            - name: config
-              mountPath: /opt/docspell/conf/application.conf
-              subPath: application.conf
+        #- name: consumedir
+        #  image: ghcr.io/docspell/consumedir:latest
+        #  envFrom:
+        #    - secretRef:
+        #        name: docspell-secrets
+        #  volumeMounts:
+        #    - name: config
+        #      mountPath: /opt/docspell/conf/application.conf
+        #      subPath: application.conf
 
       volumes:
         - name: config
