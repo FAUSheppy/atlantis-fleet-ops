@@ -43,9 +43,9 @@ data:
             client-id = "${OIDC_CLIENT_ID}"
             client-secret = ${OIDC_CLIENT_SECRET}
             scope = "openid profile email"
-            authorize-url = "https://keycloak.atlantishq.de/auth/realms/master/protocol/openid-connect/auth",
-            token-url = "https://keycloak.atlantishq.de/auth/realms/master/protocol/openid-connect/token",
-            user-url = "https://keycloak.atlantishq.de/auth/realms/master/protocol/openid-connect/userinfo",
+            authorize-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/auth",
+            token-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token",
+            user-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/userinfo",
             sign-key = """"
     -----BEGIN PUBLIC KEY-----
     MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQE...
