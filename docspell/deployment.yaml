@@ -58,12 +58,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: docspell-secrets
-                  key: TODO
+                  key: S3_SECRET_KEY
             - name: S3_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: docspell-secrets
-                  key: TODO
+                  key: S3_ACCESS_KEY
           volumeMounts:
             - name: config
               mountPath: /opt/docspell/conf/application.conf
