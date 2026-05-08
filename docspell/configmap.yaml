@@ -4,7 +4,7 @@ metadata:
   name: docspell-config
   namespace: docspell
 data:
-  application.conf: |
+  application.conf.tpl: |
     docspell.server {
 
       app-name = "Atlantis Documents"
@@ -12,50 +12,48 @@ data:
       base-url = "https://documents.services.atlantishq.de"
 
       jdbc {
-        url = "jdbc:postgresql://${DB_HOST]:5432/${DB_NAME}"
-        user = "${DB_USER}"
-        password = ${DB_PASSWORD}
+        url = "jdbc:postgresql://$DB_HOST:5432/$DB_NAME"
+        user = "$DB_USER"
+        password = "$DB_PASSWORD"
       }
 
       files {
         default-store = "s3"
         stores {
-            s3 {
-              enabled = true
-              type = "s3"
-              endpoint = "${S3_ENDPOINT}"
-              bucket = "${S3_BUCKET}"
-              access-key = "${S3_ACCESS_KEY}"
-              secret-key = ${S3_SECRET_KEY}
-              region = "${S3_REGION}"
-              path-style-access = true
-            }
+          s3 {
+            enabled = true
+            type = "s3"
+            endpoint = "$S3_ENDPOINT"
+            bucket = "$S3_BUCKET"
+            access-key = "$S3_ACCESS_KEY"
+            secret-key = "$S3_SECRET_KEY"
+            region = "$S3_REGION"
+            path-style-access = true
+          }
         }
       }
 
-     openid = [
-
-       {
-         enabled = true
-         display = "AtlantisHQ Accounts"
-         provider = {
+      openid = [
+        {
+          enabled = true
+          display = "AtlantisHQ Accounts"
+          provider = {
             provider-id = "keycloak"
-            client-id = "${OIDC_CLIENT_ID}"
-            client-secret = ${OIDC_CLIENT_SECRET}
+            client-id = "$OIDC_CLIENT_ID"
+            client-secret = "$OIDC_CLIENT_SECRET"
             scope = "openid profile email"
-            authorize-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/auth",
-            token-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token",
-            user-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/userinfo",
+            authorize-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/auth"
+            token-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token"
+            user-url = "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/userinfo"
             sign-key = """"
     -----BEGIN PUBLIC KEY-----
     MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQE...
     -----END PUBLIC KEY-----
     """"
             sig-algo = "RS256"
-         }
-         collective-key = "lookup:groups",
-         user-key = "preferred_username"
-
+          }
+          collective-key = "lookup:groups"
+          user-key = "preferred_username"
         }
       ]
 
