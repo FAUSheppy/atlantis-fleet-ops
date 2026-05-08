@@ -5,7 +5,7 @@ metadata:
   namespace: docspell
 data:
   application.conf: |
-    docspell-server {
+    docspell.server {
 
       app-name = "Atlantis Documents"
       oidc-auto-redirect = true
