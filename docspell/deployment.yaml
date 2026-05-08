@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docspell
+  namespace: docspell
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docspell
+  template:
+    metadata:
+      labels:
+        app: docspell
+    spec:
+      containers:
+
+        - name: restserver
+          image: ghcr.io/docspell/restserver:latest
+          ports:
+            - containerPort: 7880
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: docspell-secrets
+                  key: DB_PASSWORD
+            - name: OIDC_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: docspell-oidc-config
+                  key: client-id
+            - name: OIDC_ISSUER_URL
+              value: https://keycloak.atlantishq.de/realms/master
+            - name: OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: docspell-oidc-config
+                  key: client-secret
+            - name: S3_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: docspell-secrets
+                  key: S3_SECRET_KEY
+          volumeMounts:
+            - name: config
+              mountPath: /opt/docspell/conf/application.conf
+              subPath: application.conf
+
+        - name: joex
+          image: ghcr.io/docspell/joex:latest
+          envFrom:
+            - secretRef:
+                name: docspell-secrets
+          volumeMounts:
+            - name: config
+              mountPath: /opt/docspell/conf/application.conf
+              subPath: application.conf
+
+        - name: consumedir
+          image: ghcr.io/docspell/consumedir:latest
+          envFrom:
+            - secretRef:
+                name: docspell-secrets
+          volumeMounts:
+            - name: config
+              mountPath: /opt/docspell/conf/application.conf
+              subPath: application.conf
+
+      volumes:
+        - name: config
+          configMap:
+            name: docspell-config
