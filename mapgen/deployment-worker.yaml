@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neroxis-mapgen-worker
+  namespace: mapgen
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: neroxis-mapgen-worker
+  template:
+    metadata:
+      labels:
+        app: neroxis-mapgen-worker
+    spec:
+      containers:
+        - name: worker
+          image: harbor-registry.atlantishq.de/atlantishq/neroxis-mapgen-worker:latest
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: mapgen-db-secret
+            - secretRef:
+                name: mapgen-secrets
