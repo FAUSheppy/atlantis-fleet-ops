@@ -20,7 +20,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: mapgen-frontend
+                name: mapgen
                 port:
                   number: 80
   tls:
