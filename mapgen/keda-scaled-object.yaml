@@ -1,0 +1,31 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: neroxis-mapgen-worker
+spec:
+  scaleTargetRef:
+    name: neroxis-mapgen-worker
+
+  minReplicaCount: 3
+  maxReplicaCount: 8
+
+  pollingInterval: 5
+
+  triggers:
+  - type: postgresql
+    metadata:
+      host: postgres.atlantishq.de
+      port: "5432"
+      dbName: mapgen
+      userName: mapgen
+      sslmode: require
+
+      query: |
+        SELECT COUNT(*)
+        FROM request_queue
+        WHERE finished = FALSE
+
+      targetQueryValue: "100"
+
+    authenticationRef:
+      name: postgres-auth

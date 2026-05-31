@@ -1,0 +1,9 @@
+piVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: postgres-auth
+spec:
+  secretTargetRef:
+    - parameter: password
+      name: mapgen-db-secret
+      key: password
