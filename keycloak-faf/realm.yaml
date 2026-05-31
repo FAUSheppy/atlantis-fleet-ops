@@ -21,6 +21,42 @@ data:
         }
       ],
 
+      "browserFlow": "browser-with-idp",
+      "authenticatorConfig": [
+        {
+          "alias": "idp-redirect",
+          "config": {
+            "defaultProvider": "Atlantis-Accounts"
+          }
+        }
+      ],
+      "authenticationFlows": [
+        {
+          "alias": "browser-with-idp",
+          "providerId": "basic-flow",
+          "topLevel": true,
+          "builtIn": false,
+          "authenticationExecutions": [
+            {
+              "authenticator": "auth-cookie",
+              "requirement": "ALTERNATIVE",
+              "priority": 10
+            },
+            {
+              "authenticator": "identity-provider-redirector",
+              "requirement": "ALTERNATIVE",
+              "priority": 20,
+              "authenticatorConfig": "idp-redirect"
+            },
+            {
+              "authenticator": "auth-username-password-form",
+              "requirement": "ALTERNATIVE",
+              "priority": 30
+            }
+          ]
+        }
+      ]
+
       "identityProviders": [
          {   
             "alias": "Atlantis-Accounts",
