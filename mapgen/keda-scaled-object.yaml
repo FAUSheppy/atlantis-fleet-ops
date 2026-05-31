@@ -14,10 +14,10 @@ spec:
   triggers:
   - type: postgresql
     metadata:
+      userName: mapgen
       host: postgres.atlantishq.de
       port: "5432"
       dbName: mapgen
-      userName: mapgen
       sslmode: require
 
       query: |
@@ -25,7 +25,7 @@ spec:
         FROM request_queue
         WHERE finished = FALSE
 
-      targetQueryValue: "20"
+      targetQueryValue: "10"
 
     authenticationRef:
       name: postgres-auth
