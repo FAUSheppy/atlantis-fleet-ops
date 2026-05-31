@@ -12,6 +12,29 @@ spec:
       labels:
         app: keycloak
     spec:
+      initContainers:
+      - name: render-realm
+        image: alpine
+        command:
+          - sh
+          - -c
+          - |
+            apk add gettext
+            envsubst < /templates/realm.json > /generated/realm.json
+        volumeMounts:
+          - name: realm-import
+            mountPath: /templates/realm.json
+            readOnly: true
+          - name: generated-config
+            mountPath: /generated
+
+        env:
+          - name: OIDC_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: faf-auth-proxy-oidc-config
+                key: client-secret
+
       containers:
       - name: keycloak
         image: quay.io/keycloak/keycloak:26.3.3
@@ -21,26 +44,8 @@ spec:
           - --import-realm
 
         env:
-          #- name: KC_DB
-          #  value: postgres
-
           - name: KC_HTTP_ENABLED
             value: "true"
-
-          #- name: KC_DB_URL
-          #  value: jdbc:postgresql://postgres-rw.database.svc.cluster.local:5432/keycloak
-
-          #- name: KC_DB_USERNAME
-          #  valueFrom:
-          #    secretKeyRef:
-          #      name: keycloak-db
-          #      key: username
-
-          #- name: KC_DB_PASSWORD
-          #  valueFrom:
-          #    secretKeyRef:
-          #      name: keycloak-db
-          #      key: password
 
           - name: KC_BOOTSTRAP_ADMIN_USERNAME
             value: admin
@@ -58,11 +63,12 @@ spec:
             value: xforwarded
 
         volumeMounts:
-          - name: realm-import
+          - name: generated-config
             mountPath: /opt/keycloak/data/import
-            readOnly: true
 
       volumes:
         - name: realm-import
           configMap:
             name: keycloak-realm-import
+        - name: generated-config
+          emptyDir: {}
