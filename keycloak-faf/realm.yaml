@@ -16,7 +16,7 @@ data:
           "publicClient": false,
           "secret": "FCj3ZDmg85Z1S8Hfn1WVOV2Ky4yUgWvU",
           "redirectUris": [
-            "https://fa-metrics.rancher.katzencluster.atlantishq.de/"
+            "https://fa-metrics.rancher.katzencluster.atlantishq.de/*"
           ]
         }
       ],
