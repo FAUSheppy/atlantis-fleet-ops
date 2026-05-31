@@ -21,7 +21,7 @@ spec:
       sslmode: require
 
       query: |
-        SELECT COUNT(*)
+        SELECT GREATEST(COUNT(*), 1)
         FROM request_queue
         WHERE finished = FALSE
 
