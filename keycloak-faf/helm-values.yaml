@@ -7,8 +7,7 @@ extraVolumeMounts:
   - name: realm-import
     mountPath: /opt/keycloak/data/import
 
-#command:
-#  - /opt/keycloak/bin/kc.sh
+proxyHeaders: xforwarded
 
 args:
   - start
