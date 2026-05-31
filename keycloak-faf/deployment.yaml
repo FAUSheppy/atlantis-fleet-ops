@@ -24,6 +24,9 @@ spec:
           #- name: KC_DB
           #  value: postgres
 
+          - name: KC_HTTP_ENABLED
+            value: "true"
+
           #- name: KC_DB_URL
           #  value: jdbc:postgresql://postgres-rw.database.svc.cluster.local:5432/keycloak
 
