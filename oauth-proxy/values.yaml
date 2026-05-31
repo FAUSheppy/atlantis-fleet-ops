@@ -48,6 +48,14 @@ services:
     secret_name: fa-metrics-oidc-config
     address: fa-metrics.rancher.katzencluster.atlantishq.de
     namespace: fa-metrics
+    oauth2Proxy:
+      whitelistDomains: "faf-auth-proxy.services.atlantishq.de"
+      defaults:
+        logoutUrl: "https://faf-auth-proxy.services.atlantishq.de/realms/master/protocol/openid-connect/logout?id_token_hint={id_token}"
+    keycloak:
+      issuerUrl: https://faf-auth-proxy.services.atlantishq.de/realms/atlantis
+      address: faf-auth-proxy.services.atlantishq.de
+      realm: atlantis
   soundlib:
     port: 80
     skips:

@@ -1,5 +1,6 @@
 {{- range $name, $svc := .Values.services }}
 {{- $oauth2Proxy := merge (deepCopy $.Values.oauth2Proxy) ($svc.oauth2Proxy | default dict) }}
+{{- $keycloak := merge (deepCopy $keycloak. ($svc.keycloak | default dict) }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -43,7 +44,7 @@ spec:
             - name: OAUTH2_PROXY_PROVIDER_DISPLAY_NAME
               value: {{ $oauth2Proxy.defaults.providerDisplayName }}
             - name: OAUTH2_PROXY_OIDC_ISSUER_URL
-              value: {{ $.Values.keycloak.issuerUrl }}
+              value: {{ $keycloak.issuerUrl }}
             - name: OAUTH2_PROXY_OIDC_EMAIL_CLAIM
               value: {{ $oauth2Proxy.defaults.oidcEmailClaim }}
             - name: OAUTH2_PROXY_SET_XAUTHREQUEST
