@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-realm-import
+data:
+  realm.json: |
+    {
+      "realm": "demo",
+      "enabled": true,
+
+      "clients": [
+        {
+          "clientId": "grafana",
+          "enabled": true,
+          "protocol": "openid-connect",
+          "publicClient": false,
+          "secret": "super-secret",
+          "redirectUris": [
+            "https://grafana.example.com/login/generic_oauth"
+          ]
+        }
+      ],
+
+      "identityProviders": [
+        {
+          "alias": "azure",
+          "providerId": "oidc",
+          "enabled": true,
+          "config": {
+            "authorizationUrl": "https://login.microsoftonline.com/TENANT/oauth2/v2.0/authorize",
+            "tokenUrl": "https://login.microsoftonline.com/TENANT/oauth2/v2.0/token",
+            "jwksUrl": "https://login.microsoftonline.com/TENANT/discovery/v2.0/keys",
+            "clientId": "xxxxxxxx",
+            "clientSecret": "xxxxxxxx",
+            "defaultScope": "openid profile email"
+          }
+        }
+      ]
+    }

@@ -1,0 +1,15 @@
+extraVolumes:
+  - name: realm-import
+    configMap:
+      name: keycloak-realm-import
+
+extraVolumeMounts:
+  - name: realm-import
+    mountPath: /opt/keycloak/data/import
+
+command:
+  - /opt/keycloak/bin/kc.sh
+
+args:
+  - start
+  - --import-realm
