@@ -2,6 +2,7 @@ defaultNamespace: keycloak
 helm:
   chart: keycloak
   repo: https://charts.bitnami.com/bitnami
+  version: 24.8.0
   releaseName: keycloak
   valuesFiles:
     - helm-values.yaml
