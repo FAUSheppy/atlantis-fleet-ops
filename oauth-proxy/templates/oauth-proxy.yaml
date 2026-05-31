@@ -1,5 +1,5 @@
 {{- range $name, $svc := .Values.services }}
-{{- $oauth2Proxy := merge (deepCopy $oauth2Proxy. ($svc.oauth2Proxy | default dict) }}
+{{- $oauth2Proxy := merge (deepCopy $.Values.oauth2Proxy) ($svc.oauth2Proxy | default dict) }}
 ---
 apiVersion: apps/v1
 kind: Deployment
