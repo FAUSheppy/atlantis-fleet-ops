@@ -7,9 +7,37 @@ extraVolumeMounts:
   - name: realm-import
     mountPath: /opt/keycloak/data/import
 
-command:
-  - /opt/keycloak/bin/kc.sh
+#command:
+#  - /opt/keycloak/bin/kc.sh
 
 args:
   - start
   - --import-realm
+
+production: true
+
+proxy: edge
+
+
+httpRelativePath: /
+
+extraEnvVars:
+  - name: KC_HOSTNAME
+    value: faf-auth-proxy.services.atlantishq.de
+  - name: KC_HOSTNAME_STRICT
+    value: "true"
+
+ingress:
+  enabled: true
+  ingressClassName: traefik
+
+  hostname: faf-auth-proxy.services.atlantishq.de
+
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+
+  tls: true
+  extraTls:
+    - hosts:
+        - faf-auth-proxy.services.atlantishq.de
+      secretName: faf-auth-proxy-tls
