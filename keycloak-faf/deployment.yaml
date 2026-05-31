@@ -46,7 +46,10 @@ spec:
             value: admin
 
           - name: KC_BOOTSTRAP_ADMIN_PASSWORD
-            value: test
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secrets
+                key: KC_ADMIN_PASSWORD
 
           - name: KC_HOSTNAME
             value: faf-auth-proxy.services.atlantishq.de

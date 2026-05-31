@@ -5,35 +5,51 @@ metadata:
 data:
   realm.json: |
     {
-      "realm": "demo",
+      "realm": "atlantis",
       "enabled": true,
 
       "clients": [
         {
-          "clientId": "grafana",
+          "clientId": "fa_metrics",
           "enabled": true,
           "protocol": "openid-connect",
           "publicClient": false,
-          "secret": "super-secret",
+          "secret": "FCj3ZDmg85Z1S8Hfn1WVOV2Ky4yUgWvU",
           "redirectUris": [
-            "https://grafana.example.com/login/generic_oauth"
+            "https://fa-metrics.rancher.katzencluster.atlantishq.de/"
           ]
         }
       ],
 
       "identityProviders": [
-        {
-          "alias": "azure",
-          "providerId": "oidc",
-          "enabled": true,
-          "config": {
-            "authorizationUrl": "https://login.microsoftonline.com/TENANT/oauth2/v2.0/authorize",
-            "tokenUrl": "https://login.microsoftonline.com/TENANT/oauth2/v2.0/token",
-            "jwksUrl": "https://login.microsoftonline.com/TENANT/discovery/v2.0/keys",
-            "clientId": "xxxxxxxx",
-            "clientSecret": "xxxxxxxx",
-            "defaultScope": "openid profile email"
-          }
-        }
+        {   
+         "alias": "Atlantis-Accounts",
+         "displayName": "Atlantis Accounts",
+         "internalId": "50fef28e-9747-4b25-80c5-81da8a3274ac",
+         "providerId": "atlantis-accounts",
+         "enabled": true,
+         "updateProfileFirstLoginMode": "on",
+         "trustEmail": false,
+         "storeToken": false,
+         "addReadTokenRoleOnCreate": false,
+         "authenticateByDefault": false,
+         "linkOnly": false,
+         "hideOnLogin": false,
+         "config": {
+           "userInfoUrl": "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/userinfo",
+           "validateSignature": "true",
+           "tokenUrl": "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token",
+           "clientId": "faf-auth-proxy",
+           "jwksUrl": "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/certs",
+           "issuer": "https://keycloak.atlantishq.de/realms/master",
+           "useJwksUrl": "true",
+           "pkceEnabled": "false",
+           "metadataDescriptorUrl": "https://keycloak.atlantishq.de/realms/master/.well-known/openid-configuration",
+           "authorizationUrl": "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/auth",
+           "clientAuthMethod": "client_secret_post",
+           "logoutUrl": "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/logout",
+           "syncMode": "LEGACY",
+           "clientSecret": "${OIDC_CLIENT_SECRET}"
+         }
       ]
     }
