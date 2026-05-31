@@ -13,6 +13,7 @@ oauth2Proxy:
     oidcEmailClaim: "sub"
     reverseProxy: "true"
     skipProviderButton: "true"
+    logoutUrl: "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/logout?id_token_hint={id_token}"
 
 keycloak:
   issuerUrl: https://keycloak.atlantishq.de/realms/master
