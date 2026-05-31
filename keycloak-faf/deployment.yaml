@@ -23,7 +23,7 @@ spec:
             envsubst < /templates/realm.json > /generated/realm.json
         volumeMounts:
           - name: realm-import
-            mountPath: /templates/realm.json
+            mountPath: /templates
             readOnly: true
           - name: generated-config
             mountPath: /generated
