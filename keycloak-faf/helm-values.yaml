@@ -14,6 +14,9 @@ global:
   postgresql:
     auth:
       password: "test"
+
+auth:
+    adminPassword: "test"
 extraStartupArgs: "--import-realm"
 args:
   - start
