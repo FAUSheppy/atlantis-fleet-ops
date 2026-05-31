@@ -5,10 +5,16 @@ extraVolumes:
 
 extraVolumeMounts:
   - name: realm-import
-    mountPath: /opt/keycloak/data/import
+    mountPath: /opt/bitnami/keycloak/data/import
+    readOnly: true
 
 proxyHeaders: xforwarded
 
+global:
+  postgresql:
+    auth:
+      password: "test"
+extraStartupArgs: "--import-realm"
 args:
   - start
   - --import-realm
