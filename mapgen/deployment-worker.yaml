@@ -4,7 +4,6 @@ metadata:
   name: neroxis-mapgen-worker
   namespace: mapgen
 spec:
-  replicas: 10
   selector:
     matchLabels:
       app: neroxis-mapgen-worker
