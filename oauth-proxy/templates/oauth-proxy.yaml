@@ -1,6 +1,6 @@
 {{- range $name, $svc := .Values.services }}
-{{- $oauth2Proxy := merge (deepCopy $.Values.oauth2Proxy) ($svc.oauth2Proxy | default dict) }}
-{{- $keycloak := merge (deepCopy $.Values.keycloak) ($svc.keycloak | default dict) }}
+{{- $oauth2Proxy := merge ($svc.oauth2Proxy | default dict) (deepCopy $.Values.oauth2Proxy) }}
+{{- $keycloak := merge ($svc.keycloak | default dict) (deepCopy $.Values.keycloak) }}
 ---
 apiVersion: apps/v1
 kind: Deployment
