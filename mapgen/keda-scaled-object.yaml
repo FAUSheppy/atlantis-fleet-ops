@@ -25,7 +25,7 @@ spec:
         FROM request_queue
         WHERE finished = FALSE
 
-      targetQueryValue: "100"
+      targetQueryValue: "20"
 
     authenticationRef:
       name: postgres-auth
