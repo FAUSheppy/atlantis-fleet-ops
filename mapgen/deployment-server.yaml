@@ -28,3 +28,12 @@ spec:
                 name: mapgen-db-secret
             - secretRef:
                 name: mapgen-secrets
+          args:
+            - "--threads=16"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "1"
+              memory: "512Mi"
