@@ -272,8 +272,8 @@ data:
     resume:
         name: Resume Manager
         description: Create and Manage your Resumes
-        href: https://cv.atlantishq.de/api/auth/openid
-        icon-alt-url: https://cv.atlantishq.de/icon/dark.svg
+        href: https://cv.rancher.katzencluster.atlantishq.de/dashboard/resumes
+        icon-alt-url: https://cv.atlantishq.de/logo/light.svg
         background: linear-gradient(90deg, rgb(255, 255, 255) 20%, rgb(255, 216, 216) 65%)
         tags:
             - tools
