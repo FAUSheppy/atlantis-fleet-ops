@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: fa-metrics
+  name: atlantis-verify
+  labels:
+    app: atlantis-verify
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: atlantis-verify
+  template:
+    metadata:
+      labels:
+        app: atlantis-verify
+    spec:
+      containers:
+        - name: atlantis-verify
+          image: harbor-registry.atlantishq.de/atlantishq/atlantis-verify:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+            - name: X_AUTH_USER_HEADER
+              value: "X-Auth-Request-Preferred-Username"
+
+            - name: DISPATCH_SERVER
+              value: "https://fa-dispatcher.rancher.katzencluster.atlantishq.de"
+
+            - name: MAIN_HOME
+              value: "https://portal.atlantishq.de"
+
+            - name: NTFY_API_TARGET
+              value: "https://fa-ntfy-api.rancher.katzencluster.atlantishq.de"
+            - name: NTFY_PUSH_TARGET
+              value: "https://fa-push.rancher.katzencluster.atlantishq.de"
+
+            - name: OIDC_ADMIN_USER
+              value: "sheppy"
+
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: fa-nofication-management-db-secret
+                  key: database-url
+
+
+            - name: DISPATCH_SETTINGS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: fa-notification-secrets
+                  key: dispatcher-settings-token
+
+            - name: DISPATCH_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: fa-notification-secrets
+                  key: dispatcher-access-token
+
+            - name: NTFY_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: fa-notification-secrets
+                  key: ntfy-access-token

@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-dispatcher-worker
+  labels:
+    app: event-dispatcher-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-dispatcher-worker
+  template:
+    metadata:
+      labels:
+        app: event-dispatcher-worker
+    spec:
+      containers:
+        - name: event-dispatcher-worker
+          image: harbor-registry.atlantishq.de/atlantishq/event-dispatcher-worker
+          imagePullPolicy: Always
+          env:
+            - name: DISPATCH_SERVER
+              value: "https://fa-dispatcher.rancher.katzencluster.atlantishq.de"
+
+            - name: NTFY_PUSH_TARGET
+              value: "https://fa-push.rancher.katzencluster.atlantishq.de"
+            - name: NTFY_USER
+              value: "admin"
+            - name: NTFY_API_SERVER
+              value: "https://fa-ntfy-api.rancher.katzencluster.atlantishq.de"
+
+            - name: POLLING_INTERVAL_SECONDS
+              value: "1"
+
+            - name: DISPATCH_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: fa-notification-secrets
+                  key: dispatcher-access-token
+
+            # TODO: fix this double reference
+            - name: NTFY_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: fa-notification-secrets
+                  key: ntfy-access-token
+
+            - name: NTFY_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: fa-notification-secrets
+                  key: ntfy-access-token
