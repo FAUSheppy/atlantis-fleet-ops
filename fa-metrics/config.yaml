@@ -6,23 +6,4 @@ data:
   env.js: |
     // no data
   user_mappings.yaml: |
-    sheppy: Sheppy
-    stryder: Strydxr
     sheppy-unpriv: Sheppy
-    kathi: bekama
-    banana: BananaSmoothie
-    morax: Morax
-    rhaelya: Rhaelya
-    alex: uney
-    knightly: Knightly
-
-    michy: iTrash
-    preisi: preisi
-    amelie: mellywalnut
-    timo: DadoSpeedy
-
-    deribus: Deribus
-    jip: Jip
-    archsimkat: Archsimkat
-    indexlibrorum: IndexLibbrorum
-    magge: magge
