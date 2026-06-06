@@ -28,6 +28,9 @@ spec:
                   name: fa-nofication-management-db-secret
                   key: database-url
 
+            - name: LDAP_NO_READ_ENV
+              value: 1 # remove if no longer wanted 0 wont work
+
             - name: DISPATCH_ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
