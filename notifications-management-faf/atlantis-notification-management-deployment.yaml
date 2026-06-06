@@ -36,6 +36,12 @@ spec:
             - name: NTFY_PUSH_TARGET
               value: "https://fa-push.rancher.katzencluster.atlantishq.de"
 
+            - name: KEYCLOAK_NO_READ_ENV
+              value: "1"
+
+            - name: LDAP_NO_READ_ENV
+              value: "1"
+
             - name: OIDC_ADMIN_USER
               value: "sheppy"
 
