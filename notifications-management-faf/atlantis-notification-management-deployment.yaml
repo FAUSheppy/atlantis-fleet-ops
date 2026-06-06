@@ -50,16 +50,16 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: fa-notification-secrets
-                  key: dispatcher-settings-token
+                  key: DISPATCHER_SETTINGS_TOKEN
 
             - name: DISPATCH_ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: fa-notification-secrets
-                  key: dispatcher-access-token
+                  key: DISPATCHER_ACCESS_TOKEN
 
             - name: NTFY_ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: fa-notification-secrets
-                  key: ntfy-access-token
+                  key: NTFY_ACCESS_TOKEN

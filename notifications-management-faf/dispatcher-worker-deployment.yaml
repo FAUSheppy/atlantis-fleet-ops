@@ -36,17 +36,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: fa-notification-secrets
-                  key: dispatcher-access-token
+                  key: DISPATCHER_ACCESS_TOKEN
 
             # TODO: fix this double reference
             - name: NTFY_PASS
               valueFrom:
                 secretKeyRef:
                   name: fa-notification-secrets
-                  key: ntfy-access-token
+                  key: NTFY_ACCESS_TOKEN
 
             - name: NTFY_API_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: fa-notification-secrets
-                  key: ntfy-access-token
+                  key: NTFY_ACCESS_TOKEN

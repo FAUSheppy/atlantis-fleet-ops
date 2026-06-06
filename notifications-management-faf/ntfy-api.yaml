@@ -32,7 +32,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: fa-notification-secrets
-                  key: ntfy-access-token
+                  key: NTFY_ACCESS_TOKEN
 
 ---
 apiVersion: v1
