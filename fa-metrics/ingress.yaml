@@ -42,8 +42,33 @@ spec:
                 port:
                   number: 8080
 
-          # ntfy registration path
+          # ntfy registration paths
           - path: /ntfy
+            pathType: Prefix
+            backend:
+              service:
+                name: atlantis-verify
+                port:
+                  number: 80
+
+          - path: /webhooks
+            pathType: Prefix
+            backend:
+              service:
+                name: atlantis-verify
+                port:
+                  number: 80
+
+          - path: /static/site.css
+            pathType: Prefix
+            backend:
+              service:
+                name: atlantis-verify
+                port:
+                  number: 80
+
+
+          - path: /qr-encode
             pathType: Prefix
             backend:
               service:
