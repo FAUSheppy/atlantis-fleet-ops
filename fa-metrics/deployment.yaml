@@ -5,7 +5,7 @@ metadata:
   labels:
     app: fa-metrics
 spec:
-  replicas: 1
+  replicas: 3
   strategy:
     type: RollingUpdate
     rollingUpdate:
