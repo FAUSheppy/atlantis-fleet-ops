@@ -34,6 +34,21 @@ spec:
               secretKeyRef:
                 name: faf-auth-proxy-oidc-config
                 key: client-secret
+          - name: MAPGEN_SAAS_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secrets
+                key: MAPGEN_SAAS_CLIENT_SECRET
+          - name: FAF_OIDC_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secrets
+                key: FAF_OIDC_SECRET
+          - name: FA_METRICS_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secrets
+                key: FA_METRICS_CLIENT_SECRET
 
       containers:
       - name: keycloak
