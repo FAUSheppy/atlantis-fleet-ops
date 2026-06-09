@@ -14,7 +14,7 @@ data:
           "enabled": true,
           "protocol": "openid-connect",
           "publicClient": false,
-          "secret": "{{ FA_METRICS_CLIENT_SECRET }}",
+          "secret": "${FA_METRICS_CLIENT_SECRET}",
           "redirectUris": [
             "https://fa-metrics.rancher.katzencluster.atlantishq.de/*"
           ]
@@ -24,7 +24,7 @@ data:
           "enabled": true,
           "protocol": "openid-connect",
           "publicClient": false,
-          "secret": "{{ MAPGEN_SAAS_CLIENT_SECRET }}",
+          "secret": "${MAPGEN_SAAS_CLIENT_SECRET}",
           "redirectUris": [
             "https://mapgen.services.atlantishq.de/*"
           ]
@@ -94,7 +94,7 @@ data:
             "clientAuthMethod": "client_secret_post",
             "logoutUrl": "https://hydra.faforever.com/oauth2/sessions/logout",
             "syncMode": "LEGACY",
-            "clientSecret": "{{ FAF_OIDC_SECRET }}"
+            "clientSecret": "${FAF_OIDC_SECRET}"
           }
         }
       ],
