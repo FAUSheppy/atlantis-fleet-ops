@@ -37,6 +37,23 @@ services:
     secret_name: atlantis-status-oidc-config
     address: actions.atlantishq.de
     namespace: sso
+  mapgen:
+    port: 80
+    skips:
+      - "/"
+      - "/assets/"
+      - "/env.js"
+    secret_name: mapgen-oidc-config
+    address: mapgen.services.atlantishq.de
+    namespace: mapgen
+    oauth2Proxy:
+      whitelistDomains: "faf-auth-proxy.services.atlantishq.de"
+      defaults:
+        logoutUrl: "https://faf-auth-proxy.services.atlantishq.de/realms/master/protocol/openid-connect/logout?id_token_hint={id_token}"
+    keycloak:
+      issuerUrl: https://faf-auth-proxy.services.atlantishq.de/realms/atlantis
+      address: faf-auth-proxy.services.atlantishq.de
+      realm: atlantis
   fa-metrics:
     port: 80
     skips:
