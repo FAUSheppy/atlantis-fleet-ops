@@ -7,7 +7,7 @@ data:
     {
       "realm": "atlantis",
       "enabled": true,
-
+      "duplicateEmailsAllowed": true,
       "clients": [
         {
           "clientId": "fa_metrics",
