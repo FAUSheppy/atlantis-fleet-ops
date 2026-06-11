@@ -1,13 +1,3 @@
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: legacy-favicon-redirect
-spec:
-  redirectRegex:
-    regex: "^https://fa-metrics\\.rancher\\.katzencluster\\.atlantishq\\.de/favicon\\.svg$"
-    replacement: "https://fa-companion.services.atlantishq.de/favicon.svg"
-    permanent: false
-
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -33,10 +23,10 @@ spec:
     - host: fa-metrics.rancher.katzencluster.atlantishq.de
       http:
         paths:
-          - path: /
-            pathType: Prefix
+          - path: /favicon.svg
+            pathType: Exact
             backend:
               service:
-                name: noop
+                name: fa-metrics-frontend
                 port:
-                  number: 65535
+                  number: 80
