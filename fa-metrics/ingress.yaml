@@ -19,10 +19,10 @@ spec:
   ingressClassName: traefik
   tls:
     - hosts:
-        - fa-metrics.rancher.katzencluster.atlantishq.de
+        - fa-companion.services.atlantishq.de
       secretName: fa-metrics-tls
   rules:
-    - host: fa-metrics.rancher.katzencluster.atlantishq.de
+    - host: fa-companion.services.atlantishq.de
       http:
         paths:
 

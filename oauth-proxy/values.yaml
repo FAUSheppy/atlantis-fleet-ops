@@ -63,7 +63,7 @@ services:
       - "/assets/"
       - "/env.js"
     secret_name: fa-metrics-oidc-config
-    address: fa-metrics.rancher.katzencluster.atlantishq.de
+    address: fa-companion.services.atlantishq.de
     namespace: fa-metrics
     oauth2Proxy:
       whitelistDomains: "faf-auth-proxy.services.atlantishq.de"

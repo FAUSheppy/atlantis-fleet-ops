@@ -20,7 +20,7 @@ data:
           "publicClient": false,
           "secret": "${FA_METRICS_CLIENT_SECRET}",
           "redirectUris": [
-            "https://fa-metrics.rancher.katzencluster.atlantishq.de/*"
+            "https://fa-companion.services.atlantishq.de/*"
           ]
         },
         {

@@ -260,7 +260,7 @@ data:
     fametrics:
         name: FA Metrics
         description: Supreme Commander Live Monitoring
-        href: https://fa-metrics.rancher.katzencluster.atlantishq.de/
+        href: https://fa-companion.services.atlantishq.de/
         icon-alt-url: https://raw.githubusercontent.com/FAUSheppy/fa-live-metrics-lua/refs/heads/master/mod_icon.png
         tags:
             - gaming
