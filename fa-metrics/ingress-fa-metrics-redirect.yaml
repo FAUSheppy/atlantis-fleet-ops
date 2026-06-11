@@ -12,7 +12,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: fa-metrics
+  name: fa-metrics-legacy
   labels:
     app: fa-metrics
   annotations:
