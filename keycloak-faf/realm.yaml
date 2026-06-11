@@ -8,6 +8,10 @@ data:
       "realm": "atlantis",
       "enabled": true,
       "duplicateEmailsAllowed": true,
+      "ssoSessionIdleTimeout": 86400,
+      "ssoSessionMaxLifespan": 172800,
+      "accessTokenLifespan": 7200,
+      "accessTokenLifespanForImplicitFlow": 10800,
       "clients": [
         {
           "clientId": "fa_metrics",
