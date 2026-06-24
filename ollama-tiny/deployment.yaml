@@ -1,0 +1,78 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ollama-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+
+      initContainers:
+        - name: pull-model
+          image: ollama/ollama:latest
+          env:
+            - name: OLLAMA_HOST
+              value: "0.0.0.0:11434"
+          command:
+            - /bin/sh
+            - -c
+            - |
+              ollama serve &
+              SERVER_PID=$!
+
+              echo "Waiting for Ollama..."
+              until ollama list >/dev/null 2>&1; do
+                sleep 2
+              done
+
+              if ! ollama list | grep -q "qwen2.5:0.5b"; then
+                echo "Downloading model..."
+                ollama pull qwen2.5:0.5b
+              else
+                echo "Model already present."
+              fi
+
+              kill $SERVER_PID
+          volumeMounts:
+            - name: ollama-data
+              mountPath: /root/.ollama
+
+      containers:
+        - name: ollama
+          image: ollama/ollama:latest
+          ports:
+            - containerPort: 11434
+          volumeMounts:
+            - name: ollama-data
+              mountPath: /root/.ollama
+          resources:
+            requests:
+              cpu: 250m
+              memory: 1Gi
+            limits:
+              cpu: "2"
+              memory: 2Gi
+
+      volumes:
+        - name: ollama-data
+          persistentVolumeClaim:
+            claimName: ollama-data
