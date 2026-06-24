@@ -2,6 +2,21 @@ publicURL: https://call.services.atlantishq.de
 
 web:
   replicaCount: 2
+  ingress:
+    enabled: true
+  
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+  
+    hosts:
+      - host: call.services.atlantishq.de
+        paths:
+          - /
+  
+    tls:
+      - secretName: jitsi-tls
+        hosts:
+          - call.services.atlantishq.de
 
 prosody:
   replicaCount: 1
@@ -20,26 +35,11 @@ jvb:
   service:
     enabled: true
     type: LoadBalancer
-    loadBalancerIP: 192.168.123.201 # metallb
+    externalIPs: 192.168.123.201 # metallb
+    externalTrafficPolicy: Local
 
   metrics:
     enabled: false
-
-ingress:
-  enabled: true
-
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-
-  hosts:
-    - host: call.services.atlantishq.de
-      paths:
-        - /
-
-  tls:
-    - secretName: jitsi-tls
-      hosts:
-        - call.services.atlantishq.de
 
 xmpp:
   domain: meet.jitsi
