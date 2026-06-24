@@ -1,0 +1,8 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: ollama-auth
+  namespace: ollama
+spec:
+  basicAuth:
+    secret: ollama-basic-auth
