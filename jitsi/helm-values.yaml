@@ -20,7 +20,7 @@ jvb:
   service:
     enabled: true
     type: LoadBalancer
-    loadBalancerIP: 192.168.123.200 # metallb
+    loadBalancerIP: 192.168.123.201 # metallb
 
   metrics:
     enabled: false
