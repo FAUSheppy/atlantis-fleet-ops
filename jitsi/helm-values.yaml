@@ -1,0 +1,77 @@
+publicURL: https://call.services.atlantishq.de
+
+web:
+  replicaCount: 2
+
+prosody:
+  replicaCount: 1
+
+jicofo:
+  replicaCount: 1
+
+jvb:
+  replicaCount: 2
+
+  useHostPort: false
+
+  publicIPs:
+    - 142.132.212.54
+
+  service:
+    enabled: true
+    type: LoadBalancer
+    loadBalancerIP: 192.168.123.200 # metallb
+
+  metrics:
+    enabled: true
+
+ingress:
+  enabled: true
+
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+
+  hosts:
+    - host: call.services.atlantishq.de
+      paths:
+        - /
+
+  tls:
+    - secretName: jitsi-tls
+      hosts:
+        - call.services.atlantishq.de
+
+xmpp:
+  domain: meet.jitsi
+  authDomain: auth.meet.jitsi
+  mucDomain: muc.meet.jitsi
+
+enableAuth: false
+enableGuests: true
+
+extraEnv:
+  ENABLE_LOBBY: "1"
+  ENABLE_BREAKOUT_ROOMS: "1"
+  ENABLE_PREJOIN_PAGE: "1"
+  ENABLE_WELCOME_PAGE: "0"
+
+resources:
+  web:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+  prosody:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+  jicofo:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+
+  jvb:
+    requests:
+      cpu: 500m
+      memory: 1Gi
