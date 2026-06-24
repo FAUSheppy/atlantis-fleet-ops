@@ -35,7 +35,8 @@ jvb:
   service:
     enabled: true
     type: LoadBalancer
-    externalIPs: 192.168.123.201 # metallb
+    externalIPs:
+        - 192.168.123.201 # metallb
     externalTrafficPolicy: Local
 
   metrics:
