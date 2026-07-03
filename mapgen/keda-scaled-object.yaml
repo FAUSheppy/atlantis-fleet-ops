@@ -6,10 +6,10 @@ spec:
   scaleTargetRef:
     name: neroxis-mapgen-worker
 
-  minReplicaCount: 3
-  maxReplicaCount: 8
+  minReplicaCount: 10
+  maxReplicaCount: 20
 
-  pollingInterval: 5
+  pollingInterval: 1
 
   triggers:
   - type: postgresql
