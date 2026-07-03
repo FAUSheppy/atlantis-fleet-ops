@@ -6,8 +6,8 @@ spec:
   scaleTargetRef:
     name: neroxis-mapgen-worker
 
-  minReplicaCount: 10
-  maxReplicaCount: 20
+  minReplicaCount: 5
+  maxReplicaCount: 15
 
   pollingInterval: 1
 
@@ -25,7 +25,7 @@ spec:
         FROM request_queue
         WHERE finished = FALSE
 
-      targetQueryValue: "10"
+      targetQueryValue: "2"
 
     authenticationRef:
       name: postgres-auth
