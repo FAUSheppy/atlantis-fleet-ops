@@ -7,7 +7,7 @@ spec:
     name: neroxis-mapgen-worker
 
   minReplicaCount: 5
-  maxReplicaCount: 15
+  maxReplicaCount: 10
 
   pollingInterval: 1
 
