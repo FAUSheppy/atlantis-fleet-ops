@@ -9,7 +9,7 @@ spec:
   minReplicaCount: 5
   maxReplicaCount: 10
 
-  pollingInterval: 1
+  pollingInterval: 10
 
   triggers:
   - type: postgresql
