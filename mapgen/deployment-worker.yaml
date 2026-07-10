@@ -12,6 +12,15 @@ spec:
       labels:
         app: neroxis-mapgen-worker
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: location
+                    operator: NotIn
+                    values:
+                      - ngb
       containers:
         - name: worker
           image: harbor-registry.atlantishq.de/atlantishq/neroxis-mapgen-worker:latest
