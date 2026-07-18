@@ -18,7 +18,7 @@ data:
     color: slate
     language: en
     background:
-      image: https://images.atlantishq.de/m/web-potaris-archive/ue-dark-bottom.png
+      image: https://images.atlantishq.de/m/images.steamusercontent.jpg
       opacity: 55
 
     cardBlur: sm
