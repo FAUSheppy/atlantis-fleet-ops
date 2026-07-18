@@ -15,8 +15,13 @@ data:
     description: Community tools, games, learning resources and official FAF links
 
     theme: dark
-    #color: blue
+    color: slate
     language: en
+    background:
+      image: /images/background.webp
+      opacity: 55
+    cardBlur: sm
+    image: https://images.atlantishq.de/m/web-potaris-archive/ue-dark-bottom.png
 
     target: _blank
     fullWidth: true
