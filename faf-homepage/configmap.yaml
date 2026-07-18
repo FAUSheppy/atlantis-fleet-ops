@@ -7,6 +7,8 @@ metadata:
     app.kubernetes.io/name: homepage
     app.kubernetes.io/part-of: faf-community-hub
 data:
+  proxmox.yaml: |
+    ---
   settings.yaml: |
     ---
     title: FAF Community Hub

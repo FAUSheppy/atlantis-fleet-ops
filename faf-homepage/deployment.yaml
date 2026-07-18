@@ -145,6 +145,11 @@ spec:
               subPath: custom.js
               readOnly: true
 
+            - name: homepage-config
+              mountPath: /app/config/proxmox.yaml
+              subPath: proxmox.yaml
+              readOnly: true
+
             - name: homepage-logs
               mountPath: /app/config/logs
 
