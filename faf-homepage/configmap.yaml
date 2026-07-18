@@ -18,10 +18,10 @@ data:
     color: slate
     language: en
     background:
-      image: /images/background.webp
+      image: https://images.atlantishq.de/m/web-potaris-archive/ue-dark-bottom.png
       opacity: 55
+
     cardBlur: sm
-    image: https://images.atlantishq.de/m/web-potaris-archive/ue-dark-bottom.png
 
     target: _blank
     fullWidth: true
