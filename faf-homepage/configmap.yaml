@@ -15,7 +15,7 @@ data:
     description: Community tools, games, learning resources and official FAF links
 
     theme: dark
-    color: blue
+    #color: blue
     language: en
 
     target: _blank
