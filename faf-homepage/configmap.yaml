@@ -1,0 +1,170 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-config
+  namespace: faf-homepage
+  labels:
+    app.kubernetes.io/name: homepage
+    app.kubernetes.io/part-of: faf-community-hub
+data:
+  settings.yaml: |
+    ---
+    title: FAF Community Hub
+    description: Community tools, games, learning resources and official FAF links
+
+    theme: dark
+    color: blue
+    language: en
+
+    target: _blank
+    fullWidth: true
+    headerStyle: clean
+    useEqualHeights: true
+    disableCollapse: true
+    hideVersion: true
+
+    quicklaunch:
+      searchDescriptions: true
+      hideInternetSearch: true
+      hideVisitURL: false
+
+    layout:
+      Official Links:
+        style: row
+        columns: 3
+        icon: mdi-link-variant
+
+      Mini-Games:
+        style: row
+        columns: 2
+        icon: mdi-gamepad-variant
+
+      Tools & Helpers:
+        style: row
+        columns: 4
+        icon: mdi-tools
+
+      Learning Resources:
+        style: row
+        columns: 2
+        icon: mdi-school
+
+      Twitch & YouTube:
+        style: row
+        columns: 4
+        icon: mdi-play-box-multiple
+
+  services.yaml: |
+    ---
+    - Official Links:
+        - FAForever:
+            icon: https://faforever.com/favicon.ico
+            href: https://faforever.com/
+            description: Official Forged Alliance Forever website
+    
+        - FAF Forums:
+            icon: https://forum.faforever.com/favicon.ico
+            href: https://forum.faforever.com/
+            description: Community discussions, announcements and support
+    
+        - FAF Discord:
+            icon: si-discord-#5865F2
+            href: https://discord.gg/fQxrjwru6E
+            description: Join the official FAF Discord community
+    
+    - Mini-Games:
+        - FAFGuessr:
+            icon: https://fafguessr.doodlepros.com/favicon.ico
+            href: https://fafguessr.doodlepros.com/
+            description: Guess FAF maps from pictures
+    
+        - Daily FAF Unit:
+            icon: https://daily.doodlepros.com/favicon.ico
+            href: https://daily.doodlepros.com/
+            description: Guess the daily Forged Alliance unit
+    
+    - Tools & Helpers:
+        - Map Generator:
+            icon: https://mapgen.services.atlantishq.de/favicon.ico
+            href: https://mapgen.services.atlantishq.de/
+            description: Generate maps, browse existing maps and like your favourites
+    
+        - FAF Tracker:
+            icon: https://faftracker.xyz/favicon.ico
+            href: https://faftracker.xyz/
+            description: View game histories, statistics and rating evolution
+    
+        - FAF Unit Database:
+            icon: mdi-database-search
+            href: https://faforever.github.io/etfreeman-db/#/
+            description: Modern unit database with detailed unit information
+    
+        - Ladder Pool Tier Lists:
+            icon: https://fa-companion.services.atlantishq.de/favicon.ico
+            href: https://fa-companion.services.atlantishq.de/tierlist-overview
+            description: Create tier lists for ladder pools and provide feedback
+    
+    - Learning Resources:
+        - Beginner's Guide:
+            icon: mdi-school
+            href: https://wiki.faforever.com/Play/Learning-SupCom/Beginners-Guide-to-Forged-Alliance
+            description: Learn the fundamentals of Supreme Commander and Forged Alliance
+    
+        - FA Companion:
+            icon: https://fa-companion.services.atlantishq.de/favicon.ico
+            href: https://fa-companion.services.atlantishq.de/
+            description: Analyse games in real time, identify mistakes and browse build orders
+    
+    - Twitch & YouTube:
+        - FAF Live:
+            icon: si-twitch-#9146FF
+            href: https://www.twitch.tv/faflive
+            description: Official Forged Alliance Forever Twitch channel
+    
+        - Forged Alliance Forever:
+            icon: si-youtube-#FF0000
+            href: https://www.youtube.com/c/ForgedAllianceForever
+            description: Official Forged Alliance Forever YouTube channel
+    
+        - Stellar Tactician:
+            icon: si-twitch-#9146FF
+            href: https://www.twitch.tv/stellartactician
+            description: High-level gameplay, strategy and tactical snipes
+    
+        - The Meme Commander:
+            icon: si-youtube-#FF0000
+            href: https://www.youtube.com/@TheMemeCommander
+            description: Game casts, entertainment and funny shorts
+
+  widgets.yaml: |
+    ---
+    - search:
+        provider: duckduckgo
+        target: _blank
+        focus: false
+        showSearchSuggestions: true
+
+  bookmarks.yaml: |
+    ---
+    []
+
+  docker.yaml: |
+    ---
+
+  kubernetes.yaml: |
+    ---
+
+  custom.css: |
+    /*
+     * Optional public-facing styling.
+     * Remove this content to use the standard Homepage appearance.
+     */
+
+    #page_wrapper {
+      max-width: 1800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  custom.js: |
+    // Add optional custom JavaScript here.
