@@ -18,7 +18,7 @@ data:
     color: slate
     language: en
     background:
-      image: https://images.atlantishq.de/m/images.steamusercontent.jpg
+      image: https://images.atlantishq.de/m/x-3840-y-2160-ue-what-is-real-sector-gradient.png?x=1920&encoding=webp
       opacity: 55
 
     cardBlur: sm
