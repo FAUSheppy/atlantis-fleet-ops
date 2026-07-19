@@ -114,7 +114,7 @@ data:
                     label: Queue
     
         - FAF Tracker:
-            icon: /icons/custom/faf-tracker
+            icon: https://images.atlantishq.de/m/sera-icon.png
             href: https://faftracker.xyz/
             description: View game histories, statistics and rating evolution
     
