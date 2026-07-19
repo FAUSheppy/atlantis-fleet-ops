@@ -104,19 +104,15 @@ data:
                 mappings:
                   - field: maps
                     label: Maps
-                    format: number
 
                   - field: map_votes
                     label: Votes
-                    format: number
 
                   - field: users
                     label: Users
-                    format: number
 
                   - field: request_queue
                     label: Queue
-                    format: number
     
         - FAF Tracker:
             icon: /icons/custom/faf-tracker
