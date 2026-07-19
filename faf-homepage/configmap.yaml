@@ -7,6 +7,7 @@ metadata:
     app.kubernetes.io/name: homepage
     app.kubernetes.io/part-of: faf-community-hub
 data:
+    
   proxmox.yaml: |
     ---
   settings.yaml: |
@@ -65,12 +66,12 @@ data:
     ---
     - Official Links:
         - FAForever:
-            icon: https://faforever.com/favicon.ico
+            icon: /icons/custom/faforever
             href: https://faforever.com/
             description: Official Forged Alliance Forever website
     
         - FAF Forums:
-            icon: https://forum.faforever.com/favicon.ico
+            icon: /icons/custom/faforever
             href: https://forum.faforever.com/
             description: Community discussions, announcements and support
     
@@ -80,34 +81,34 @@ data:
             description: Join the official FAF Discord community
     
     - Mini-Games:
-        - FAFGuessr:
-            icon: https://fafguessr.doodlepros.com/favicon.ico
+        - FAF Guesser:
+            icon: /icons/custom/faf-guesser
             href: https://fafguessr.doodlepros.com/
             description: Guess FAF maps from pictures
     
         - Daily FAF Unit:
-            icon: https://daily.doodlepros.com/favicon.ico
+            icon: /icons/custom/faf-daily
             href: https://daily.doodlepros.com/
             description: Guess the daily Forged Alliance unit
     
     - Tools & Helpers:
         - Map Generator:
-            icon: https://mapgen.services.atlantishq.de/favicon.ico
+            icon: /icons/custom/mapgen
             href: https://mapgen.services.atlantishq.de/
             description: Generate maps, browse existing maps and like your favourites
     
         - FAF Tracker:
-            icon: https://faftracker.xyz/favicon.ico
+            icon: /icons/custom/faf-tracker
             href: https://faftracker.xyz/
             description: View game histories, statistics and rating evolution
     
         - FAF Unit Database:
-            icon: mdi-database-search
+            icon: /icons/custom/unit-db
             href: https://faforever.github.io/etfreeman-db/#/
             description: Modern unit database with detailed unit information
     
         - Ladder Pool Tier Lists:
-            icon: https://fa-companion.services.atlantishq.de/favicon.ico
+            icon: /icons/custom/fa-companion
             href: https://fa-companion.services.atlantishq.de/tierlist-overview
             description: Create tier lists for ladder pools and provide feedback
     
@@ -118,7 +119,7 @@ data:
             description: Learn the fundamentals of Supreme Commander and Forged Alliance
     
         - FA Companion:
-            icon: https://fa-companion.services.atlantishq.de/favicon.ico
+            icon: /icons/custom/fa-companion
             href: https://fa-companion.services.atlantishq.de/
             description: Analyse games in real time, identify mistakes and browse build orders
     
@@ -136,7 +137,7 @@ data:
         - Stellar Tactician:
             icon: si-twitch-#9146FF
             href: https://www.twitch.tv/stellartactician
-            description: High-level gameplay, strategy and tactical snipes
+            description: High-level gameplay, strategy and snipes
     
         - The Meme Commander:
             icon: si-youtube-#FF0000

@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: icon-config
+  namespace: faf-homepage
+  labels:
+    app.kubernetes.io/name: homepage
+    app.kubernetes.io/part-of: faf-community-hub
+data:
+  websites.yaml: |
+    - name: faforever
+      base-url: https://raw.githubusercontent.com/FAForever/website/a55efc43df47f9de890eaa7d4a5d30c9a6359240/public/images/logos/faflogo.svg
+      direct: true
+    
+    - name: faf-daily
+      base-url: https://daily.doodlepros.com/favicon.ico
+    
+    - name: faf-guesser
+      base-url: https://fafguessr.doodlepros.com/
+    
+    - name: faf-tracker
+      base-url: https://faftracker.xyz/
+    
+    - name: unit-db
+      base-url: https://faforever.github.io/etfreeman-db/#/by-type
+    
+    - name: fa-companion
+      base-url: https://fa-companion.services.atlantishq.de/
