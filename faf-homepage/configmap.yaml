@@ -66,12 +66,12 @@ data:
     ---
     - Official Links:
         - FAForever:
-            icon: /icons/custom/faforever
+            icon: https://images.atlantishq.de/m/faflogo.png
             href: https://faforever.com/
             description: Official Forged Alliance Forever website
     
         - FAF Forums:
-            icon: /icons/custom/faforever
+            icon: https://images.atlantishq.de/m/faflogo.png
             href: https://forum.faforever.com/
             description: Community discussions, announcements and support
     
@@ -92,7 +92,7 @@ data:
             description: Guess the daily Forged Alliance unit
     
     - Tools & Helpers:
-        - Map Generator:
+        - MapGen Helper:
             icon: /icons/custom/mapgen
             href: https://mapgen.services.atlantishq.de/
             description: Generate maps, browse existing maps and like your favourites
@@ -135,7 +135,7 @@ data:
             description: Learn the fundamentals of Supreme Commander and Forged Alliance
     
         - FA Companion:
-            icon: /icons/custom/fa-companion
+            icon: https://images.atlantishq.de/m/mod_icon.png
             href: https://fa-companion.services.atlantishq.de/
             description: Analyse games in real time, identify mistakes and browse build orders
     
