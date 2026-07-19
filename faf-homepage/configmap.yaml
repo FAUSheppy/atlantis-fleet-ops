@@ -124,7 +124,7 @@ data:
             description: Modern unit database with detailed unit information
     
         - Ladder Pool Tier Lists:
-            icon: /icons/custom/fa-companion
+            icon: https://images.atlantishq.de/m/tierlist-2.png
             href: https://fa-companion.services.atlantishq.de/tierlist-overview
             description: Create tier lists for ladder pools and provide feedback
             widget:
