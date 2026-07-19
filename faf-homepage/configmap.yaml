@@ -101,7 +101,6 @@ data:
               url: https://mapgen.services.atlantishq.de/api-dev/stats
               refreshInterval: 30000
               mappings:
-                mappings:
                   - field: maps
                     label: Maps
 
