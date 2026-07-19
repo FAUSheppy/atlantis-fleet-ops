@@ -190,5 +190,5 @@ spec:
 
         - name: icon-config
           configMap:
-            name: homepage-custom-icons
+            name: icon-config
 
