@@ -19,7 +19,7 @@ data:
     color: slate
     language: en
     background:
-      image: https://images.atlantishq.de/m/x-3840-y-2160-ue-what-is-real-sector-gradient.png?x=1920&encoding=webp
+      image: https://images.atlantishq.de/m/fa-forever-background-2.jpg?x=1920&encoding=webp
       opacity: 55
 
     cardBlur: sm
@@ -96,6 +96,16 @@ data:
             icon: /icons/custom/mapgen
             href: https://mapgen.services.atlantishq.de/
             description: Generate maps, browse existing maps and like your favourites
+            widget:
+              type: customapi
+              url: https://mapgen.services.atlantishq.de/api-dev/stats
+              display: dynamic-list
+              refreshInterval: 30000
+              mappings:
+                request_queue: request_queue
+                total_maps: maps
+                users: users
+                votes: map_votes
     
         - FAF Tracker:
             icon: /icons/custom/faf-tracker
@@ -146,11 +156,6 @@ data:
 
   widgets.yaml: |
     ---
-    - search:
-        provider: duckduckgo
-        target: _blank
-        focus: false
-        showSearchSuggestions: true
 
   bookmarks.yaml: |
     ---
