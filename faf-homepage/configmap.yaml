@@ -99,13 +99,24 @@ data:
             widget:
               type: customapi
               url: https://mapgen.services.atlantishq.de/api-dev/stats
-              display: dynamic-list
               refreshInterval: 30000
               mappings:
-                request_queue: request_queue
-                total_maps: maps
-                users: users
-                votes: map_votes
+                mappings:
+                  - field: maps
+                    label: Maps
+                    format: number
+
+                  - field: map_votes
+                    label: Votes
+                    format: number
+
+                  - field: users
+                    label: Users
+                    format: number
+
+                  - field: request_queue
+                    label: Queue
+                    format: number
     
         - FAF Tracker:
             icon: /icons/custom/faf-tracker
