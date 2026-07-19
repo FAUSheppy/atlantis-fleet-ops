@@ -127,7 +127,16 @@ data:
             icon: /icons/custom/fa-companion
             href: https://fa-companion.services.atlantishq.de/tierlist-overview
             description: Create tier lists for ladder pools and provide feedback
-    
+            widget:
+              type: customapi
+              url: https://fa-companion.services.atlantishq.de/api/debug/stats
+              refreshInterval: 30000
+              mappings:
+                - field: map_pools
+                  label: Map Pools
+                - field: tier_lists
+                  label: Tier Lists
+
     - Learning Resources:
         - Beginner's Guide:
             icon: mdi-school
@@ -138,6 +147,19 @@ data:
             icon: https://images.atlantishq.de/m/mod_icon.png
             href: https://fa-companion.services.atlantishq.de/
             description: Analyse games in real time, identify mistakes and browse build orders
+            widget:
+              type: customapi
+              url: https://fa-companion.services.atlantishq.de/api/debug/stats
+              refreshInterval: 30000
+              mappings:
+                - field: active_games
+                  label: Active Games
+                - field: games
+                  label: Total Games
+                - field: users
+                  label: Users
+                - field: alerts
+                  label: Total Alerts
     
     - Twitch & YouTube:
         - FAF Live:
