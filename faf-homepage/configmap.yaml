@@ -93,7 +93,7 @@ data:
     
     - Tools & Helpers:
         - MapGen Helper:
-            icon: /icons/custom/mapgen
+            icon: https://images.atlantishq.de/m/neroxis.png
             href: https://mapgen.services.atlantishq.de/
             description: Generate maps, browse existing maps and like your favourites
             widget:
