@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: homepage
     app.kubernetes.io/part-of: faf-community-hub
 data:
-    
+
   proxmox.yaml: |
     ---
   settings.yaml: |
@@ -69,28 +69,39 @@ data:
             icon: https://images.atlantishq.de/m/faflogo.png
             href: https://faforever.com/
             description: Official Forged Alliance Forever website
-    
+
         - FAF Forums:
             icon: https://images.atlantishq.de/m/faflogo.png
             href: https://forum.faforever.com/
             description: Community discussions, announcements and support
-    
+
         - FAF Discord:
             icon: si-discord-#5865F2
             href: https://discord.gg/fQxrjwru6E
             description: Join the official FAF Discord community
-    
+
+        - Buy FA on Steam:
+            icon: si-steam-#171A21
+            href: https://store.steampowered.com/app/9420/Supreme_Commander_Forged_Alliance/
+            description: Join the official FAF Discord community
+
+        - Buy FA on GOG:
+            icon: si-gogdotcom-#86328A
+            href: https://www.gog.com/en/game/supreme_commander_gold_edition
+            description: Join the official FAF Discord community
+
+
     - Mini-Games:
         - FAF Guesser:
             icon: /icons/custom/faf-guesser
             href: https://fafguessr.doodlepros.com/
             description: Guess FAF maps from pictures
-    
+
         - Daily FAF Unit:
             icon: /icons/custom/faf-daily
             href: https://daily.doodlepros.com/
             description: Guess the daily Forged Alliance unit
-    
+
     - Tools & Helpers:
         - MapGen Helper:
             icon: https://images.atlantishq.de/m/neroxis.png
@@ -112,17 +123,17 @@ data:
 
                   - field: request_queue
                     label: Queue
-    
+
         - FAF Tracker:
             icon: https://images.atlantishq.de/m/sera-logo.png
             href: https://faftracker.xyz/
             description: View game histories, statistics and rating evolution
-    
+
         - FAF Unit Database:
             icon: /icons/custom/unit-db
             href: https://faforever.github.io/etfreeman-db/#/
             description: Modern unit database with detailed unit information
-    
+
         - Ladder Pool Tier Lists:
             icon: https://images.atlantishq.de/m/tierlist-2.png
             href: https://fa-companion.services.atlantishq.de/tierlist-overview
@@ -142,7 +153,7 @@ data:
             icon: mdi-school
             href: https://wiki.faforever.com/Play/Learning-SupCom/Beginners-Guide-to-Forged-Alliance
             description: Learn the fundamentals of Supreme Commander and Forged Alliance
-    
+
         - FA Companion:
             icon: https://images.atlantishq.de/m/mod_icon.png
             href: https://fa-companion.services.atlantishq.de/
@@ -160,23 +171,23 @@ data:
                   label: Users
                 - field: alerts
                   label: Total Alerts
-    
+
     - Twitch & YouTube:
         - FAF Live:
             icon: si-twitch-#9146FF
             href: https://www.twitch.tv/faflive
             description: Official Forged Alliance Forever Twitch channel
-    
+
         - Forged Alliance Forever:
             icon: si-youtube-#FF0000
             href: https://www.youtube.com/c/ForgedAllianceForever
             description: Official Forged Alliance Forever YouTube channel
-    
+
         - Stellar Tactician:
             icon: si-twitch-#9146FF
             href: https://www.twitch.tv/stellartactician
             description: High-level gameplay, strategy and snipes
-    
+
         - The Meme Commander:
             icon: si-youtube-#FF0000
             href: https://www.youtube.com/@TheMemeCommander
