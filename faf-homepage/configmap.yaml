@@ -81,14 +81,14 @@ data:
             description: Join the official FAF Discord community
 
         - Buy FA on Steam:
-            icon: si-steam-#171A21
+            icon: si-steam-#dde9f0
             href: https://store.steampowered.com/app/9420/Supreme_Commander_Forged_Alliance/
-            description: Join the official FAF Discord community
+            description: Supreme Commander - Forged Alliance on Steam
 
         - Buy FA on GOG:
             icon: si-gogdotcom-#86328A
             href: https://www.gog.com/en/game/supreme_commander_gold_edition
-            description: Join the official FAF Discord community
+            description: Supreme Commander Gold on GOG
 
 
     - Mini-Games:
