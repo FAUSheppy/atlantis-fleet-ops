@@ -44,26 +44,6 @@ spec:
         seccompProfile:
           type: RuntimeDefault
 
-      initContainers:
-        - name: download-custom-icons
-          image: harbor-registry.atlantishq.de/atlantishq/icon-retriever
-          imagePullPolicy: Always
-
-          command:
-            - python
-            - /app/fetch_previews.py
-            - /config/websites.yaml
-            - --output-directory
-            - /output
-
-          volumeMounts:
-            - name: custom-icons
-              mountPath: /output
-
-            - name: icon-config
-              mountPath: /config
-              readOnly: true
-
       containers:
         - name: homepage
           image: ghcr.io/gethomepage/homepage:v1.12.2
