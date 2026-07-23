@@ -129,6 +129,11 @@ data:
             href: https://faftracker.xyz/
             description: View game histories, statistics and rating evolution
 
+        - FAF Tournaments:
+            icon: mdi-tournament-#D94A4A
+            href: https://tournaments.doodlepros.com
+            descript: Upcoming and Ongoing FAF Tournaments
+
         - FAF Unit Database:
             icon: /icons/custom/unit-db
             href: https://faforever.github.io/etfreeman-db/#/
