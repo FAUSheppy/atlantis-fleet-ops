@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebeat
+  namespace: filebeat
+data:
+  filebeat.yml: |
+    filebeat.inputs:
+      - type: filestream
+        id: kubernetes
+        paths:
+          - /var/log/containers/*.log
+        prospector.scanner.symlinks: true
+        parsers:
+          - container: ~
+
+        fields:
+          log_type: kubernetes
+
+        processors:
+          - add_kubernetes_metadata:
+              node: ${NODE_NAME}
+              use_kubeadm: false
+              add_resource_metadata:
+                deployment: true
+                cronjob: true
+
+    output.logstash:
+      hosts:
+        - "beats.atlantishq.de:5044"
