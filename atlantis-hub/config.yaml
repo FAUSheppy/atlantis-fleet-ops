@@ -138,7 +138,7 @@ data:
         name: Icinga
         href: https://icinga.atlantishq.de
         description: View your Monitoring Services
-        icon-alt-url: https://cdn.startbase.com/images/52bfe2c344e71ec1d1d67e56db0092a0/26e418af82ab60e/?webp=1&w=400
+        icon-alt-url: "https://upload.wikimedia.org/wikipedia/commons/7/70/Icinga_logo.svg?utm_source=de.wikipedia.org&utm_campaign=index&utm_content=original"
         tags:
             - monitoring
         groups:
