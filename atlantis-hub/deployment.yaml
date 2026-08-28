@@ -38,10 +38,10 @@ spec:
             - name: config
               mountPath: /app/config.yaml
               subPath: config.yaml
-            - name: cache
+            - name: atlantis-hub-cache-persistor
               mountPath: /app/static/cache
               subPath: cache
-            - name: instance
+            - name: atlantis-hub-cache-persistor
               mountPath: /app/static/instance
               subPath: instance
           env:
@@ -58,10 +58,7 @@ spec:
             items:
               - key: config.yaml
                 path: config.yaml
-        - name: cache
-          persistentVolumeClaim:
-            claimName: atlantis-hub-cache-presistor
-        - name: instance
+        - name: atlantis-hub-cache-persistor
           persistentVolumeClaim:
             claimName: atlantis-hub-cache-presistor
       restartPolicy: Always
