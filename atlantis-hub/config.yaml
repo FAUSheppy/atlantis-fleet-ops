@@ -243,7 +243,7 @@ data:
         description: Document archiving system
         background: "linear-gradient(90deg, #1fc61a 20%, #00c471 65%);"
         href: https://paperless.atlantishq.de/
-        #icon-alt-url: https://docs.paperless-ngx.com/assets/logo.svg
+        icon-alt-url: https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Paperless-Ngx_Black_Logo.png/1920px-Paperless-Ngx_Black_Logo.png
         tags:
             - internal-tools
         groups:
