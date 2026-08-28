@@ -170,6 +170,7 @@ data:
         name: Nextcloud
         description: Filesharing and Calendar
         href: https://nextcloud.katzencluster.atlantishq.de/apps/user_oidc/login/3
+        icon-alt-url: https://nextcloud.katzencluster.atlantishq.de/core/img/logo/logo.svg
         tags:
             - tools
         groups:
@@ -279,7 +280,6 @@ data:
         tags:
             - tools
         groups:
-            - tools
             - resume
         auth-type: sso
 
