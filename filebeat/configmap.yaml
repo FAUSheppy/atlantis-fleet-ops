@@ -29,3 +29,4 @@ data:
       hosts:
         - "beats.atlantishq.de:443"
       ssl.enabled: true
+      ssl.verification_mode: none
