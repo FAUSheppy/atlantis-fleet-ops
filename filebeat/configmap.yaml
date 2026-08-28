@@ -27,4 +27,5 @@ data:
 
     output.logstash:
       hosts:
-        - "beats.atlantishq.de:5044"
+        - "beats.atlantishq.de:443"
+      ssl.enabled: true
