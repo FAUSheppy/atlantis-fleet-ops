@@ -11,7 +11,7 @@ configs:
       name: Keycloak
       issuer: https://keycloak.atlantishq.de/realms/master
       clientID: argocd
-      clientSecret: $oidc_secret.client_secret
+      clientSecret: $oidc-secret.client_secret
       requestedScopes:
         - openid
         - profile
