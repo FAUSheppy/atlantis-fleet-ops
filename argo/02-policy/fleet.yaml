@@ -1,0 +1,14 @@
+name: argocd-policy
+defaultNamespace: argocd
+
+labels:
+  bootstrap.argocd/component: policy
+
+dependsOn:
+  - selector:
+      matchLabels:
+        bootstrap.argocd/component: server
+
+helm:
+  chart: .
+  releaseName: argocd-policy

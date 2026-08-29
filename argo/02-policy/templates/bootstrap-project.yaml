@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: opendesk-bootstrap
+  namespace: {{ .Values.argocdNamespace }}
+spec:
+  sourceRepos:
+    - https://gitlab.opencode.de/bmi/opendesk/deployment/options/argocd-deploy.git
+  destinations:
+    - namespace: {{ .Values.argocdNamespace }}
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+    - group: argoproj.io
+      kind: Application

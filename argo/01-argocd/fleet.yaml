@@ -1,0 +1,13 @@
+name: argocd
+defaultNamespace: argocd
+
+labels:
+  bootstrap.argocd/component: server
+
+helm:
+  repo: https://argoproj.github.io/argo-helm
+  chart: argo-cd
+  version: 10.4.0
+  releaseName: argocd
+  valuesFiles:
+    - values.yaml

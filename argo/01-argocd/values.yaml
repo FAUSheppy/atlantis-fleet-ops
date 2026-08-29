@@ -1,0 +1,64 @@
+createClusterRoles: false
+
+crds:
+  install: true
+  keep: true
+
+configs:
+  cm:
+    url: https://argocd.example.com
+    oidc.config: |
+      name: Keycloak
+      issuer: https://keycloak.atlantishq.de/realms/master
+      clientID: argocd
+      clientSecret: $oidc.keycloak.clientSecret
+      requestedScopes:
+        - openid
+        - profile
+        - email
+        - groups
+      requestedIDTokenClaims:
+        groups:
+          essential: true
+
+  secret:
+    extra:
+      oidc.keycloak.clientSecret: CHANGE_ME
+
+  params:
+    server.insecure: false
+
+  rbac:
+    policy.default: role:readonly
+    scopes: '[groups, email]'
+
+controller:
+  replicas: 1
+
+repoServer:
+  volumes:
+    - name: helmfile-cmp-tmp
+      emptyDir: {}
+
+  extraContainers:
+    - name: helmfile-plugin
+      image: travisghansen/argo-cd-helmfile:latest
+      imagePullPolicy: IfNotPresent
+      command:
+        - /var/run/argocd/argocd-cmp-server
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
+      volumeMounts:
+        - name: var-files
+          mountPath: /var/run/argocd
+        - name: plugins
+          mountPath: /home/argocd/cmp-server/plugins
+        - name: helmfile-cmp-tmp
+          mountPath: /tmp
+
+server:
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: false

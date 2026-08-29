@@ -1,0 +1,24 @@
+projectName: opendesk
+argocdNamespace: argocd
+controllerServiceAccount: argocd-application-controller
+
+namespaces:
+  - opendesk
+  - opendesk-dev
+  - opendesk-test
+
+sourceRepos:
+  - "*"
+
+namespaceResourceWhitelist:
+  - group: "*"
+    kind: "*"
+
+verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete

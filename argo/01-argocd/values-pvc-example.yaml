@@ -1,0 +1,34 @@
+# Optional repo-server cache persistence example.
+# Do not merge this unless you actually need persistent repo cache/storage.
+#
+# The exact values supported can vary by argo-cd chart version.
+# Another robust option is to add a PVC and mount it as TMPDIR for repo-server.
+#
+# For small/medium installations, the default emptyDir-backed /tmp is normally fine.
+#
+# Example intent:
+#
+# repoServer:
+#   env:
+#     - name: TMPDIR
+#       value: /repo-cache
+#   volumes:
+#     - name: repo-cache
+#       persistentVolumeClaim:
+#         claimName: argocd-repo-cache
+#   volumeMounts:
+#     - name: repo-cache
+#       mountPath: /repo-cache
+#
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: argocd-repo-cache
+#   namespace: argocd
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 10Gi
