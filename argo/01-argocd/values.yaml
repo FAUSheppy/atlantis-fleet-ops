@@ -1,5 +1,8 @@
 createClusterRoles: false
 
+global:
+  domain: argocd.potaris.de
+
 crds:
   install: true
   keep: true
@@ -56,5 +59,17 @@ repoServer:
 server:
   service:
     type: ClusterIP
+
   ingress:
-    enabled: false
+    enabled: true
+    ingressClassName: traefik
+
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+
+    extraTls:
+      - hosts:
+          - argocd
+        secretName: argocd-tls
