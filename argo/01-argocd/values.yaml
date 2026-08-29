@@ -81,5 +81,5 @@ server:
 
     extraTls:
       - hosts:
-          - argocd
+          - argocd.potaris.de
         secretName: argocd-tls
