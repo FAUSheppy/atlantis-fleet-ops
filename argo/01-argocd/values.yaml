@@ -28,8 +28,18 @@ configs:
     server.insecure: false
 
   rbac:
-    policy.default: role:readonly
+    policy.default: role:none
     scopes: '[groups, email]'
+    policy.csv: |
+      p, role:none, applications, get, __none__, deny
+
+      g, atlantis-admins, role:admin
+
+      p, role:opendesk, applications, get, opendesk/*, allow
+      p, role:opendesk, applications, sync, opendesk/*, allow
+      p, role:opendesk, applications, action/*, opendesk/*, allow
+      p, role:opendesk, logs, get, opendesk/*, allow
+      g, opendesk, role:opendesk
 
 controller:
   replicas: 1
