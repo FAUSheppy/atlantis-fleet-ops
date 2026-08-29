@@ -9,7 +9,7 @@ crds:
 
 configs:
   cm:
-    url: https://argocd.example.com
+    url: https://argocd.potaris.de
     oidc.config: |
       name: Keycloak
       issuer: https://keycloak.atlantishq.de/realms/master
