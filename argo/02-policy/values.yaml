@@ -4,8 +4,6 @@ controllerServiceAccount: argocd-application-controller
 
 namespaces:
   - opendesk
-  - opendesk-dev
-  - opendesk-test
 
 sourceRepos:
   - "*"
