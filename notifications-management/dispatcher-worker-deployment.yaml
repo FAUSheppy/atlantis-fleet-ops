@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: event-dispatcher-worker
-          image: harbor-registry.atlantishq.de/atlantishq/event-dispatcher-worker
+          image: registry.services.atlantishq.de/atlantishq/event-dispatcher-worker
           imagePullPolicy: Always
           env:
             - name: DISPATCH_SERVER

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: atlantis-verify
-          image: harbor-registry.atlantishq.de/atlantishq/atlantis-verify:latest
+          image: registry.services.atlantishq.de/atlantishq/atlantis-verify:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000

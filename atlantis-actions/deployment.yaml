@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: atlantis-actions
-          image: harbor-registry.atlantishq.de/atlantishq/atlantis-status
+          image: registry.services.atlantishq.de/atlantishq/atlantis-status
           ports:
             - containerPort: 5000
           env:

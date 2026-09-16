@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: atlantis-hub
-          image: harbor-registry.atlantishq.de/atlantishq/atlantis-hub:latest
+          image: registry.services.atlantishq.de/atlantishq/atlantis-hub:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000

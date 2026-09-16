@@ -26,7 +26,7 @@ spec:
         location: ngb
       containers:
         - name: fa-metrics-speech
-          image: harbor-registry.atlantishq.de/atlantishq/fa-metrics-speech:latest
+          image: registry.services.atlantishq.de/atlantishq/fa-metrics-speech:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
@@ -35,7 +35,7 @@ spec:
             - "-m" 
             - en_US-lessac-high
         - name: fa-metrics-frontend
-          image: harbor-registry.atlantishq.de/atlantishq/fa-metrics-frontend:latest
+          image: registry.services.atlantishq.de/atlantishq/fa-metrics-frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -44,7 +44,7 @@ spec:
               path: /
               port: 80
         - name: fa-metrics-server
-          image: harbor-registry.atlantishq.de/atlantishq/fa-metrics-server:latest
+          image: registry.services.atlantishq.de/atlantishq/fa-metrics-server:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

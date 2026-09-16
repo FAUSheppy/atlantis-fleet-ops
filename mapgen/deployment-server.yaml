@@ -15,12 +15,12 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: harbor-registry.atlantishq.de/atlantishq/mapgen-as-a-service-server-frontend:latest
+          image: registry.services.atlantishq.de/atlantishq/mapgen-as-a-service-server-frontend:latest
           ports:
             - containerPort: 80
 
         - name: backend
-          image: harbor-registry.atlantishq.de/atlantishq/mapgen-as-a-service-server:latest
+          image: registry.services.atlantishq.de/atlantishq/mapgen-as-a-service-server:latest
           ports:
             - containerPort: 5000
           envFrom:

@@ -2,11 +2,11 @@ services:
   potaris:
     targetPort: 5000
     hostname: potaris.rancher.katzencluster.atlantishq.de
-    image: harbor-registry.atlantishq.de/atlantishq/potaris-next-gen-web
+    image: registry.services.atlantishq.de/atlantishq/potaris-next-gen-web
   ax-films:
     targetPort: 80
     hostname: ax-films.rancher.katzencluster.atlantishq.de
-    image: harbor-registry.atlantishq.de/atlantishq/ax-films
+    image: registry.services.atlantishq.de/atlantishq/ax-films
   bento-pdf:
     targetPort: 8080
     hostname: pdf.rancher.katzencluster.atlantishq.de
@@ -18,8 +18,8 @@ services:
   sector:
     targetPort: 5000
     hostname: sector32.rancher.katzencluster.atlantishq.de
-    image: harbor-registry.atlantishq.de/atlantishq/sector32
+    image: registry.services.atlantishq.de/atlantishq/sector32
   serienampel:
     targetPort: 5000
     hostname: serienampel.rancher.katzencluster.atlantishq.de
-    image: harbor-registry.atlantishq.de/atlantishq/serienampel:latest
+    image: registry.services.atlantishq.de/atlantishq/serienampel:latest

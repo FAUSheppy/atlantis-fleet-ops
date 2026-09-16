@@ -286,8 +286,8 @@ data:
     harbor:
         name: Harbor
         description: Container Registry
-        href: https://harbor-registry.atlantishq.de/c/oidc/login?redirect_url=/harbor/projects
-        icon-alt-url: https://harbor-registry.atlantishq.de/images/harbor-logo.svg
+        href: https://registry.services.atlantishq.de/c/oidc/login?redirect_url=/harbor/projects
+        icon-alt-url: https://registry.services.atlantishq.de/images/harbor-logo.svg
         tags:
             - server
         groups:

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: event-dispatcher
-          image: harbor-registry.atlantishq.de/atlantishq/event-dispatcher
+          image: registry.services.atlantishq.de/atlantishq/event-dispatcher
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
