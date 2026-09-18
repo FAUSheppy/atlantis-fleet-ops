@@ -75,19 +75,20 @@ data:
           "linkOnly": false,
           "hideOnLogin": false,
           "config": {
-            "userInfoUrl": "https://hydra.faforever.com/userinfo",
             "validateSignature": "true",
-            "tokenUrl": "https://hydra.faforever.com/oauth2/token",
-            "clientId": "20ca564b-d0d3-445f-8317-ce7cff4f878d",
-            "jwksUrl": "https://hydra.faforever.com/.well-known/jwks.json",
-            "issuer": "https://hydra.faforever.com",
+            "clientId": "keycloak-schwarz-auth-proxy",
             "useJwksUrl": "true",
             "pkceEnabled": "false",
-            "metadataDescriptorUrl": "https://hydra.faforever.com/.well-known/openid-configuration",
-            "authorizationUrl": "https://hydra.faforever.com/oauth2/auth",
             "clientAuthMethod": "client_secret_post",
-            "logoutUrl": "https://hydra.faforever.com/oauth2/sessions/logout",
             "syncMode": "LEGACY",
+            "tokenUrl": "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/token",
+            "acceptsPromptNoneForwardFromClient": "false",
+            "jwksUrl": "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/certs",
+            "issuer": "https://keycloak.atlantishq.de/realms/master",
+            "userInfoUrl": "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/userinfo",
+            "metadataDescriptorUrl": "https://keycloak.atlantishq.de/realms/master/.well-known/openid-configuration",
+            "authorizationUrl": "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/auth",
+            "logoutUrl": "https://keycloak.atlantishq.de/realms/master/protocol/openid-connect/logout",
             "clientSecret": "${ATLANTIS_FEDERATION_OIDC_SECRET}"
           }
         }
