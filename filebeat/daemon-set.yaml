@@ -48,6 +48,14 @@ spec:
             - name: data
               mountPath: /usr/share/filebeat/data
 
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "200Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
       volumes:
         - name: config
           configMap:
