@@ -26,13 +26,11 @@ data:
         processors:
           - add_kubernetes_metadata:
               host: ${NODE_NAME}
+              scope: node
               use_kubeadm: false
               matchers:
                 - logs_path:
                     logs_path: "/var/log/containers/"
-              add_resource_metadata:
-                deployment: true
-                cronjob: true
 
     output.logstash:
       hosts:
