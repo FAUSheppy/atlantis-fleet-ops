@@ -61,7 +61,7 @@ spec:
             - name: CMD_OAUTH2_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: hedgedoc-oauth-config
+                  name: hedgedoc-oidc-config
                   key: client-secret
 
             - name: CMD_OAUTH2_SCOPE
