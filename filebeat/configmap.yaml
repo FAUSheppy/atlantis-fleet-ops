@@ -36,3 +36,9 @@ data:
       hosts:
         - "beats.atlantishq.de:443"
       ssl.enabled: true
+      worker: 1
+
+    queue.mem:
+      events: 512
+      flush.min_events: 128
+      flush.timeout: 5s
