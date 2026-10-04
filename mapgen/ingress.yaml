@@ -12,7 +12,8 @@ metadata:
     traefik.ingress.kubernetes.io/redirect-entry-point: "https"
     traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt-prod"
     traefik.ingress.kubernetes.io/router.middlewares: >
-      mapgen-oauth2-forward-auth-mapgen@kubernetescrd
+      mapgen-oauth2-forward-auth-mapgen@kubernetescrd,
+      mapgen-mapgen-cors@kubernetescrd
 spec:
   rules:
     - host: mapgen.services.atlantishq.de
