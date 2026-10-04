@@ -5,7 +5,7 @@ metadata:
   namespace: mapgen
 spec:
   headers:
-    accessControlAllowOrigins:
+    accessControlAllowOriginList:
       - "https://vault.jipwijnia.nl"
     accessControlAllowMethods:
       - GET
