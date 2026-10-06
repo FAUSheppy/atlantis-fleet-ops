@@ -12,27 +12,6 @@ data:
       "ssoSessionMaxLifespan": 172800,
       "accessTokenLifespan": 7200,
       "accessTokenLifespanForImplicitFlow": 10800,
-
-      "roles": {
-        "realm": [
-          {
-            "name": "deny-login",
-            "description": "Users with this role are denied browser login",
-            "composite": false,
-            "clientRole": false
-          }
-        ]
-      },
-
-      "groups": [
-        {
-          "name": "atlantis-admins",
-          "realmRoles": [
-            "deny-login"
-          ]
-        }
-      ],
-
       "clients": [
         {
           "clientId": "mapgen",
@@ -45,6 +24,7 @@ data:
           ]
         }
       ],
+
       "browserFlow": "browser-with-idp",
       "authenticatorConfig": [
         {
@@ -52,45 +32,13 @@ data:
           "config": {
             "defaultProvider": "atlantis"
           }
-        },
-        {
-          "alias": "deny-atlantis-admins-condition",
-          "config": {
-            "condUserRole": "deny-login",
-            "negate": "false"
-          }
-        },
-        {
-          "alias": "deny-atlantis-admins-message",
-          "config": {
-            "denyErrorMessage": "Access is not permitted for this account."
-          }
         }
       ],
-
       "authenticationFlows": [
         {
           "alias": "browser-with-idp",
           "providerId": "basic-flow",
           "topLevel": true,
-          "builtIn": false,
-          "authenticationExecutions": [
-            {
-              "flowAlias": "browser-with-idp-authenticate",
-              "requirement": "REQUIRED",
-              "priority": 10
-            },
-            {
-              "flowAlias": "browser-with-idp-block-admins",
-              "requirement": "CONDITIONAL",
-              "priority": 20
-            }
-          ]
-        },
-        {
-          "alias": "browser-with-idp-authenticate",
-          "providerId": "basic-flow",
-          "topLevel": false,
           "builtIn": false,
           "authenticationExecutions": [
             {
@@ -110,29 +58,8 @@ data:
               "priority": 30
             }
           ]
-        },
-        {
-          "alias": "browser-with-idp-block-admins",
-          "providerId": "basic-flow",
-          "topLevel": false,
-          "builtIn": false,
-          "authenticationExecutions": [
-            {
-              "authenticator": "conditional-user-role",
-              "requirement": "REQUIRED",
-              "priority": 10,
-              "authenticatorConfig": "deny-atlantis-admins-condition"
-            },
-            {
-              "authenticator": "deny-access-authenticator",
-              "requirement": "REQUIRED",
-              "priority": 20,
-              "authenticatorConfig": "deny-atlantis-admins-message"
-            }
-          ]
         }
       ],
-
       "identityProviders": [
         {
           "alias": "atlantis",
@@ -166,7 +93,6 @@ data:
           }
         }
       ],
-
       "identityProviderMappers": [
         {
           "id": "0ebaef33-d45d-487f-bbf4-40d3e773f204",
@@ -179,17 +105,6 @@ data:
             "user.attribute": "firstName"
           }
         },
-        {
-         "name": "block-atlantis-admins",
-          "identityProviderAlias": "atlantis",
-          "identityProviderMapper": "oidc-role-idp-mapper",
-          "config": {
-            "syncMode": "FORCE",
-            "claim": "groups",
-            "claim.value": "atlantis-admins",
-            "role": "deny-login"
-          }
-        },     
         {
           "id": "1bc3fa56-4012-45b2-aa4e-a2f2ca1e6eb3",
           "name": "lastname",
