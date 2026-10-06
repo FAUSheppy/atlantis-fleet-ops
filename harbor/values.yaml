@@ -90,6 +90,7 @@ persistence:
 
       secure: true
       v4auth: true
+      loglevel: debugwithrequestretries
 
       # credentials from secret
       existingSecret: harbor-secrets
