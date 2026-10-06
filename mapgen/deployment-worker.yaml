@@ -30,3 +30,5 @@ spec:
                 name: mapgen-db-secret
             - secretRef:
                 name: mapgen-secrets
+            - name: DEBUG
+              value: "1"
