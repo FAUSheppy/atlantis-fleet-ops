@@ -30,5 +30,6 @@ spec:
                 name: mapgen-db-secret
             - secretRef:
                 name: mapgen-secrets
+          env:
             - name: DEBUG
               value: "1"
