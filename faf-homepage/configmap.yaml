@@ -93,7 +93,7 @@ data:
 
     - Mini-Games:
         - FAF Guesser:
-            icon: /icons/custom/faf-guesser
+            icon: https://fafguessr.doodlepros.com/favicon.png
             href: https://fafguessr.doodlepros.com/
             description: Guess FAF maps from pictures
 
