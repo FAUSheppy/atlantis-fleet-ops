@@ -98,7 +98,7 @@ data:
             description: Guess FAF maps from pictures
 
         - Daily FAF Unit:
-            icon: /icons/custom/faf-daily
+            icon: https://daily.doodlepros.com/favicon.png
             href: https://daily.doodlepros.com/
             description: Guess the daily Forged Alliance unit
 
@@ -135,7 +135,7 @@ data:
             descript: Upcoming and Ongoing FAF Tournaments
 
         - FAF Unit Database:
-            icon: /icons/custom/unit-db
+            icon: https://faforever.github.io/etfreeman-db/apple-touch-icon-precomposed.png
             href: https://faforever.github.io/etfreeman-db/#/
             description: Modern unit database with detailed unit information
 
