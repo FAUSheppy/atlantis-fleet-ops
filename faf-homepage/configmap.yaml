@@ -204,6 +204,11 @@ data:
             href: https://www.youtube.com/@TheMemeCommander
             description: Game casts, entertainment and funny shorts
 
+        - Bullydozer:
+            icon: si-youtube-#FF0000
+            href: https://www.youtube.com/@BullydozerFAF
+            description: Guides, Replay Reviews & High Level 1v1s
+
   widgets.yaml: |
     ---
 
