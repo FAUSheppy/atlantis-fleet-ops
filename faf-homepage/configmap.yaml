@@ -130,6 +130,12 @@ data:
             description: View game histories, statistics and rating evolution
 
         - FAF Tournaments:
+            icon: https://vault.jipwijnia.nl/favicon.png
+            href: https://vault.jipwijnia.nl/
+            descript: Modern Replay & Map Vault with special features
+
+
+        - FAF Tournaments:
             icon: mdi-tournament-#D94A4A
             href: https://tournaments.doodlepros.com
             descript: Upcoming and Ongoing FAF Tournaments

@@ -5,6 +5,7 @@ metadata:
   name: homepage
   namespace: faf-homepage
   labels:
+    configmap-version: 1
     app.kubernetes.io/name: homepage
     app.kubernetes.io/instance: faf-community-hub
     app.kubernetes.io/part-of: faf-community-hub
