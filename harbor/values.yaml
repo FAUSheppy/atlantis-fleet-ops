@@ -3,8 +3,7 @@
 # =========================
 externalURL: https://registry.services.atlantishq.de
 
-harborAdminPassword: ""  # use existingSecret instead
-
+harborAdminPassword: ""
 existingSecretAdminPassword: harbor-secrets
 
 # =========================
@@ -42,7 +41,6 @@ database:
     host: postgres.atlantishq.de
     port: 5432
 
-    # pulled from secret
     existingSecret: harbor-db-secret
     existingSecretKey: DB_PASSWORD
 
@@ -55,10 +53,25 @@ database:
     sslmode: require
 
 # =========================
-# Redis (internal)
+# Redis / Valkey
 # =========================
 redis:
   type: internal
+
+  internal:
+    resources:
+      requests:
+        cpu: 25m
+        memory: 64Mi
+      limits:
+        cpu: 500m
+        memory: 256Mi
+
+    harborDatabaseIndex: 0
+    jobserviceDatabaseIndex: 1
+    registryDatabaseIndex: 2
+    trivyAdapterIndex: 5
+    cacheLayerDatabaseIndex: 0
 
 # =========================
 # Storage (S3)
@@ -81,49 +94,59 @@ persistence:
   imageChartStorage:
     type: s3
 
+
     s3:
       region: eu-central
       bucket: atlantis-harbor
 
-      # endpoint (AWS or S3-compatible)
       regionendpoint: hel1.your-objectstorage.com
 
       secure: true
       v4auth: true
-      loglevel: debugwithrequestretries
+      #loglevel: debugwithrequestretries
+      chunksize: 67108864
 
-      # credentials from secret
       existingSecret: harbor-secrets
 
 # =========================
 # Core Components
 # =========================
 core:
-  replicas: 2
+  replicas: 1
   logLevel: info
+
+  # Redis reduces DB activity when many concurrent pushes
+  # update quota information for the same project.
+  quotaUpdateProvider: redis
 
 jobservice:
   jobLoggers:
     - stdout
-  replicas: 2
+  replicas: 1
 
 registry:
-  replicas: 2
+  replicas: 1
+  resources:
+    requests: 250m
+    memory: 256Mi
+  limit:
+    cpu: "2"
+    memory: 1Gi
 
 portal:
-  replicas: 2
+  replicas: 1
 
 trivy:
   enabled: true
 
 # =========================
-# Notary (optional, often disabled)
+# Notary
 # =========================
 notary:
   enabled: false
 
 # =========================
-# Metrics (optional)
+# Metrics
 # =========================
 metrics:
   enabled: true
@@ -136,7 +159,7 @@ metrics:
 logLevel: info
 
 # =========================
-# Proxy (optional)
+# Proxy
 # =========================
 proxy:
   httpProxy:
@@ -144,29 +167,34 @@ proxy:
   noProxy: 127.0.0.1,localhost,.local,.internal
 
 # =========================
-# Internal TLS (optional)
+# Internal TLS
 # =========================
 internalTLS:
   enabled: false
 
 # =========================
-# Network policy (optional)
+# Network policy
 # =========================
 networkPolicy:
   enabled: false
 
 # =========================
-# Cache (optional)
+# Harbor application cache
 # =========================
 cache:
-  enabled: false
+  enabled: true
+  expireHours: 24
 
+# =========================
+# Authentication
+# =========================
 authMode: oidc_auth
+
 oidc:
   name: keycloak
   endpoint: https://keycloak.atlantishq.com/realms/master
   clientId: harbor
-  clientSecret: ""  # must be empty when using existingSecret
+  clientSecret: ""
 
   existingSecret: async-icinga-oidc-config
   existingSecretKey: client-secret
