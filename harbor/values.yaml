@@ -104,7 +104,12 @@ persistence:
       secure: true
       v4auth: true
       #loglevel: debugwithrequestretries
-      chunksize: 67108864
+      chunksize: "33554432"
+      multipartcopychunksize: "33554432"
+      multipartcopythresholdsize: "33554432"
+
+      # This is a count, so keep it numeric.
+      multipartcopymaxconcurrency: 10
 
       existingSecret: harbor-secrets
 
