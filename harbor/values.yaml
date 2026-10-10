@@ -96,10 +96,10 @@ persistence:
 
 
     s3:
-      region: eu-central
-      bucket: atlantis-harbor
+      region: euw
+      bucket: harbor
 
-      regionendpoint: hel1.your-objectstorage.com
+      regionendpoint: s3.anycast.atlantishq.de
 
       secure: true
       v4auth: true
