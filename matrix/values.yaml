@@ -88,9 +88,3 @@ matrixAuthenticationService:
 #matrixRTC:
 #  enabled: false
 
-#
-# Keep the chart's Valkey instance.
-# This is cache/pubsub state, not authoritative Matrix persistence.
-#
-valkey:
-  enabled: true
