@@ -82,6 +82,10 @@ matrixAuthenticationService:
         account:
           email_change_allowed: true
           displayname_change_allowed: true
+    30-disable-password-login:
+      config: |
+        passwords:
+          enabled: false
 
 elementWeb:
   enabled: true
