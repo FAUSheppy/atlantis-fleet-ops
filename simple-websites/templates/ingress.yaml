@@ -30,4 +30,11 @@ spec:
                 name: {{ $name }}
                 port:
                   number: 80
+          - path: /.well-known/matrix
+            pathType: Prefix
+            backend:
+              service:
+                name: matrix-well-known
+                port:
+                  number: 80
 {{ end }}
