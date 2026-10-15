@@ -76,6 +76,11 @@ matrixAuthenticationService:
     10-upstream-oidc:
       configSecret: matrix-mas-oidc
       configSecretKey: oidc.yaml
+    20-account-settings:
+      config:
+        account:
+          email_change_allowed: true
+          displayname_change_allowed: true
 
 elementWeb:
   enabled: true
