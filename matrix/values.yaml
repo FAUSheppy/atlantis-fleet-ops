@@ -1,8 +1,4 @@
-# Element Server Suite Community
-# Chart: oci://ghcr.io/element-hq/ess-helm/matrix-stack
-# Version: 26.10.0
-
-serverName: matrix.services.atlantishq.de
+serverName: atlantishq.de
 
 # Use the existing Traefik ingress controller.
 ingress:
