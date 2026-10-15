@@ -34,6 +34,11 @@ synapse:
     password:
       secret: matrix-synapse-db-secret
       secretKey: password
+  additional:
+    20-profile-settings:
+      config: |
+        enable_set_displayname: true
+        enable_set_avatar_url: true
 
   # ESS Community does not natively provide S3 media storage.
   # Use a network-backed PVC here, e.g. CephFS / NFS / Longhorn RWX.
