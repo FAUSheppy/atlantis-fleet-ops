@@ -64,7 +64,7 @@ matrixAuthenticationService:
     sslMode: require
     password:
       secret: matrix-mas-db-secret
-      secretKey: mas-password
+      secretKey: password
 
   # Load OIDC configuration from a Secret rather than committing
   # the OIDC client secret to Git.
