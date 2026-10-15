@@ -26,6 +26,8 @@ synapse:
     className: traefik
     tlsEnabled: true
     tlsSecret: matrix-services-atlantishq-de-tls
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
 
   postgres:
     host: postgres.atlantishq.de
@@ -54,6 +56,8 @@ matrixAuthenticationService:
     host: auth.matrix.services.atlantishq.de
     className: traefik
     tlsEnabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
     tlsSecret: auth-matrix-services-atlantishq-de-tls
 
   postgres:
@@ -81,6 +85,8 @@ elementWeb:
     className: traefik
     tlsEnabled: true
     tlsSecret: chat-services-atlantishq-de-tls
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
 
 
 elementAdmin:
@@ -91,6 +97,8 @@ elementAdmin:
     className: traefik
     tlsEnabled: true
     tlsSecret: admin-matrix-services-atlantishq-de-tls
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
 
 
 matrixRTC:
@@ -101,6 +109,8 @@ matrixRTC:
     className: traefik
     tlsEnabled: true
     tlsSecret: rtc-matrix-services-atlantishq-de-tls
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
 
 
 hookshot:
@@ -111,3 +121,5 @@ hookshot:
     className: traefik
     tlsEnabled: true
     tlsSecret: hookshot-matrix-services-atlantishq-de-tls
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
