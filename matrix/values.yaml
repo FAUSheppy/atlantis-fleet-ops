@@ -77,7 +77,7 @@ matrixAuthenticationService:
       configSecret: matrix-mas-oidc
       configSecretKey: oidc.yaml
     20-account-settings:
-      config:
+      config: |
         account:
           email_change_allowed: true
           displayname_change_allowed: true
