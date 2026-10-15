@@ -73,18 +73,41 @@ matrixAuthenticationService:
       configSecret: matrix-mas-oidc
       configSecretKey: oidc.yaml
 
-#
-# Disable components you don't need for a basic Matrix server.
-#
-#elementWeb:
-#  enabled: false
-#
-#elementAdmin:
-#  enabled: false
-#
-#hookshot:
-#  enabled: false
-#
-#matrixRTC:
-#  enabled: false
+elementWeb:
+  enabled: true
 
+  ingress:
+    host: chat.services.atlantishq.de
+    className: traefik
+    tlsEnabled: true
+    tlsSecret: chat-services-atlantishq-de-tls
+
+
+elementAdmin:
+  enabled: true
+
+  ingress:
+    host: admin.matrix.services.atlantishq.de
+    className: traefik
+    tlsEnabled: true
+    tlsSecret: admin-matrix-services-atlantishq-de-tls
+
+
+matrixRTC:
+  enabled: true
+
+  ingress:
+    host: rtc.matrix.services.atlantishq.de
+    className: traefik
+    tlsEnabled: true
+    tlsSecret: rtc-matrix-services-atlantishq-de-tls
+
+
+hookshot:
+  enabled: true
+
+  ingress:
+    host: hookshot.matrix.services.atlantishq.de
+    className: traefik
+    tlsEnabled: true
+    tlsSecret: hookshot-matrix-services-atlantishq-de-tls
