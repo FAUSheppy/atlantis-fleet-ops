@@ -39,6 +39,10 @@ synapse:
       config: |
         enable_set_displayname: true
         enable_set_avatar_url: true
+    30-disable-password-login:
+      config: |
+        password_config:
+          enabled: false
 
   # ESS Community does not natively provide S3 media storage.
   # Use a network-backed PVC here, e.g. CephFS / NFS / Longhorn RWX.
