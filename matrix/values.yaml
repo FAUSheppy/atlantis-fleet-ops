@@ -1,0 +1,96 @@
+# Element Server Suite Community
+# Chart: oci://ghcr.io/element-hq/ess-helm/matrix-stack
+# Version: 26.10.0
+
+serverName: matrix.services.atlantishq.de
+
+# Use the existing Traefik ingress controller.
+ingress:
+  className: traefik
+  tlsEnabled: true
+  service:
+    type: ClusterIP
+
+# Do NOT deploy the chart-local PostgreSQL.
+postgres:
+  enabled: false
+
+#
+# Synapse
+#
+synapse:
+  enabled: true
+
+  ingress:
+    host: matrix.services.atlantishq.de
+    className: traefik
+    tlsEnabled: true
+    tlsSecret: matrix-services-atlantishq-de-tls
+
+  postgres:
+    host: postgres.atlantishq.de
+    port: 5432
+    user: matrix-synapse
+    database: matrix-synapse
+    sslMode: require
+    password:
+      secret: matrix-synapse-db-secret
+      secretKey: password
+
+  # ESS Community does not natively provide S3 media storage.
+  # Use a network-backed PVC here, e.g. CephFS / NFS / Longhorn RWX.
+  #media:
+  #  storage:
+  #    existingClaim: matrix-media
+  #  maxUploadSize: 100M
+
+#
+# Matrix Authentication Service
+#
+matrixAuthenticationService:
+  enabled: true
+
+  ingress:
+    host: auth.matrix.services.atlantishq.de
+    className: traefik
+    tlsEnabled: true
+    tlsSecret: auth-matrix-services-atlantishq-de-tls
+
+  postgres:
+    host: postgres.atlantishq.de
+    port: 5432
+    user: matrix-mas
+    database: matrix-mas
+    sslMode: require
+    password:
+      secret: matrix-mas-db-secret
+      secretKey: mas-password
+
+  # Load OIDC configuration from a Secret rather than committing
+  # the OIDC client secret to Git.
+  additional:
+    10-upstream-oidc:
+      configSecret: matrix-mas-oidc
+      configSecretKey: oidc.yaml
+
+#
+# Disable components you don't need for a basic Matrix server.
+#
+#elementWeb:
+#  enabled: false
+#
+#elementAdmin:
+#  enabled: false
+#
+#hookshot:
+#  enabled: false
+#
+#matrixRTC:
+#  enabled: false
+
+#
+# Keep the chart's Valkey instance.
+# This is cache/pubsub state, not authoritative Matrix persistence.
+#
+valkey:
+  enabled: true
