@@ -43,7 +43,14 @@ synapse:
       config: |
         password_config:
           enabled: false
-
+    40-user-directory.yaml:
+      config: |
+        user_directory:
+          enabled: true
+          search_all_users: false
+          prefer_local_users: true
+          exclude_remote_users: false
+        
   # ESS Community does not natively provide S3 media storage.
   # Use a network-backed PVC here, e.g. CephFS / NFS / Longhorn RWX.
   #media:
