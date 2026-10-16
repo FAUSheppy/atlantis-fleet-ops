@@ -27,6 +27,17 @@ data:
             - tools
         auth-type: sso
 
+    matrix:
+        name: Element Chat
+        description: Element Matrix Chat
+        href: https://auth.matrix.services.atlantishq.de/upstream/authorize/01JAZ000000000000000000001?kind=continue_authorization_grant&id=01M530TJJV32C03X5M64P30VTX
+        icon-alt-url: https://chat.services.atlantishq.de/themes/element/img/logos/element-logo.svg
+        tags:
+            - tools
+        groups:
+            - tools
+        auth-type: sso
+
 
     images:
         name: Image CMS
