@@ -7,9 +7,6 @@ image:
   tag: "latest"
   pullPolicy: Always
 
-#
-# Nextcloud
-#
 nextcloud:
   host: nextcloud.services.atlantishq.de
 
@@ -22,6 +19,94 @@ nextcloud:
     usernameKey: ADMIN_USER
     passwordKey: ADMIN_PASSWORD
 
+  #
+  # Environment used by our persistent/reproducible config.php
+  #
+  extraEnv:
+    - name: NC_INSTANCE_ID
+      valueFrom:
+        secretKeyRef:
+          name: nextcloud
+          key: INSTANCE_ID
+
+    - name: NC_PASSWORD_SALT
+      valueFrom:
+        secretKeyRef:
+          name: nextcloud
+          key: PASSWORD_SALT
+
+    - name: NC_INSTANCE_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: nextcloud
+          key: INSTANCE_SECRET
+
+    - name: OIDC_CLIENT_ID
+      valueFrom:
+        secretKeyRef:
+          name: nextcloud-oidc-config
+          key: client-id
+
+    - name: OIDC_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: nextcloud-oidc-config
+          key: client-secret
+
+    - name: OIDC_DISCOVERY_URI
+      value: https://keycloak.atlantishq.de/realms/master/.well-known/openid-configuration
+
+  #
+  # Recreate the mandatory config.php before the Nextcloud
+  # Docker entrypoint runs.
+  #
+  extraInitContainers:
+    - name: create-nextcloud-config
+      image: busybox:1.37
+      imagePullPolicy: IfNotPresent
+
+      command:
+        - /bin/sh
+        - -ec
+        - |
+          mkdir -p /var/www/html/config
+
+          cat > /var/www/html/config/config.php <<'PHP'
+          <?php
+          $CONFIG = array (
+            'installed' => true,
+
+            'instanceid' => getenv('NC_INSTANCE_ID'),
+            'passwordsalt' => getenv('NC_PASSWORD_SALT'),
+            'secret' => getenv('NC_INSTANCE_SECRET'),
+
+            'dbtype' => 'pgsql',
+            'dbname' => getenv('POSTGRES_DB'),
+            'dbhost' => getenv('POSTGRES_HOST'),
+            'dbuser' => getenv('POSTGRES_USER'),
+            'dbpassword' => getenv('POSTGRES_PASSWORD'),
+
+            'datadirectory' => '/var/www/html/data',
+
+            'trusted_domains' => array (
+              0 => 'localhost',
+              1 => 'nextcloud.services.atlantishq.de',
+            ),
+
+            'overwriteprotocol' => 'https',
+          );
+          PHP
+
+          chown 33:33 /var/www/html/config/config.php
+          chmod 640 /var/www/html/config/config.php
+
+      volumeMounts:
+        - name: nextcloud-main
+          mountPath: /var/www/html
+
+  #
+  # Normal additional Nextcloud config fragments.
+  #
   configs:
     postgres-ssl.config.php: |-
       <?php
@@ -32,7 +117,9 @@ nextcloud:
         ),
       );
 
-  # S3 as PRIMARY storage
+  #
+  # S3 as primary storage
+  #
   objectStore:
     s3:
       enabled: true
@@ -51,29 +138,13 @@ nextcloud:
       usePathStyle: true
       autoCreate: false
 
-  # These are supplied to the startup hook below.
-  extraEnv:
-    - name: OIDC_CLIENT_ID
-      valueFrom:
-        secretKeyRef:
-          name: nextcloud-oidc-config
-          key: client-id
-
-    - name: OIDC_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: nextcloud-oidc-config
-          key: client-secret
-
-    - name: OIDC_DISCOVERY_URI
-      value: https://keycloak.atlantishq.de/realms/master/.well-known/openid-configuration
-
   #
-  # Since /var/www/html is ephemeral, install user_oidc whenever
-  # a fresh Nextcloud container is initialized.
+  # This must run on every pod start, not only after initial installation.
+  #
+  # user_oidc must already be present in your custom Docker image.
   #
   hooks:
-    post-installation: |-
+    before-starting: |-
       #!/bin/sh
       set -eu
 
@@ -91,7 +162,6 @@ nextcloud:
         --value=0 \
         user_oidc allow_multiple_user_backends
 
-      # Default for users whose OIDC token has no quota claim
       php /var/www/html/occ config:app:set \
         files default_quota \
         --value='2 GB'
@@ -120,23 +190,27 @@ postgresql:
 mariadb:
   enabled: false
 
-# NO PERSISTENT VOLUMES.
+#
+# No PVCs
+#
 persistence:
   enabled: false
 
   nextcloudData:
     enabled: false
 
-# Redis is optional.
 #
-# For a single replica you can omit it initially.
+# Redis
+#
 redis:
   enabled: false
 
 externalRedis:
   enabled: false
 
-# Background jobs should run.
+#
+# Background jobs
+#
 cronjob:
   enabled: true
   type: cronjob
@@ -144,12 +218,16 @@ cronjob:
   cronjob:
     schedule: "*/5 * * * *"
 
+#
 # Service
+#
 service:
   type: ClusterIP
   port: 8080
 
-# Example Traefik ingress
+#
+# Ingress
+#
 ingress:
   enabled: true
   className: traefik
@@ -166,12 +244,16 @@ ingress:
       hosts:
         - nextcloud.services.atlantishq.de
 
-# Reverse proxy handling
+#
+# Reverse proxy
+#
 phpClientHttpsFix:
   enabled: true
   protocol: https
 
-# Reasonable probes
+#
+# Probes
+#
 startupProbe:
   enabled: true
   initialDelaySeconds: 10
