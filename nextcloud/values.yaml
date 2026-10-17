@@ -63,47 +63,45 @@ nextcloud:
   extraInitContainers:
     - name: create-nextcloud-config
       image: busybox:1.37
-      imagePullPolicy: IfNotPresent
-
       command:
         - /bin/sh
         - -ec
         - |
           mkdir -p /var/www/html/config
-
+  
           cat > /var/www/html/config/config.php <<'PHP'
           <?php
           $CONFIG = array (
-            'installed' => false,
-
+            'installed' => true,
+  
             'instanceid' => getenv('NC_INSTANCE_ID'),
             'passwordsalt' => getenv('NC_PASSWORD_SALT'),
             'secret' => getenv('NC_INSTANCE_SECRET'),
-
+  
             'dbtype' => 'pgsql',
             'dbname' => getenv('POSTGRES_DB'),
             'dbhost' => getenv('POSTGRES_HOST'),
             'dbuser' => getenv('POSTGRES_USER'),
             'dbpassword' => getenv('POSTGRES_PASSWORD'),
-
+  
             'datadirectory' => '/var/www/html/data',
-
+  
             'trusted_domains' => array (
               0 => 'localhost',
               1 => 'nextcloud.services.atlantishq.de',
             ),
-
+  
             'overwriteprotocol' => 'https',
           );
           PHP
-
-          chown 33:33 /var/www/html/config/config.php
+  
+          chown -R 33:33 /var/www/html/config
+          chmod 750 /var/www/html/config
           chmod 640 /var/www/html/config/config.php
-
+  
       volumeMounts:
         - name: nextcloud-main
           mountPath: /var/www/html
-
   #
   # Normal additional Nextcloud config fragments.
   #
