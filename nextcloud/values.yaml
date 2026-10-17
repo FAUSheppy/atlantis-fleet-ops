@@ -97,7 +97,7 @@ externalDatabase:
 
   existingSecret:
     enabled: true
-    secretName: nextclould-db-secret
+    secretName: nextcloud-db-secret
     hostKey: db-host
     usernameKey: user
     passwordKey: password
