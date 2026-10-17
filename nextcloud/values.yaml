@@ -1,7 +1,8 @@
 replicaCount: 1
 
 image:
-  repository: registry.services.atlantishq.de/atlantishq/nextcloud
+  registry: registry.services.atlantishq.de
+  repository: atlantishq/nextcloud
   flavor: apache
   tag: "latest"
   pullPolicy: Always
