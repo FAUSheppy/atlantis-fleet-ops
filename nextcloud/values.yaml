@@ -21,6 +21,15 @@ nextcloud:
     usernameKey: ADMIN_USER
     passwordKey: ADMIN_PASSWORD
 
+  configs:
+    postgres-ssl.config.php: |-
+      <?php
+      $CONFIG = array (
+        'pgsql_ssl' => array (
+          'mode' => 'require',
+        ),
+      );
+
   # S3 as PRIMARY storage
   objectStore:
     s3:
