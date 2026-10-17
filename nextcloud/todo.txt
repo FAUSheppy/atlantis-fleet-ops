@@ -1,0 +1,7 @@
+- installed: false
+- groups for admins not working
+- cache dir & redis?
+- update?
+- missing secrets ansible
+- reidrect uri ansible keycloak
+- docker image with oidc auto build/repo/etc
