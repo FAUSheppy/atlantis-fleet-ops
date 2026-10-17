@@ -1,0 +1,9 @@
+defaultNamespace: nextcloud
+
+helm:
+  repo: https://nextcloud.github.io/helm/
+  chart: nextcloud
+  version: 9.4.0
+  releaseName: nextcloud
+  valuesFiles:
+    - values.yaml

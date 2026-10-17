@@ -1,0 +1,182 @@
+replicaCount: 1
+
+image:
+  repository: nextcloud
+  flavor: apache
+  tag: "35.0.1-apache"
+  pullPolicy: IfNotPresent
+
+#
+# Nextcloud
+#
+nextcloud:
+  host: nextcloud.services.atlantishq.de
+
+  trustedDomains:
+    - nextcloud.services.atlantishq.de
+
+  existingSecret:
+    enabled: true
+    secretName: nextcloud
+    usernameKey: ADMIN_USER
+    passwordKey: ADMIN_PASSWORD
+
+  # S3 as PRIMARY storage
+  objectStore:
+    s3:
+      enabled: true
+
+      existingSecret: nextcloud
+
+      secretKeys:
+        host: S3_ENDPOINT
+        accessKey: S3_ACCESS_KEY
+        secretKey: S3_SECRET_KEY
+        bucket: S3_BUCKET
+
+      ssl: true
+      port: "443"
+      region: euw
+      usePathStyle: false
+      autoCreate: false
+
+  # These are supplied to the startup hook below.
+  extraEnv:
+    - name: OIDC_CLIENT_ID
+      valueFrom:
+        secretKeyRef:
+          name: nextcloud-oidc-config
+          key: client-id
+
+    - name: OIDC_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: nextcloud-oidc-config
+          key: client-secret
+
+    - name: OIDC_DISCOVERY_URI
+      value: https://keycloak.atlantishq.de/realms/master/.well-known/openid-configuration
+
+  #
+  # Since /var/www/html is ephemeral, install user_oidc whenever
+  # a fresh Nextcloud container is initialized.
+  #
+  hooks:
+    post-installation: |-
+      #!/bin/sh
+      set -eu
+
+      php /var/www/html/occ app:enable user_oidc
+
+      php /var/www/html/occ user_oidc:provider oidc \
+        --clientid="${OIDC_CLIENT_ID}" \
+        --clientsecret="${OIDC_CLIENT_SECRET}" \
+        --discoveryuri="${OIDC_DISCOVERY_URI}" \
+        --group-provisioning=1 \
+        --group-whitelist-regex='/^atlantis-admins$/'
+
+      php /var/www/html/occ config:app:set \
+        --type=string \
+        --value=0 \
+        user_oidc allow_multiple_user_backends
+
+      # Default for users whose OIDC token has no quota claim
+      php /var/www/html/occ config:app:set \
+        files default_quota \
+        --value='2 GB'
+
+#
+# PostgreSQL
+#
+internalDatabase:
+  enabled: false
+
+externalDatabase:
+  enabled: true
+  type: postgresql
+
+  existingSecret:
+    enabled: true
+    secretName: nextclould-db-secret
+    hostKey: db-host
+    usernameKey: user
+    passwordKey: password
+    databaseKey: db
+
+postgresql:
+  enabled: false
+
+mariadb:
+  enabled: false
+
+# NO PERSISTENT VOLUMES.
+persistence:
+  enabled: false
+
+  nextcloudData:
+    enabled: false
+
+# Redis is optional.
+#
+# For a single replica you can omit it initially.
+redis:
+  enabled: false
+
+externalRedis:
+  enabled: false
+
+# Background jobs should run.
+cronjob:
+  enabled: true
+  type: cronjob
+
+  cronjob:
+    schedule: "*/5 * * * *"
+
+# Service
+service:
+  type: ClusterIP
+  port: 8080
+
+# Example Traefik ingress
+ingress:
+  enabled: true
+  className: traefik
+
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+
+  path: /
+  pathType: Prefix
+
+  tls:
+    - secretName: nextcloud-tls
+      hosts:
+        - nextcloud.services.atlantishq.de
+
+# Reverse proxy handling
+phpClientHttpsFix:
+  enabled: true
+  protocol: https
+
+# Reasonable probes
+startupProbe:
+  enabled: true
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 30
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 6
