@@ -48,7 +48,7 @@ nextcloud:
       ssl: true
       port: "443"
       region: euw
-      #usePathStyle: false
+      usePathStyle: true
       autoCreate: false
 
   # These are supplied to the startup hook below.
