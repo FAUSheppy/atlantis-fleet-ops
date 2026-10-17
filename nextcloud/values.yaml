@@ -1,10 +1,10 @@
 replicaCount: 1
 
 image:
-  repository: nextcloud
+  repository: registry.services.atlantishq.de/atlantishq/nextcloud
   flavor: apache
-  tag: "35.0.1-apache"
-  pullPolicy: IfNotPresent
+  tag: "latest"
+  pullPolicy: Always
 
 #
 # Nextcloud
