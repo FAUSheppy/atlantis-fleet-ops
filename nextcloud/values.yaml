@@ -72,7 +72,7 @@ nextcloud:
           cat > /var/www/html/config/config.php <<'PHP'
           <?php
           $CONFIG = array (
-            'installed' => true,
+            'installed' => false,
   
             'instanceid' => getenv('NC_INSTANCE_ID'),
             'passwordsalt' => getenv('NC_PASSWORD_SALT'),
