@@ -95,7 +95,7 @@ nextcloud:
            <?php
            \$CONFIG = array (
              'installed' => true,
-             'version' => '${VERSION}',
+             'version' => '${`${VERSION}`}',
 
              'instanceid' => getenv('NC_INSTANCE_ID'),
              'passwordsalt' => getenv('NC_PASSWORD_SALT'),
