@@ -177,6 +177,9 @@ nextcloud:
         --group-provisioning=1 \
         --group-whitelist-regex='/^atlantis-admins$/'
 
+      # not currently compatible with S3 primary storage
+      php occ app:disable circles
+
       php /var/www/html/occ config:app:set \
         --type=string \
         --value=0 \
