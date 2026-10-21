@@ -79,7 +79,7 @@ nextcloud:
   
           echo '
           <?php
-          \$CONFIG = array (
+          $CONFIG = array (
             'installed' => true,
             'version' => '${`${VERSION}`}',
   
