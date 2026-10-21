@@ -170,11 +170,12 @@ nextcloud:
       cat /var/www/html/config/config.php
       php /var/www/html/occ status
 
-      if /bin/sh www-data -c 'php /var/www/html/occ status' 2>/dev/null | grep -q 'needsDbUpgrade: true'; then
-          /bin/sh www-data -c 'php /var/www/html/occ upgrade -v'
+      if php occ status 2>/dev/null | grep -q 'needsDbUpgrade: true'; then
+          php /var/www/html/occ upgrade -v
           echo "Running Upgrade because of needsDbUpgrade state.."
       fi
-      rsync -rlDog --chown=www-data:www-data /usr/src/nextcloud/ /var/www/html/
+      php /var/www/html/occ upgrade -v
+      #rsync -rlDog --chown=www-data:www-data /usr/src/nextcloud/ /var/www/html/
 
       php /var/www/html/occ app:enable user_oidc
 
