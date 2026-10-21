@@ -169,6 +169,7 @@ nextcloud:
       #!/bin/sh
       set -eu
 
+      cat /var/www/html/config/config.php
       php /var/www/html/occ status
       php /var/www/html/occ app:enable user_oidc
 
