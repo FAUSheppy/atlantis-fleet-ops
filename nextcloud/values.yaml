@@ -77,33 +77,33 @@ nextcloud:
           if [ ! -f /var/www/html/config/config.php ]; then
             VERSION="$(php -r 'include "/usr/src/nextcloud/version.php"; echo implode(".", $OC_Version);')"
   
-          echo '
+          echo "
           <?php
-          $CONFIG = array (
+          \$CONFIG = array (
             'installed' => true,
-            'version' => '${`${VERSION}`}',
-  
+            'version' => '${VERSION}',
+          
             'instanceid' => getenv('NC_INSTANCE_ID'),
             'passwordsalt' => getenv('NC_PASSWORD_SALT'),
             'secret' => getenv('NC_INSTANCE_SECRET'),
-  
+          
             'dbtype' => 'pgsql',
             'dbname' => getenv('POSTGRES_DB'),
             'dbhost' => getenv('POSTGRES_HOST'),
             'dbuser' => getenv('POSTGRES_USER'),
             'dbpassword' => getenv('POSTGRES_PASSWORD'),
-  
+          
             'datadirectory' => '/var/www/html/data',
-  
+          
             'trusted_domains' => array (
               0 => 'localhost',
               1 => 'nextcloud.services.atlantishq.de',
             ),
-  
+          
             'overwriteprotocol' => 'https',
           );
-          ' > /var/www/html/config/config.php
-  
+          " > /var/www/html/config/config.php 
+
           fi
       volumeMounts:
        - name: nextcloud-main
