@@ -141,11 +141,17 @@ nextcloud:
   #
   # user_oidc must already be present in your custom Docker image.
   #
+  lifecycle:
+    postStartCommand:
+    - /bin/sh
+    - -c
+    - 
   hooks:
     before-starting: |-
       #!/bin/sh
       set -eu
 
+      php /var/www/html/occ status
       php /var/www/html/occ app:enable user_oidc
 
       php /var/www/html/occ user_oidc:provider oidc \
