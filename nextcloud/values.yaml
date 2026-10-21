@@ -106,8 +106,13 @@ nextcloud:
           );
           " > /var/www/html/config/config.php 
 
+          rsync -rlDog --chown=www-data:www-data /usr/src/nextcloud/ /var/www/html/
           chown www-data:www-data /var/www/html/config/config.php
           chown -R www-data:www-data /var/www/html/data
+
+          if su -s /bin/sh www-data -c 'php /var/www/html/occ status' 2>/dev/null | grep -q 'needsDbUpgrade: true'; then
+              su -s /bin/sh www-data -c 'php /var/www/html/occ upgrade -v'
+          fi
 
       volumeMounts:
        - name: nextcloud-main
