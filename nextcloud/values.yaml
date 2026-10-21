@@ -77,7 +77,7 @@ nextcloud:
           if [ ! -f /var/www/html/config/config.php ]; then
             VERSION="$(php -r 'include "/usr/src/nextcloud/version.php"; echo implode(".", $OC_Version);')"
   
-          cat > /var/www/html/config/config.php <<PHP
+          echo '
           <?php
           \$CONFIG = array (
             'installed' => true,
@@ -102,7 +102,7 @@ nextcloud:
   
             'overwriteprotocol' => 'https',
           );
-          PHP
+          ' > /var/www/html/config/config.php
   
           fi
       volumeMounts:
