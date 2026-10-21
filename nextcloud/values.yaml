@@ -124,6 +124,11 @@ nextcloud:
           'rootcert' => 'system',
         ),
       );
+    logging.config.php: |-
+      <?php
+      $CONFIG = [
+        'loglevel' => 0,
+      ];
 
   #
   # S3 as primary storage
