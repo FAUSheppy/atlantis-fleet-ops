@@ -82,7 +82,6 @@ nextcloud:
           echo "<?php
           \$CONFIG = array (
             'installed' => true,
-            'config_is_read_only' => true,
             'version' => '${`${VERSION}`}',
           
             'instanceid' => getenv('NC_INSTANCE_ID'),
@@ -107,7 +106,7 @@ nextcloud:
           " > /var/www/html/config/config.php 
 
           chown www-data:www-data /var/www/html/config/config.php
-          chown -R www-data:www-data /var/www/html/data
+          chown -R www-data:www-data /var/www/html/
 
 
       volumeMounts:
