@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  "extends": [
+    "config:recommended"
+  ],
+
+  "kubernetes": {
+    "managerFilePatterns": [
+      "/\\.ya?ml$/"
+    ]
+  },
+
+  "packageRules": [
+    {
+      "description": "Group Kubernetes container image updates",
+      "matchManagers": ["kubernetes"],
+      "matchDatasources": ["docker"],
+      "groupName": "container images",
+      "automerge": false
+    }
+  ]
+}
