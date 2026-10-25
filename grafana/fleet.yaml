@@ -3,7 +3,7 @@ defaultNamespace: monitoring
 helm:
   chart: grafana
   repo: https://grafana.github.io/helm-charts
-  version: 8.5.7
+  version: 10.5.15
   releaseName: grafana
   valuesFiles:
     - values.yaml
