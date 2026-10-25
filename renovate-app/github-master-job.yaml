@@ -1,0 +1,23 @@
+apiVersion: renovate-operator.mogenius.com/v1alpha1
+kind: RenovateJob
+metadata:
+  name: tmnf-replay-server
+spec:
+  provider:
+    name: github
+
+  discoveryFilters:
+    - FAUSheppy/tmnf-replay-server
+
+  secretRef: renovate-github
+
+  schedule: "0 * * * *"
+
+  parallelism: 1
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 1Gi

@@ -1,0 +1,6 @@
+defaultNamespace: renovate-operator
+
+dependsOn:
+  - selector:
+      matchLabels:
+        app: renovate-operator
