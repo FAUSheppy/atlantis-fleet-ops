@@ -143,6 +143,9 @@ portal:
 
 trivy:
   enabled: true
+  valuesFromConfigMap: trivy-custom-config
+  severity: HIGH,CRITICAL
+  ignoreUnfixed: true
 
 # =========================
 # Notary
