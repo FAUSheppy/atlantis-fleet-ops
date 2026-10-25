@@ -1,7 +1,7 @@
 apiVersion: renovate-operator.mogenius.com/v1alpha1
 kind: RenovateJob
 metadata:
-  name: tmnf-replay-server
+  name: sheppy-github
 spec:
   image: renovate/renovate:44.181.5
   provider:
@@ -45,3 +45,21 @@ spec:
   env:
     - name: RENOVATE_ASSIGNEES
       value: '["FAUSheppy"]'
+
+    - name: RENOVATE_CONFIG
+      value: |
+        {
+          "pip_requirements": {
+            "managerFilePatterns": [
+              "/(^|/)req\\.txt$/"
+            ]
+          }
+        }
+
+    - name: RENOVATE_ONBOARDING_CONFIG
+      value: |
+        {
+          "extends": [
+            "config:recommended"
+          ]
+        }
