@@ -1,6 +1,6 @@
 defaultNamespace: renovate
 
-dependsOn:
-  - selector:
-      matchLabels:
-        app: renovate-operator
+#dependsOn:
+#  - selector:
+#      matchLabels:
+#        app: renovate-operator
