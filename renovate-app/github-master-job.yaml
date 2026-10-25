@@ -21,7 +21,7 @@ spec:
 
   secretRef: renovate-github
 
-  schedule: "* * * * *"
+  schedule: "20 * * * *"
 
   parallelism: 3
 
