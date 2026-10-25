@@ -9,10 +9,19 @@ spec:
 
   discoveryFilters:
     - FAUSheppy/tmnf-replay-server
+    - FAUSheppy/fa-live-metrics
+    - FAUSheppy/fa-mapgen-saas
+    - FAUSheppy/notification-gateway
+    - FAUSheppy/atlantis-hub
+    - FAUSheppy/ntfy-acl-api
+    - FAUSheppy/fa-live-metrics-client
+    - FAUSheppy/atlantis-verify
+    - FAUSheppy/atlantis-event-dispatcher
+    - FAUSheppy/potaris-next-gen
 
   secretRef: renovate-github
 
-  schedule: "0 * * * *"
+  schedule: "* * * * *"
 
   parallelism: 1
 
