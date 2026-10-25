@@ -3,7 +3,7 @@ kind: RenovateJob
 metadata:
   name: tmnf-replay-server
 spec:
-  image: renovate/renovate:42.99.0
+  image: renovate/renovate:44.181.5
   provider:
     name: github
 

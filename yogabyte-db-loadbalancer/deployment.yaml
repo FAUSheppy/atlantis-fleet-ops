@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: haproxy
-          image: haproxy:2.9
+          image: haproxy:3.4
           ports:
             - containerPort: 5433
           volumeMounts:
