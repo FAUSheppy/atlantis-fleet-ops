@@ -22,3 +22,13 @@ spec:
       memory: 256Mi
     limits:
       memory: 1Gi
+
+  access:
+    adminGroups:
+      - atlantis-admins
+
+    readerGroups:
+      - tools
+
+    anonymousRead: false
+    anonymousReadLogs: false
