@@ -42,7 +42,7 @@ spec:
     anonymousRead: false
     anonymousReadLogs: false
 
-  env:
+  extraEnv:
     - name: RENOVATE_ASSIGNEES
       value: '["FAUSheppy"]'
 
