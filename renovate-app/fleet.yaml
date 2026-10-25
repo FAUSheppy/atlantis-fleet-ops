@@ -1,4 +1,4 @@
-defaultNamespace: renovate-operator
+defaultNamespace: renovate
 
 dependsOn:
   - selector:
