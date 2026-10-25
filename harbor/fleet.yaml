@@ -3,7 +3,7 @@ defaultNamespace: harbor
 helm:
   repo: https://helm.goharbor.io
   chart: harbor
-  version: 1.14.0   # adjust to current stable
+  version: 1.19.4   # adjust to current stable
   releaseName: harbor
 
   valuesFiles:
