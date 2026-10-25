@@ -19,7 +19,7 @@ spec:
 
       containers:
         - name: filebeat
-          image: docker.elastic.co/beats/filebeat:8.19.23
+          image: docker.elastic.co/beats/filebeat:9.5.5
 
           args:
             - -c
