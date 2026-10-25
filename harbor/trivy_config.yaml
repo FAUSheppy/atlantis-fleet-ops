@@ -2,6 +2,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: trivy-custom-config
-  namespace: trivy-system
+  namespace: harbor
 data:
   TRIVY_VULN_SEVERITY_SOURCE: "redhat,auto"
