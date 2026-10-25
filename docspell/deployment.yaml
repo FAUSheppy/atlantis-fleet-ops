@@ -14,7 +14,7 @@ spec:
     spec:
       initContainers:
         - name: render-config
-          image: alpine:3.19
+          image: alpine:3.24
           command:
             - /bin/sh
             - -c
