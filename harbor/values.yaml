@@ -146,6 +146,9 @@ trivy:
   valuesFromConfigMap: trivy-custom-config
   severity: HIGH,CRITICAL
   ignoreUnfixed: true
+  extraEnvVars:
+    - name: TRIVY_VULN_SEVERITY_SOURCE
+      value: "redhat,auto"
 
 # =========================
 # Notary
