@@ -23,7 +23,7 @@ spec:
 
   schedule: "* * * * *"
 
-  parallelism: 1
+  parallelism: 3
 
   resources:
     requests:
