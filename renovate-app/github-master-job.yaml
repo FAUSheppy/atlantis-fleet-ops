@@ -19,6 +19,7 @@ spec:
     - FAUSheppy/atlantis-event-dispatcher
     - FAUSheppy/potaris-next-gen
     - FAUSheppy/icinga-webhook-gateway
+    - FAUSheppy/atlantis-management
 
   secretRef: renovate-github
 
