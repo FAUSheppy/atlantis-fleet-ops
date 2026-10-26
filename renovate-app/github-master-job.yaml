@@ -18,6 +18,7 @@ spec:
     - FAUSheppy/atlantis-verify
     - FAUSheppy/atlantis-event-dispatcher
     - FAUSheppy/potaris-next-gen
+    - FAUSheppy/icinga-webhook-gateway
 
   secretRef: renovate-github
 
