@@ -20,6 +20,7 @@ spec:
     - FAUSheppy/potaris-next-gen
     - FAUSheppy/icinga-webhook-gateway
     - FAUSheppy/atlantis-management
+    - FAUSheppy/soundlib-interface
 
   secretRef: renovate-github
 
