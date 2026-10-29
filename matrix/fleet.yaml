@@ -3,6 +3,6 @@ defaultNamespace: matrix
 helm:
   releaseName: matrix
   chart: oci://ghcr.io/element-hq/ess-helm/matrix-stack
-  version: "26.10.3"
+  version: "26.10.4"
   valuesFiles:
     - values.yaml
