@@ -50,7 +50,7 @@ spec:
         # Reactive Resume App
         # -------------------------
         - name: app
-          image: amruthpillai/reactive-resume:v6.0.6
+          image: amruthpillai/reactive-resume:v6.0.10
           ports:
             - containerPort: 3000
           env:
