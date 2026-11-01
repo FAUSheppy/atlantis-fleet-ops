@@ -9,17 +9,17 @@ spec:
 
   tls:
     - hosts:
-        - keycloak-schwarz.services.atlantishq.de
+        - keycloak-federated-test.services.atlantishq.de
       secretName: faf-auth-proxy-tls
 
   rules:
-    - host: keycloak-schwarz.services.atlantishq.de
+    - host: keycloak-federated-test.services.atlantishq.de
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: keycloak-schwarz
+                name: keycloak-federated-test
                 port:
                   number: 8080

@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: keycloak-schwarz
+      app: keycloak-federated-test
   template:
     metadata:
       labels:
-        app: keycloak-schwarz
+        app: keycloak-federated-test
     spec:
       initContainers:
       - name: render-realm
@@ -32,12 +32,12 @@ spec:
           - name: ATLANTIS_FEDERATION_OIDC_SECRET
             valueFrom:
               secretKeyRef:
-                name: keycloak-schwarz-oidc-config
+                name: keycloak-federated-test-oidc-config
                 key: client-secret
           - name: SCHWARZ_DEBUG_CLIENT_SECRET
             valueFrom:
               secretKeyRef:
-                name: keycloak-schwarz-secrets
+                name: keycloak-federated-test-secrets
                 key: SCHWARZ_DEBUG_CLIENT_SECRET
 
       containers:
@@ -58,11 +58,11 @@ spec:
           - name: KC_BOOTSTRAP_ADMIN_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: keycloak-schwarz-secrets
+                name: keycloak-federated-test-secrets
                 key: KC_ADMIN_PASSWORD
 
           - name: KC_HOSTNAME
-            value: keycloak-schwarz.services.atlantishq.de
+            value: keycloak-federated-test.services.atlantishq.de
 
           - name: KC_PROXY_HEADERS
             value: xforwarded
