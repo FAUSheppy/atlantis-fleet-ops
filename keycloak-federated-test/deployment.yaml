@@ -43,6 +43,7 @@ spec:
       containers:
       - name: keycloak
         image: registry.services.atlantishq.de/atlantishq/keycloak-atlantis:26.7.2
+        imagePullPolicy: Always
 
         args:
           - start
