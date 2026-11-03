@@ -1,4 +1,4 @@
-enabled: true
+enabled: false
 existingSecret: gitea-runner-token
 existingSecretKey: token
 init:
