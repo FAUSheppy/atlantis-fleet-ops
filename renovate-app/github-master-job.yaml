@@ -3,7 +3,7 @@ kind: RenovateJob
 metadata:
   name: sheppy-github
 spec:
-  image: renovate/renovate:44.221.0
+  image: renovate/renovate:44.221.1
   provider:
     name: github
 
