@@ -25,7 +25,9 @@
       ],
       "versioning": "semver",
       "minimumReleaseAge": null,
-      "automerge": false
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": false
     }
   ]
 }
