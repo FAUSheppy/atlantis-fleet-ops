@@ -29,6 +29,7 @@ spec:
     - FAUSheppy/icinga-webhook-gateway
     - FAUSheppy/atlantis-management
     - FAUSheppy/soundlib-interface
+    - FAUSheppy/atlantis-fleet-ops
 
   secretRef: renovate-github
 
