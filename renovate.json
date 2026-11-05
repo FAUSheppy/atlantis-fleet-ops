@@ -1,22 +1,30 @@
+
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-
   "extends": [
     "config:recommended"
   ],
-
   "kubernetes": {
     "managerFilePatterns": [
       "/\\.ya?ml$/"
     ]
   },
-
   "packageRules": [
     {
       "description": "Group Kubernetes container image updates",
       "matchManagers": ["kubernetes"],
       "matchDatasources": ["docker"],
       "groupName": "container images",
+      "automerge": false
+    },
+    {
+      "description": "Internal Harbor images without release delay",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": [
+        "/^registry\\.services\\.atlantishq\\.de\\/atlantishq\\//"
+      ],
+      "versioning": "semver",
+      "minimumReleaseAge": null,
       "automerge": false
     }
   ]
