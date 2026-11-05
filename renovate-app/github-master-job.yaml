@@ -7,6 +7,14 @@ spec:
   provider:
     name: github
 
+  webhook:
+    enabled: true
+    authentication:
+      enabled: true
+      secretRef:
+        name: renovate-github
+        key: WEBHOOK_TOKEN
+
   discoveryFilters:
     - FAUSheppy/tmnf-replay-server
     - FAUSheppy/fa-live-metrics
