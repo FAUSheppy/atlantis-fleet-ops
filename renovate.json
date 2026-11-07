@@ -27,7 +27,8 @@
       "minimumReleaseAge": null,
       "automerge": true,
       "automergeType": "pr",
-      "platformAutomerge": false
+      "platformAutomerge": false,
+      "ignoreTests": true
     }
   ]
 }
