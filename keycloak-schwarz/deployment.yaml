@@ -42,7 +42,7 @@ spec:
 
       containers:
       - name: keycloak
-        image: registry.services.atlantishq.de/atlantishq/keycloak-schwarz-email-username-mapper:26.6.4
+        image: registry.services.atlantishq.de/atlantishq/keycloak-opendesk-id-mapper:26.7.2
 
         args:
           - start
