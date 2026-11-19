@@ -23,7 +23,7 @@ spec:
                       - ngb
       containers:
         - name: worker
-          image: registry.services.atlantishq.de/atlantishq/neroxis-mapgen-worker:latest
+          image: registry.services.atlantishq.de/atlantishq/neroxis-mapgen-worker:latest@sha256:c0555924707e857781c63473ce36047db8e1fe530d898fd9503416029c507497
           imagePullPolicy: Always
           envFrom:
             - secretRef:

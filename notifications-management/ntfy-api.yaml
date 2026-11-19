@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ntfy-api
-          image: registry.services.atlantishq.de/atlantishq/ntfy-api:latest
+          image: registry.services.atlantishq.de/atlantishq/ntfy-api:latest@sha256:1343fcfbaa4089925516a8b1561ecb081df87381c5148550c676cd5169bfb279
           ports:
             - containerPort: 5000
           env:

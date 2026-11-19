@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: event-dispatcher-worker
-          image: registry.services.atlantishq.de/atlantishq/event-dispatcher-worker
+          image: registry.services.atlantishq.de/atlantishq/event-dispatcher-worker@sha256:18719f9e61d35457cfc41a98f64aaad0b3fa86c78e05cdd2731d21a8458832db
           imagePullPolicy: Always
           env:
             - name: DISPATCH_SERVER
