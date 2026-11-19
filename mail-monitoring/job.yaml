@@ -12,7 +12,7 @@ spec:
           restartPolicy: Never
           containers:
             - name: smtp-imap-monitor
-              image: registry.services.atlantishq.de/atlantishq/smtp_imap_monitoring
+              image: registry.services.atlantishq.de/atlantishq/smtp_imap_monitoring@sha256:29820518bbd26ec0f136ebe8bd27806b4274c82cf54d9bd6e1fb72b5e2debacc
 
               volumeMounts:
                 - name: config-volume

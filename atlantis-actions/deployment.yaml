@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: atlantis-actions
-          image: registry.services.atlantishq.de/atlantishq/atlantis-status
+          image: registry.services.atlantishq.de/atlantishq/atlantis-status@sha256:6df14e8cc3ffea466cccad2e5ad0af029ded297394cb06b9822a2f375f3b2839
           ports:
             - containerPort: 5000
           env:

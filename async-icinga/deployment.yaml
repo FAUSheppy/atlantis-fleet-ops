@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: async-icinga
-          image: registry.services.atlantishq.de/atlantishq/async-icinga
+          image: registry.services.atlantishq.de/atlantishq/async-icinga@sha256:94fcce04969cecfa5bc277e4317b2aff1cf8992eb1b29d9f403ff82ee5b29674
           ports:
             - containerPort: 5000
           env:

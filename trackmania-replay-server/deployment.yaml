@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: trackmania
-          image: registry.services.atlantishq.de/atlantishq/tmnf-replay-server
+          image: registry.services.atlantishq.de/atlantishq/tmnf-replay-server@sha256:292f3521ea8c881aa5afdfb602a834ee0284968f87c4d9427c448b9567f37c8b
           ports:
             - containerPort: 5000
           env:

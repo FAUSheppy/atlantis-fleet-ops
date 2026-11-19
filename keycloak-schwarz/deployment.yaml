@@ -42,7 +42,7 @@ spec:
 
       containers:
       - name: keycloak
-        image: registry.services.atlantishq.de/atlantishq/keycloak-opendesk-id-mapper:26.7.2
+        image: registry.services.atlantishq.de/atlantishq/keycloak-opendesk-id-mapper:26.7.2@sha256:cb5fd2dbe0023a594ead0fbca234e4a7b9d591eeff7741b1265d0d7ba10bcb22
 
         args:
           - start
