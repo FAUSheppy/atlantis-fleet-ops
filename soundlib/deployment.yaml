@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: soundlib
-          image: registry.services.atlantishq.de/atlantishq/atlantis-soundlib:latest@sha256:03600aba6754cba7a892f467163edd9ae6e893bcac1757829662610ba178e96f
+          image: registry.services.atlantishq.de/atlantishq/atlantis-soundlib:latest@sha256:de29f7a6fcd6d2485756c1f92cfb6a2666624219cffe5c41e3fdb4e1d363048d
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
