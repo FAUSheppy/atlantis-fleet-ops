@@ -29,7 +29,7 @@ spec:
             - name: redis-data
               mountPath: /data
         - name: yamtrack
-          image: ghcr.io/fuzzygrim/yamtrack
+          image: ghcr.io/fuzzygrim/yamtrack@sha256:78497b454b2b52d3b1062f6fd238351d714cff0895db4369e49ace36f4622e75
           imagePullPolicy: Always
           ports:
             - containerPort: 8000

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: logstash
-          image: opensearchproject/logstash-oss-with-opensearch-output-plugin:8.9.0
+          image: opensearchproject/logstash-oss-with-opensearch-output-plugin:8.9.0@sha256:43b0cdaf26edca812a9eafb684ae6101d8f2fd27165345737c39c04a6c7430eb
           ports:
             - containerPort: 5044
               name: beats

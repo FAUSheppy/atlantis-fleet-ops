@@ -10,7 +10,7 @@ services:
   bento-pdf:
     targetPort: 8080
     hostname: pdf.rancher.katzencluster.atlantishq.de
-    image: ghcr.io/alam00000/bentopdf-simple:latest
+    image: ghcr.io/alam00000/bentopdf-simple:latest@sha256:f96da8c4a347880b891d66aa2ebfa6b63f76277dafcfcdfa40c8e6b92c59ef44
   webhook-tester:
     targetPort: 8080
     hostname: webhook-tester.rancher.katzencluster.atlantishq.de
