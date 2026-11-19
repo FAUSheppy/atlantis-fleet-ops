@@ -24,10 +24,11 @@
         "/(^|/)values\\.ya?ml$/"
       ],
       "matchStrings": [
-        "\\bimage:[ \\t]*[\"']?(?<depName>[\\w./-]+):(?<currentValue>[\\w.-]+)"
+        "image:[ \\t]*[\"']?(?<depName>[\\w./-]+):(?<currentValue>[\\w.-]+)(?:@(?<currentDigest>sha256:[a-fA-F0-9]{64}))?"
       ],
       "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
+      "versioningTemplate": "docker",
+      "autoReplaceStringTemplate": "image: {{{depName}}}:{{{newValue}}}{{#if newDigest}}@{{{newDigest}}}{{/if}}"
     }
   ],
   "packageRules": [
