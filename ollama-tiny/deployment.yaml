@@ -28,7 +28,7 @@ spec:
 
       initContainers:
         - name: pull-model
-          image: ollama/ollama:latest
+          image: ollama/ollama:0.40.16
           env:
             - name: OLLAMA_HOST
               value: "0.0.0.0:11434"

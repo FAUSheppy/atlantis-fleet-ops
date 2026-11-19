@@ -4,26 +4,54 @@
   "extends": [
     "config:recommended"
   ],
+  "dependencyDashboard": true,
+  "automerge": false,
   "kubernetes": {
     "managerFilePatterns": [
       "/\\.ya?ml$/"
     ]
   },
+  "helm-values": {
+    "managerFilePatterns": [
+      "/(^|/)values\\.ya?ml$/"
+    ]
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Inline image references in Helm values",
+      "managerFilePatterns": [
+        "/(^|/)values\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "\\bimage:[ \\t]*[\"']?(?<depName>[\\w./-]+):(?<currentValue>[\\w.-]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
+    }
+  ],
   "packageRules": [
     {
-      "description": "Group Kubernetes container image updates",
-      "matchManagers": ["kubernetes"],
+      "description": "Pin container images to immutable digests",
       "matchDatasources": ["docker"],
-      "groupName": "container images",
+      "pinDigests": true
+    },
+    {
+      "description": "External images: PR only, no automerge",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": [
+        "!/^registry\\.services\\.atlantishq\\.de\\/atlantishq\\//"
+      ],
+      "groupName": "external container images",
       "automerge": false
     },
     {
-      "description": "Internal Harbor images without release delay",
+      "description": "Internal Harbor images: automerge",
       "matchDatasources": ["docker"],
       "matchPackageNames": [
         "/^registry\\.services\\.atlantishq\\.de\\/atlantishq\\//"
       ],
-      "versioning": "semver",
+      "groupName": "internal container images",
       "minimumReleaseAge": null,
       "automerge": true,
       "automergeType": "pr",
@@ -32,3 +60,4 @@
     }
   ]
 }
+
