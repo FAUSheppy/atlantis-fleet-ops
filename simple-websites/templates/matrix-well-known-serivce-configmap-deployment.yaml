@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:alpine
+          image: nginx:alpine@sha256:0563c36f94a6d3ec3584161b77859f740f7e20b4853f52c796a864ce6908e8ea
           ports:
             - containerPort: 80
           volumeMounts:

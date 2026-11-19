@@ -15,7 +15,7 @@ spec:
             app: hello-world-kathi
     spec:
       containers:
-        - image: nginx:latest
+        - image: nginx:latest@sha256:689fbc6acfefc8a172d86d5779265fd52dd82e8c6b0c68c7d4aa35734340eb2a
           imagePullPolicy: Always
           name: nginx
           ports:

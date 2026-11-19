@@ -28,7 +28,7 @@ spec:
         # Chrome (browserless)
         # -------------------------
         - name: chrome
-          image: ghcr.io/browserless/chrome:latest
+          image: ghcr.io/browserless/chrome:latest@sha256:4dd7595d9e3a41c359bb6c4bfb0a9efa126f83171d19185233969de8f5b16e2d
           ports:
             - containerPort: 4000
           env:

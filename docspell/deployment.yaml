@@ -14,7 +14,7 @@ spec:
     spec:
       initContainers:
         - name: render-config
-          image: alpine:3.24
+          image: alpine:3.24@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
           command:
             - /bin/sh
             - -c
@@ -74,7 +74,7 @@ spec:
       containers:
 
         - name: restserver
-          image: ghcr.io/docspell/restserver:latest
+          image: ghcr.io/docspell/restserver:latest@sha256:bc8f0c0e072726aca121f07b9f4519ea8360ee3e0a6464f4cd960d3260093826
           args:
             - /opt/docspell.conf
           ports:
@@ -84,7 +84,7 @@ spec:
               mountPath: /opt/docspell.conf
               subPath: application.conf
         - name: joex
-          image: ghcr.io/docspell/joex:latest
+          image: ghcr.io/docspell/joex:latest@sha256:19c8daf22de5ff7625c16abb319c6bcb1354ada0782bd546d91b2be72acbb34f
           envFrom:
             - secretRef:
                 name: docspell-secrets
