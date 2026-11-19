@@ -25,7 +25,7 @@ jicofo:
   replicaCount: 1
 
 jvb:
-  replicaCount: 2
+  replicaCount: 1
 
   useHostPort: false
 
