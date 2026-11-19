@@ -1,3 +1,4 @@
+paused: true
 defaultNamespace: nextcloud
 
 helm:
