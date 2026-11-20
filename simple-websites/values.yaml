@@ -2,7 +2,7 @@ services:
   potaris:
     targetPort: 5000
     hostname: potaris.rancher.katzencluster.atlantishq.de
-    image: registry.services.atlantishq.de/atlantishq/potaris-next-gen-web:1.2.17@sha256:21daca5d6073dffd62fef118147d7674b22a5d5a8d44fb4a690830d6fa6cadd9
+    image: registry.services.atlantishq.de/atlantishq/potaris-next-gen-web:1.2.18@sha256:cba75e66f18c3374dcfb7f6f6cabb398a36f7c37d3712370c603aac35dd0d3b7
   ax-films:
     targetPort: 80
     hostname: ax-films.rancher.katzencluster.atlantishq.de
