@@ -103,3 +103,9 @@ services:
     secret_name: tmnf-replay-server-oidc-config
     namespace: sso
     address: trackmania.atlantishq.de
+  traefikdashboard:
+    port: 80
+    skips:
+    secret_name: traefik-dashboard-oidc-config
+    namespace: sso
+    address: traefik.services.atlantishq.de
