@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: traefik-dashboard-tls
   dnsNames:
-    - traefik.atlantishq.de
+    - traefik.services.atlantishq.de
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
