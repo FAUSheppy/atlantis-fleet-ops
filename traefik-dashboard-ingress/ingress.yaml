@@ -13,7 +13,7 @@ spec:
     - match: Host(`traefik.services.atlantishq.de`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
       kind: Rule
       middlewares:
-        - name: oauth2-proxy-traefikdashboard
+        - name: oauth2-forward-auth-traefikdashboard
           namespace: sso
       services:
         - name: api@internal
