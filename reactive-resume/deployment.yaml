@@ -84,7 +84,7 @@ spec:
               value: "openid profile email"
 
             - name: APP_URL
-              value: "https://cv.rancher.katzencluster.atlantishq.de"
+              value: "https://resume.services.atlantishq.de"
             - name: PRINTER_ENDPOINT
               valueFrom:
                 secretKeyRef:

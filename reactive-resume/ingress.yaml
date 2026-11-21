@@ -16,10 +16,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - cv.rancher.katzencluster.atlantishq.de
+        - resume.services.atlantishq.de
       secretName: cv-tls
   rules:
-    - host: cv.rancher.katzencluster.atlantishq.de
+    - host: resume.services.atlantishq.de
       http:
         paths:
           - path: /
