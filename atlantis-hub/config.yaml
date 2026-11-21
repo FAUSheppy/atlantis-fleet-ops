@@ -69,6 +69,18 @@ data:
             - pki
         auth-type: sso
 
+    traefik-dashboard:
+        name: Traefik
+        description: Traefik Kubernetes Dashboard
+        #background: linear-gradient(90deg, rgb(4, 52, 84) 20%, rgb(83, 134, 160) 65%)
+        href: https://traefik.services.atlantishq.de/dashboard/
+        icon-alt-url: https://traefik.services.atlantishq.de/dashboard/favicon.ico
+        tags:
+            - monitoring
+        groups:
+            - atlantis-admins
+        auth-type: sso
+
     opensearch:
         name: Opensearch
         description: Atlantis Log Monitoring
