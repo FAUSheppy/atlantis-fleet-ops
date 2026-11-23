@@ -106,6 +106,8 @@ services:
   traefikdashboard:
     port: 80
     skips:
+      - "/dashboard/favicon.ico"
+    skips:
     secret_name: traefik-dashboard-oidc-config
     namespace: sso
     address: traefik.services.atlantishq.de
