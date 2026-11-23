@@ -1,0 +1,10 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: portal-redirect
+  namespace: atlantis-web
+spec:
+  redirectRegex:
+    regex: '^https?://portal\.atlantishq\.de(.*)'
+    replacement: 'https://portal.services.atlantishq.de${1}'
+    permanent: true
