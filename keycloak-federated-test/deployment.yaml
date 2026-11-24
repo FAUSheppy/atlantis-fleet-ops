@@ -42,7 +42,7 @@ spec:
 
       containers:
       - name: keycloak
-        image: registry.services.atlantishq.de/atlantishq/keycloak-atlantis:26.7.2@sha256:516f4392ddffa2631059604f8c663398bc9685681a1c03ef6f357aca1a0a07b8
+        image: registry.services.atlantishq.de/atlantishq/keycloak-atlantis:26.7.2@sha256:ab19d416ea708497c1c5a0b11a9f948bf1b799e3a29b3f7712902cde930f3d3a
         imagePullPolicy: Always
 
         args:
