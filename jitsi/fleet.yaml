@@ -3,6 +3,6 @@ defaultNamespace: jitsi
 helm:
   repo: https://jitsi-contrib.github.io/jitsi-helm
   chart: jitsi-meet
-  version: 3.12.0
+  version: 3.14.0
   valuesFiles:
     - helm-values.yaml
